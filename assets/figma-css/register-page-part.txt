@@ -1,0 +1,876 @@
+/* Register Page Part */
+
+position: relative;
+width: 1400px;
+height: 2156px;
+
+background: #FFFFFF;
+
+
+/* Rectangle 22 */
+
+position: absolute;
+width: 1400px;
+height: 109px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* Coup’Acier */
+
+position: absolute;
+width: 344px;
+height: 93px;
+left: 33px;
+top: 7px;
+
+font-family: 'BioRhyme';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 93px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Accueil */
+
+position: absolute;
+width: 102px;
+height: 41px;
+left: 620px;
+top: 34px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Produits */
+
+position: absolute;
+width: 114px;
+height: 41px;
+left: 774px;
+top: 36px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Contact */
+
+position: absolute;
+width: 112px;
+height: 41px;
+left: 940px;
+top: 36px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Shopping Cart */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1160px;
+top: 30px;
+
+background: url(.png);
+
+
+/* Heart */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1243px;
+top: 30px;
+
+background: url(.png);
+
+
+/* User */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1326px;
+top: 29px;
+
+background: url(.png);
+
+
+/* Rectangle 24 */
+
+position: absolute;
+width: 1400px;
+height: 496px;
+left: 0px;
+top: 1660px;
+
+background: #D9D9D9;
+
+
+/* CGV */
+
+position: absolute;
+width: 49px;
+height: 33px;
+left: 1213px;
+top: 2101px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Application */
+
+position: absolute;
+width: 180px;
+height: 45px;
+left: 759px;
+top: 1731px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Coup’Acier */
+
+position: absolute;
+width: 344px;
+height: 93px;
+left: 20px;
+top: 1696px;
+
+font-family: 'BioRhyme';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 93px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Suivez-nous ! */
+
+position: absolute;
+width: 213px;
+height: 45px;
+left: 1062px;
+top: 1731px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Facebook */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1179px;
+top: 1865px;
+
+background: url(.png);
+
+
+/* Place Marker */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 20px;
+top: 1846px;
+
+background: url(.png);
+
+
+/* Lock */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 13px;
+top: 2099px;
+
+background: url(.png);
+
+
+/* contact@coup-acier.com */
+
+position: absolute;
+width: 329px;
+height: 38px;
+left: 80px;
+top: 1803px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Nanterre, 92000 France */
+
+position: absolute;
+width: 296px;
+height: 38px;
+left: 86px;
+top: 1857px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Google Play */
+
+position: absolute;
+width: 151px;
+height: 38px;
+left: 829px;
+top: 1881px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* +33 X XX XX XX XX */
+
+position: absolute;
+width: 234px;
+height: 38px;
+left: 85px;
+top: 1911px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* App Store */
+
+position: absolute;
+width: 125px;
+height: 38px;
+left: 829px;
+top: 1794px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* App Store */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 759px;
+top: 1786px;
+
+background: url(.png);
+
+
+/* Google Play */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 759px;
+top: 1865px;
+
+background: url(.png);
+
+
+/* American Express */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 299px;
+top: 2098px;
+
+background: url(.png);
+
+
+/* Line 4 */
+
+position: absolute;
+width: 1398.01px;
+height: 0px;
+left: 1px;
+top: 2075px;
+
+border: 1px solid #000000;
+
+
+/* Visa */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 217px;
+top: 2098px;
+
+background: url(.png);
+
+
+/* PayPal */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 339px;
+top: 2098px;
+
+background: url(.png);
+
+
+/* MasterCard */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 259px;
+top: 2099px;
+
+background: url(.png);
+
+
+/* Apple Pay */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 382px;
+top: 2093px;
+
+background: url(.png);
+
+
+/* 100% Secured */
+
+position: absolute;
+width: 148px;
+height: 33px;
+left: 54px;
+top: 2101px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* LinkedIn */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1081px;
+top: 1864px;
+
+background: url(.png);
+
+
+/* Pinterest */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1176px;
+top: 1781px;
+
+background: url(.png);
+
+
+/* Gmail Logo */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 18px;
+top: 1794px;
+
+background: url(.png);
+
+
+/* Copyright */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 532px;
+top: 2099px;
+
+background: url(.png);
+
+
+/* TwitterX */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1081px;
+top: 1781px;
+
+background: url(.png);
+
+
+/* Développé par les Big Bosses */
+
+position: absolute;
+width: 320px;
+height: 33px;
+left: 573px;
+top: 2101px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Mentions légales */
+
+position: absolute;
+width: 185px;
+height: 33px;
+left: 967px;
+top: 2101px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Ringer Volume */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 18px;
+top: 1909px;
+
+background: url(.png);
+
+
+/* Rectangle 37 */
+
+position: absolute;
+width: 941px;
+height: 33px;
+left: 229px;
+top: 386px;
+
+background: #FEE715;
+
+
+/* Créez votre compte particulier */
+
+position: absolute;
+width: 941px;
+height: 90px;
+left: 229px;
+top: 337px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Nom : */
+
+position: absolute;
+width: 74px;
+height: 38px;
+left: 192px;
+top: 530px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Adresse Postale : */
+
+position: absolute;
+width: 216px;
+height: 38px;
+left: 194px;
+top: 722px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* E-mail : */
+
+position: absolute;
+width: 98px;
+height: 38px;
+left: 192px;
+top: 914px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Mot de passe : */
+
+position: absolute;
+width: 182px;
+height: 38px;
+left: 192px;
+top: 1102px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Confirmer le mot de passe : */
+
+position: absolute;
+width: 349px;
+height: 38px;
+left: 776px;
+top: 1102px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Numéro de téléphone : */
+
+position: absolute;
+width: 289px;
+height: 38px;
+left: 776px;
+top: 914px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Prénom : */
+
+position: absolute;
+width: 112px;
+height: 38px;
+left: 776px;
+top: 530px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Complément d'adresse : */
+
+position: absolute;
+width: 311px;
+height: 38px;
+left: 776px;
+top: 722px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Rectangle 38 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 192px;
+top: 589px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 39 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 194px;
+top: 781px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 40 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 192px;
+top: 969px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 41 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 192px;
+top: 1157px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 42 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 776px;
+top: 1157px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 43 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 776px;
+top: 969px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 44 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 776px;
+top: 589px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 45 */
+
+position: absolute;
+width: 450px;
+height: 60px;
+left: 776px;
+top: 781px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 46 */
+
+position: absolute;
+width: 500px;
+height: 50px;
+left: 460px;
+top: 1349px;
+
+background: #6184FF;
+border-radius: 10px;
+
+
+/* S’inscrire */
+
+position: absolute;
+width: 117px;
+height: 38px;
+left: 651px;
+top: 1355px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Line 21 */
+
+position: absolute;
+width: 241.07px;
+height: 0px;
+left: 192px;
+top: 1374px;
+
+border: 2px solid #000000;
+
+
+/* Line 22 */
+
+position: absolute;
+width: 241.07px;
+height: 0px;
+left: 985px;
+top: 1374px;
+
+border: 2px solid #000000;

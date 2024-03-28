@@ -1,0 +1,962 @@
+/* Admin Dashboard */
+
+position: relative;
+width: 2450px;
+height: 1200px;
+
+background: #FFFFFF;
+
+
+/* Rectangle 25 */
+
+position: absolute;
+width: 413px;
+height: 109px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* Rectangle 26 */
+
+position: absolute;
+width: 413px;
+height: 1091px;
+left: 0px;
+top: 109px;
+
+background: #000000;
+
+
+/* Rectangle 27 */
+
+position: absolute;
+width: 300px;
+height: 60px;
+left: 70px;
+top: 470px;
+
+background: #FEE715;
+border-radius: 30px;
+
+
+/* Coup’Acier */
+
+position: absolute;
+width: 344px;
+height: 93px;
+left: 33px;
+top: 7px;
+
+font-family: 'BioRhyme';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 93px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Chabane KELFAOUI */
+
+position: absolute;
+width: 236px;
+height: 38px;
+left: 88px;
+top: 335px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Admin */
+
+position: absolute;
+width: 69px;
+height: 30px;
+left: 171px;
+top: 373px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #FEE715;
+
+
+
+/* Ellipse 4 */
+
+position: absolute;
+width: 100px;
+height: 100px;
+left: 155px;
+top: 220px;
+
+background: #FEE715;
+
+
+/* C */
+
+position: absolute;
+width: 46px;
+height: 90px;
+left: 182px;
+top: 225px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Service Commercial */
+
+position: absolute;
+width: 207px;
+height: 30px;
+left: 145px;
+top: 482px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Approvisionnement */
+
+position: absolute;
+width: 203px;
+height: 30px;
+left: 145px;
+top: 577px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Commandes */
+
+position: absolute;
+width: 134px;
+height: 30px;
+left: 145px;
+top: 672px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Combo Chart */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 88px;
+top: 577px;
+
+background: url(.png);
+
+
+/* Order Completed */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 88px;
+top: 672px;
+
+background: url(.png);
+
+
+/* Déconnexion */
+
+position: absolute;
+width: 133px;
+height: 30px;
+left: 145px;
+top: 982px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Rectangle 71 */
+
+position: absolute;
+width: 535px;
+height: 395px;
+left: 1861px;
+top: 228px;
+
+background: #000000;
+border-radius: 40px;
+
+
+/* Rectangle 61 */
+
+position: absolute;
+width: 525px;
+height: 385px;
+left: 1866px;
+top: 233px;
+
+background: #D9D9D9;
+border-radius: 40px;
+
+
+/* Rectangle 66 */
+
+position: absolute;
+width: 1310px;
+height: 410px;
+left: 454px;
+top: 762px;
+
+background: #000000;
+border-radius: 40px;
+
+
+/* Rectangle 68 */
+
+position: absolute;
+width: 1310px;
+height: 410px;
+left: 454px;
+top: 205px;
+
+background: #000000;
+border-radius: 40px;
+
+
+/* Rectangle 64 */
+
+position: absolute;
+width: 1300px;
+height: 400px;
+left: 459px;
+top: 767px;
+
+background: #D9D9D9;
+border-radius: 40px;
+
+
+/* Rectangle 69 */
+
+position: absolute;
+width: 1300px;
+height: 400px;
+left: 459px;
+top: 210px;
+
+background: #D9D9D9;
+border-radius: 40px;
+
+
+/* FERS PLATS */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 541px;
+top: 893px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 2023-01-01 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 541px;
+top: 336px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* Chabane KELFAOUI */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 1467px;
+top: 339px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 20 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 1256px;
+top: 896px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 50 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 1256px;
+top: 339px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 12 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 1564px;
+top: 890px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 10 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 926px;
+top: 896px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* 500 */
+
+position: absolute;
+width: 236px;
+height: 25px;
+left: 926px;
+top: 339px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 25px;
+line-height: 38px;
+
+color: #000000;
+
+
+
+/* Rectangle 65 */
+
+position: absolute;
+width: 480px;
+height: 90px;
+left: 459px;
+top: 649px;
+
+background: #FEE715;
+border-radius: 30px;
+
+
+/* Rectangle 70 */
+
+position: absolute;
+width: 480px;
+height: 90px;
+left: 459px;
+top: 92px;
+
+background: #FEE715;
+border-radius: 30px;
+
+
+/* Rectangle 67 */
+
+position: absolute;
+width: 525px;
+height: 90px;
+left: 1866px;
+top: 117px;
+
+background: #FEE715;
+border-radius: 30px;
+
+
+/* Abdrahamane KONATE */
+
+position: absolute;
+width: 345px;
+height: 45px;
+left: 1925px;
+top: 326px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Mouhssine LAKHILI */
+
+position: absolute;
+width: 269px;
+height: 45px;
+left: 1925px;
+top: 255px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Hakim Ziyech */
+
+position: absolute;
+width: 201px;
+height: 45px;
+left: 1925px;
+top: 397px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Youcef Belaïli */
+
+position: absolute;
+width: 199px;
+height: 45px;
+left: 1925px;
+top: 468px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Yves Bissouma */
+
+position: absolute;
+width: 225px;
+height: 45px;
+left: 1925px;
+top: 539px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Prix de vente */
+
+position: absolute;
+width: 269px;
+height: 60px;
+left: 565px;
+top: 661px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 800;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Ristourne */
+
+position: absolute;
+width: 202px;
+height: 60px;
+left: 592px;
+top: 102px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 800;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Demandes de devis */
+
+position: absolute;
+width: 407px;
+height: 60px;
+left: 1925px;
+top: 132px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 800;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Line 36 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 862px;
+
+border: 2px solid #000000;
+
+
+/* Line 43 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 305px;
+
+border: 2px solid #000000;
+
+
+/* Line 38 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 967px;
+
+border: 2px solid #000000;
+
+
+/* Line 44 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 410px;
+
+border: 2px solid #000000;
+
+
+/* Line 39 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 1072px;
+
+border: 2px solid #000000;
+
+
+/* Line 45 */
+
+position: absolute;
+width: 1300px;
+height: 0px;
+left: 459px;
+top: 515px;
+
+border: 2px solid #000000;
+
+
+/* Line 37 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 784px;
+top: 1167px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Line 46 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 784px;
+top: 610px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Line 40 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 1109px;
+top: 1167px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Line 47 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 1109px;
+top: 610px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Line 41 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 1406px;
+top: 1167px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Line 48 */
+
+position: absolute;
+width: 400px;
+height: 0px;
+left: 1406px;
+top: 610px;
+
+border: 2px solid #000000;
+transform: rotate(-90deg);
+
+
+/* Matériau */
+
+position: absolute;
+width: 141px;
+height: 45px;
+left: 541px;
+top: 789px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Date */
+
+position: absolute;
+width: 73px;
+height: 45px;
+left: 575px;
+top: 232px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Marge (%) */
+
+position: absolute;
+width: 160px;
+height: 45px;
+left: 1178px;
+top: 789px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Montant de la Ristourne (€) */
+
+position: absolute;
+width: 228px;
+height: 90px;
+left: 1162px;
+top: 210px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* Prix de Vente (€) */
+
+position: absolute;
+width: 262px;
+height: 45px;
+left: 1454px;
+top: 789px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Validé par */
+
+position: absolute;
+width: 160px;
+height: 45px;
+left: 1505px;
+top: 232px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Prix d'Achat (€) */
+
+position: absolute;
+width: 245px;
+height: 45px;
+left: 815px;
+top: 789px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Montant Total de l'Achat (€) */
+
+position: absolute;
+width: 245px;
+height: 90px;
+left: 834px;
+top: 210px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* Line 42 */
+
+position: absolute;
+width: 759.02px;
+height: 0px;
+left: 973.99px;
+top: 689.01px;
+
+border: 1px solid #000000;
+
+
+/* Line 49 */
+
+position: absolute;
+width: 759.02px;
+height: 0px;
+left: 973.99px;
+top: 132.01px;
+
+border: 1px solid #000000;
+
+
+/* Logout */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 88px;
+top: 983px;
+
+background: url(.png);
+
+
+/* Online Shop Sale */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 88px;
+top: 485px;
+
+background: url(.png);

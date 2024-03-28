@@ -1,0 +1,1409 @@
+/* Home Page */
+
+position: relative;
+width: 1400px;
+height: 4045px;
+
+background: #FFFFFF;
+
+
+/* worker-cuts-metal-4384343_1280 1 */
+
+position: absolute;
+width: 1400px;
+height: 853px;
+left: 0px;
+top: 109px;
+
+background: url(worker-cuts-metal-4384343_1280.jpg);
+
+
+/* FORGÉ POUR DURER, CHOISISSEZ */
+
+position: absolute;
+width: 1308px;
+height: 120px;
+left: 45px;
+top: 436px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 800;
+font-size: 80px;
+line-height: 120px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Rectangle 8 */
+
+position: absolute;
+width: 452px;
+height: 33px;
+left: 476px;
+top: 1079px;
+
+background: #FEE715;
+
+
+/* Rectangle 9 */
+
+position: absolute;
+width: 787px;
+height: 33px;
+left: 324px;
+top: 1701px;
+
+background: #FEE715;
+
+
+/* Rectangle 10 */
+
+position: absolute;
+width: 832px;
+height: 33px;
+left: 315px;
+top: 2472px;
+
+background: #FEE715;
+
+
+/* Rectangle 11 */
+
+position: absolute;
+width: 480px;
+height: 33px;
+left: 460px;
+top: 3221px;
+
+background: #FEE715;
+
+
+/* Nos matériaux */
+
+position: absolute;
+width: 455px;
+height: 90px;
+left: 473px;
+top: 1030px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Une découpe sur-mesure */
+
+position: absolute;
+width: 787px;
+height: 90px;
+left: 324px;
+top: 1652px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Nos clients parlent de nous */
+
+position: absolute;
+width: 832px;
+height: 90px;
+left: 315px;
+top: 2422px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Nos points forts */
+
+position: absolute;
+width: 481px;
+height: 90px;
+left: 460px;
+top: 3172px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 60px;
+line-height: 90px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Rectangle 2 */
+
+position: absolute;
+width: 300px;
+height: 300px;
+left: 154px;
+top: 1173px;
+
+background: url(pexels-rolled-alloys-specialty-metal-supplier-8940820.jpg);
+
+
+/* Rectangle 3 */
+
+position: absolute;
+width: 300px;
+height: 300px;
+left: 550px;
+top: 1173px;
+
+background: url(pexels-rolled-alloys-specialty-metal-supplier-8940223.jpg);
+
+
+/* Rectangle 4 */
+
+position: absolute;
+width: 300px;
+height: 300px;
+left: 946px;
+top: 1173px;
+
+background: url(pexels-nic-wood-6199107.jpg);
+
+
+/* Rectangle 7 */
+
+position: absolute;
+width: 600px;
+height: 80px;
+left: 400px;
+top: 556px;
+
+background: #FEE715;
+
+
+/* COUP’ACIER. */
+
+position: absolute;
+width: 526px;
+height: 120px;
+left: 437px;
+top: 536px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 800;
+font-size: 80px;
+line-height: 120px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Rectangle 106 */
+
+position: absolute;
+width: 300px;
+height: 100px;
+left: 154px;
+top: 1513px;
+
+background: #000000;
+border-radius: 60px;
+
+
+/* Rectangle 107 */
+
+position: absolute;
+width: 300px;
+height: 100px;
+left: 550px;
+top: 1513px;
+
+background: #000000;
+border-radius: 60px;
+
+
+/* Rectangle 108 */
+
+position: absolute;
+width: 300px;
+height: 100px;
+left: 946px;
+top: 1513px;
+
+background: #000000;
+border-radius: 60px;
+
+
+/* Rectangle 103 */
+
+position: absolute;
+width: 290px;
+height: 90px;
+left: 159px;
+top: 1518px;
+
+background: #FEE715;
+border-radius: 60px;
+
+
+/* Rectangle 104 */
+
+position: absolute;
+width: 290px;
+height: 90px;
+left: 951px;
+top: 1518px;
+
+background: #FEE715;
+border-radius: 60px;
+
+
+/* Rectangle 105 */
+
+position: absolute;
+width: 290px;
+height: 90px;
+left: 555px;
+top: 1518px;
+
+background: #FEE715;
+border-radius: 60px;
+
+
+/* Acier */
+
+position: absolute;
+width: 135px;
+height: 75px;
+left: 1028px;
+top: 1525px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 50px;
+line-height: 75px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Alu */
+
+position: absolute;
+width: 86px;
+height: 75px;
+left: 659px;
+top: 1525px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 50px;
+line-height: 75px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Inox */
+
+position: absolute;
+width: 110px;
+height: 75px;
+left: 249px;
+top: 1525px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 50px;
+line-height: 75px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* pexels-rolled-alloys-specialty-metal-supplier-8973132 1 */
+
+position: absolute;
+width: 608px;
+height: 544px;
+left: 90px;
+top: 1810px;
+
+background: url(pexels-rolled-alloys-specialty-metal-supplier-8973132.jpg);
+
+
+/* Découpe Précise, Solutions Sur Mesure Nos services de découpe sur mesure se distinguent par l'utilisation de technologies de pointe, telles que des machines de découpe laser, plasma et jet d'eau. Ces équipements de dernière génération nous permettent de réaliser des coupes précises et nettes, même sur des métaux de grande épaisseur et de diverses natures. Que ce soit pour des projets industriels, architecturaux, ou pour la fabrication de pièces spécifiques, Coup'Acier s'engage à fournir des solutions sur mesure adaptées aux besoins uniques de chaque client. Notre équipe technique collabore étroitement avec nos clients pour comprendre leurs exigences et assurer une exécution précise de chaque découpe. */
+
+position: absolute;
+width: 588px;
+height: 544px;
+left: 752px;
+top: 1810px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+
+color: #000000;
+
+
+
+/* Star 2 */
+
+position: absolute;
+width: 78px;
+height: 78px;
+left: 618px;
+top: 2526px;
+
+background: #000000;
+
+
+/* Star 1 */
+
+position: absolute;
+width: 60px;
+height: 60px;
+left: 627px;
+top: 2535px;
+
+background: #FEE715;
+
+
+/* 4.8/5 */
+
+position: absolute;
+width: 109px;
+height: 60px;
+left: 724px;
+top: 2537px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Card Security */
+
+position: absolute;
+width: 90px;
+height: 90px;
+left: 1123px;
+top: 3318px;
+
+background: url(.png);
+
+
+/* Headset */
+
+position: absolute;
+width: 90px;
+height: 90px;
+left: 146px;
+top: 3318px;
+
+background: url(.png);
+
+
+/* Delivery */
+
+position: absolute;
+width: 90px;
+height: 90px;
+left: 482px;
+top: 3318px;
+
+background: url(.png);
+
+
+/* Service Client */
+
+position: absolute;
+width: 177px;
+height: 38px;
+left: 103px;
+top: 3422px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Joignable 7 jours/7 */
+
+position: absolute;
+width: 191px;
+height: 30px;
+left: 96px;
+top: 3473px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Partout en France */
+
+position: absolute;
+width: 179px;
+height: 30px;
+left: 409px;
+top: 3473px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Retour sous 20 jours */
+
+position: absolute;
+width: 202px;
+height: 30px;
+left: 748px;
+top: 3473px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Paiement Sécurisé */
+
+position: absolute;
+width: 186px;
+height: 30px;
+left: 1075px;
+top: 3473px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Paiement Sécurisé */
+
+position: absolute;
+width: 240px;
+height: 38px;
+left: 1048px;
+top: 3422px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Refresh */
+
+position: absolute;
+width: 90px;
+height: 90px;
+left: 803px;
+top: 3319px;
+
+background: url(.png);
+
+
+/* Satisfait ou Remboursé */
+
+position: absolute;
+width: 299px;
+height: 38px;
+left: 698px;
+top: 3422px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Livraison Sécurisée */
+
+position: absolute;
+width: 248px;
+height: 38px;
+left: 374px;
+top: 3422px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Rectangle 17 */
+
+position: absolute;
+width: 1400px;
+height: 496px;
+left: 0px;
+top: 3549px;
+
+background: #D9D9D9;
+
+
+/* CGV */
+
+position: absolute;
+width: 49px;
+height: 33px;
+left: 1212px;
+top: 3988px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Application */
+
+position: absolute;
+width: 180px;
+height: 45px;
+left: 758px;
+top: 3618px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Coup’Acier */
+
+position: absolute;
+width: 344px;
+height: 93px;
+left: 19px;
+top: 3583px;
+
+font-family: 'BioRhyme';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 93px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Suivez-nous ! */
+
+position: absolute;
+width: 213px;
+height: 45px;
+left: 1061px;
+top: 3618px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 700;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Facebook */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1178px;
+top: 3752px;
+
+background: url(.png);
+
+
+/* Place Marker */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 19px;
+top: 3733px;
+
+background: url(.png);
+
+
+/* Lock */
+
+position: absolute;
+width: 30px;
+height: 30px;
+left: 12px;
+top: 3986px;
+
+background: url(.png);
+
+
+/* contact@coup-acier.com */
+
+position: absolute;
+width: 329px;
+height: 38px;
+left: 79px;
+top: 3690px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Nanterre, 92000 France */
+
+position: absolute;
+width: 296px;
+height: 38px;
+left: 85px;
+top: 3744px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Google Play */
+
+position: absolute;
+width: 151px;
+height: 38px;
+left: 828px;
+top: 3768px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* +33 X XX XX XX XX */
+
+position: absolute;
+width: 234px;
+height: 38px;
+left: 84px;
+top: 3798px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* App Store */
+
+position: absolute;
+width: 125px;
+height: 38px;
+left: 828px;
+top: 3681px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 500;
+font-size: 25px;
+line-height: 38px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* App Store */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 758px;
+top: 3673px;
+
+background: url(.png);
+
+
+/* Google Play */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 758px;
+top: 3752px;
+
+background: url(.png);
+
+
+/* American Express */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 298px;
+top: 3985px;
+
+background: url(.png);
+
+
+/* Line 4 */
+
+position: absolute;
+width: 1398.01px;
+height: 0px;
+left: 0px;
+top: 3962px;
+
+border: 1px solid #000000;
+
+
+/* Visa */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 216px;
+top: 3985px;
+
+background: url(.png);
+
+
+/* PayPal */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 338px;
+top: 3985px;
+
+background: url(.png);
+
+
+/* MasterCard */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 258px;
+top: 3986px;
+
+background: url(.png);
+
+
+/* Apple Pay */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 381px;
+top: 3980px;
+
+background: url(.png);
+
+
+/* 100% Secured */
+
+position: absolute;
+width: 148px;
+height: 33px;
+left: 53px;
+top: 3988px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* LinkedIn */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1080px;
+top: 3751px;
+
+background: url(.png);
+
+
+/* Pinterest */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1175px;
+top: 3668px;
+
+background: url(.png);
+
+
+/* Gmail Logo */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 17px;
+top: 3681px;
+
+background: url(.png);
+
+
+/* Copyright */
+
+position: absolute;
+width: 40px;
+height: 40px;
+left: 531px;
+top: 3986px;
+
+background: url(.png);
+
+
+/* TwitterX */
+
+position: absolute;
+width: 70px;
+height: 70px;
+left: 1080px;
+top: 3668px;
+
+background: url(.png);
+
+
+/* Développé par les Big Bosses */
+
+position: absolute;
+width: 320px;
+height: 33px;
+left: 572px;
+top: 3988px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Mentions légales */
+
+position: absolute;
+width: 185px;
+height: 33px;
+left: 966px;
+top: 3988px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 33px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Ringer Volume */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 17px;
+top: 3796px;
+
+background: url(.png);
+
+
+/* Rectangle 18 */
+
+position: absolute;
+width: 1400px;
+height: 531px;
+left: 0px;
+top: 2622px;
+
+background: #000000;
+
+
+/* Ellipse 1 */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 210px;
+top: 2697px;
+
+background: #FEE715;
+
+
+/* Ellipse 2 */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 660px;
+top: 2697px;
+
+background: #FEE715;
+
+
+/* Ellipse 3 */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 1110px;
+top: 2697px;
+
+background: #FEE715;
+
+
+/* M */
+
+position: absolute;
+width: 37px;
+height: 60px;
+left: 232px;
+top: 2707px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* C */
+
+position: absolute;
+width: 31px;
+height: 60px;
+left: 685px;
+top: 2707px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* A */
+
+position: absolute;
+width: 30px;
+height: 60px;
+left: 1135px;
+top: 2707px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 60px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Mouhssine LAKHILI */
+
+position: absolute;
+width: 269px;
+height: 45px;
+left: 116px;
+top: 2800px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Abdrahamane KONATE */
+
+position: absolute;
+width: 345px;
+height: 45px;
+left: 977px;
+top: 2800px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Chabane KELFAOUI */
+
+position: absolute;
+width: 283px;
+height: 45px;
+left: 559px;
+top: 2800px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 30px;
+line-height: 45px;
+/* identical to box height */
+
+color: #FFFFFF;
+
+
+
+/* Service exceptionnel, qualité remarquable, une référence en découpe sur mesure de métaux. Je recommande ! */
+
+position: absolute;
+width: 287px;
+height: 120px;
+left: 107px;
+top: 2952px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Coup'Acier excelle dans la précision, répondant à nos besoins sur mesure avec efficacité. */
+
+position: absolute;
+width: 283px;
+height: 120px;
+left: 559px;
+top: 2952px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Coup'Acier conjugue expertise technologique et service client impeccable, offrant des solutions de découpe sur mesure. */
+
+position: absolute;
+width: 345px;
+height: 120px;
+left: 977px;
+top: 2952px;
+
+font-family: 'Poppins';
+font-style: italic;
+font-weight: 400;
+font-size: 20px;
+line-height: 30px;
+text-align: center;
+
+color: #FFFFFF;
+
+
+
+/* Apple Music Lyrics */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 660px;
+top: 2863px;
+
+background: url(.png);
+
+
+/* Apple Music Lyrics */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 1114px;
+top: 2863px;
+
+background: url(.png);
+
+
+/* Apple Music Lyrics */
+
+position: absolute;
+width: 80px;
+height: 80px;
+left: 206px;
+top: 2863px;
+
+background: url(.png);
+
+
+/* Rectangle 19 */
+
+position: absolute;
+width: 1400px;
+height: 109px;
+left: 0px;
+top: 0px;
+
+background: #D9D9D9;
+
+
+/* Coup’Acier */
+
+position: absolute;
+width: 344px;
+height: 93px;
+left: 33px;
+top: 7px;
+
+font-family: 'BioRhyme';
+font-style: normal;
+font-weight: 800;
+font-size: 60px;
+line-height: 93px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Accueil */
+
+position: absolute;
+width: 102px;
+height: 41px;
+left: 620px;
+top: 34px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Produits */
+
+position: absolute;
+width: 114px;
+height: 41px;
+left: 774px;
+top: 36px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Contact */
+
+position: absolute;
+width: 112px;
+height: 41px;
+left: 940px;
+top: 36px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 27px;
+line-height: 40px;
+/* identical to box height */
+
+color: #000000;
+
+
+
+/* Shopping Cart */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1160px;
+top: 30px;
+
+background: url(.png);
+
+
+/* Heart */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1243px;
+top: 30px;
+
+background: url(.png);
+
+
+/* User */
+
+position: absolute;
+width: 50px;
+height: 50px;
+left: 1326px;
+top: 29px;
+
+background: url(.png);

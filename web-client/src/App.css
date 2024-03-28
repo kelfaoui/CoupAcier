@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0
+}
+
+.product-img {
+  height: 250px
+}
+
+.description {
+  height: 50px
+}
+
+.primary-color {
+  color: #fee715
+}
+
+.primary-bg-color {
+  background: #fee715
+}
+
+.text-color {
+  color: #000
+}
+
+.main-h2 {
+  font-size: 3.2rem !important;
+  font-weight: 700;
+  z-index: 2999;
+}
+
+.main-h2 span::after{
+  background: #fee715 !important;
+  height: 20px;
+  display: block;
+  bottom: 0;
+  margin-bottom: -10px;
+  content: "";
+  z-index: 99;
+  width: 101%
+}
+
+.footer-border {
+  border-top: 1px solid #ccc
+}
+
+.line-behind-button {
+  position: relative;
+  border-bottom: 2px solid #666;
+  top: -30px;
+  z-index: 0
+}
+
+.button-to-front {
+  position: relative;
+  z-index: 9999
+}
+
+.shift-top-4 {
+  margin-top: -4px
+}
+
+.hover-btn:hover {
+  background-color: #ccc; /* Gray background color on hover */
+  
+}
