@@ -42,19 +42,23 @@ export default function LoginPage() {
             <section className="mt-5 text-left">
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
                 <div className="group relative p-5 bg-white">
-                <img
-                      src={ImgPart}
-                      alt={"#"}
-                      className="object-center mx-auto rounded-xl w-full"
-                    />
+                  <img
+                    src={ImgPart}
+                    alt={"#"}
+                    className="object-center mx-auto rounded-xl w-96 h-96" // Définir la taille souhaitée ici
+                  />
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                  <a href="/login-part" className="primary-bg-color first-letter: py-2 block text-black font-bold text-center mx-auto w-3/4 border-4 border-black border-l-transparent border-t-transparent btn btn-primary hover-btn">
-                  
+                    <a href="/login-part" className="primary-bg-color first-letter: py-2 block text-black font-bold text-center mx-auto w-3/4 border-4 border-black border-l-transparent border-t-transparent btn btn-primary hover-btn">
                       <i>JE SUIS PARTICULIER</i>
                     </a>
                   </div>
                 </div>
                 <div className="group relative p-5 bg-white">
+                  <img
+                    src={ImgPro}
+                    alt={"#"}
+                    className="object-center mx-auto rounded-xl w-96 h-96"
+                  />
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
                     <a href="/login-pro" className="primary-bg-color first-letter: py-2 block text-black font-bold text-center mx-auto w-3/4 border-4 border-black border-l-transparent border-t-transparent btn btn-primary hover-btn">
                       <i>JE SUIS PROFESSIONNEL</i>

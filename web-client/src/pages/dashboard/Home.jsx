@@ -1,8 +1,9 @@
 
+
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 
-function Clientss() {
+function DashboardHome() {
     const [clients, setClients] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
   
@@ -27,7 +28,6 @@ function Clientss() {
 
   return (
     <div className="rounded w-4/5 p-5 flex">
-      
       <div class="w-3/4 p-5">
       <a class="bg-yellow-400 rounded-xl py-2 px-24 mb-10 text-xl font-bold border-white" href="#"><i>Ristourne</i></a><hr className="-mt-3" ></hr>
       <table cellSpacing={2} cellPadding={5} border={1} className="mt-10 border-collapse table-fixed text-sm bg-white text-left mb-20 w-full ">
@@ -89,7 +89,7 @@ function Clientss() {
       </table>
       </div>
       <div class="w-1/4 p-3">
-      <a class=" float-right bg-yellow-400  py-2 px-10 mb-10 text-xl font-bold border-white mt-20" href="#"><i>Demandes de devis</i></a>
+      <a class=" float-right bg-yellow-400 rounded-xl py-2 px-10 mb-10 text-xl font-bold border-white mt-20" href="#"><i>Demandes de devis</i></a>
       <table cellSpacing={2} cellPadding={5} border={1} className="bg-gray-300 mt-10 border-collapse table-fixed text-smtext-left w-full rounded-3xl">
         <tbody> 
               <tr className="">
@@ -108,7 +108,10 @@ function Clientss() {
                 <td colSpan={2} className=" py-2 px-4 border-b border-gray-300">Youcef BEALILI</td>
         
               </tr>
-              
+              <tr className="">
+                <td colSpan={2} className="border py-2 px-4 border-b border-gray-300">Yves BISSOUMA</td>
+        
+              </tr>
         </tbody>
       </table>
       </div>
@@ -116,5 +119,4 @@ function Clientss() {
   );
 }
 
-export default Clientss;
-
+export default DashboardHome;

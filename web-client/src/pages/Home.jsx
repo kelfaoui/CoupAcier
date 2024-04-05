@@ -54,8 +54,8 @@ export default function Home() {
                     className="object-center mx-auto rounded-xl"
                   />
                 </div>
-                <div className="mt-4 flex">
-                  <a href="#" className="primary-bg-color w-1/2 border-black mx-auto p-2 border-2 rounded-full text-xl font-bold">
+                <div className="mt-4 grid justify-items-center">
+                <a href="#" className="bg-white  w-72 max-w-md border-black p-3.5 border-2  text-xl font-bold text-center hover-btn2">
                     Inox
                   </a>
                 </div>
@@ -68,9 +68,9 @@ export default function Home() {
                     className="object-center mx-auto rounded-xl"
                   />
                 </div>
-                <div className="mt-4 flex">
-                  <a href="#" className="primary-bg-color w-1/2 border-black mx-auto p-2 border-2 rounded-full text-xl font-bold">
-                    Alu
+                <div className="mt-4 grid justify-items-center">
+                <a href="#" className="bg-white w-72 max-w-md border-black p-3.5 border-2 hover-btn2 text-xl font-bold text-center">
+                    Aluminium
                   </a>
                 </div>
               </div>
@@ -82,8 +82,8 @@ export default function Home() {
                     className="object-center mx-auto rounded-xl"
                   />
                 </div>
-                <div className="mt-4 flex">
-                  <a href="#" className="primary-bg-color w-1/2 border-black mx-auto p-2 border-2 rounded-full text-xl font-bold">
+                <div className="mt-4 grid justify-items-center">
+                <a href="#" className="bg-white w-72 max-w-md border-black p-3.5 border-2 hover-btn2  text-xl font-bold text-center">
                     Acier
                   </a>
                 </div>

@@ -63,7 +63,7 @@ export default function Product() {
                       <p class="text-3xl font-bold text-black"><i>DISPONIBILITE :</i><span class=" px-3 text-xl text-green-600">Livraison sous 15 jours ouvrés</span></p>
                     </div>
                     <div classname="flex pt-28">
-                      <a href="#" className="primary-bg-color w-1/2 border-black mx-auto p-6 border-2 rounded-full text-xl font-bold">
+                      <a href="#" className="bg-blue w-1/2 border-black mx-auto p-6 border-2 rounded-full text-xl font-bold">
                         Ajouter au favoris
                       </a>
                       <a href="#" className="ml-5 primary-bg-color w-1/2 border-black mx-auto p-6 border-2 rounded-full text-xl font-bold bg-green-500">

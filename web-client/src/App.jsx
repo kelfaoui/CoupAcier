@@ -18,6 +18,7 @@ import Devis from './pages/Devis'
 import Favoris from './pages/Favoris'
 import Product from './pages/Product'
 import Produits from './pages/Produits'
+import DashboardHome from './pages/dashboard/Home'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         </Route>LogintPart
         <Route path="/dashboard/" element={<DashboardLayout />}>
           <Route path="/dashboard/clients" element={<Clientss />}></Route>
+          <Route path="/dashboard/home" element={<DashboardHome />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
        

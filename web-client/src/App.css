@@ -23,7 +23,9 @@
 .text-color {
   color: #000
 }
-
+.white-color {
+  color: aliceblue;
+}
 .main-h2 {
   font-size: 3.2rem !important;
   font-weight: 700;
@@ -64,4 +66,8 @@
 .hover-btn:hover {
   background-color: #ccc; /* Gray background color on hover */
   
+}
+
+.hover-btn2:hover{
+  background-color: #fee715;
 }

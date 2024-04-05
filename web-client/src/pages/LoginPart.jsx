@@ -5,6 +5,8 @@ import ProductsList from '../components/ProductsList';
 import homeImage1 from '/home-products-image-1.png'
 import homeImage2 from '/home-products-image-2.png'
 import homeImage3 from '/home-products-image-3.png'
+import ImgPro from '/ImgPro.png'
+import ImgPart from '/ImgPart.png'
 import homeImage4 from '/home-presentation-image.png'
 import homeBanner from '/home-banner.png'
 import quote from '/quote.svg'
@@ -62,15 +64,27 @@ export default function LoginPart() {
             <section className="mt-10 text-left">
               <div className="grid grid-cols-1 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
                 <div className="group relative bg-transparent">
+                <img
+                      src={ImgPart}
+                      alt={"#"}
+                      className="object-center mx-auto rounded-xl w-96 h-96"
+                    />
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 items-left flex">
+                 
                     <a className="primary-bg-color first-letter: py-2 block text-black font-bold text-center mx-auto w-3/4 border-4 border-black btn btn-primary hover-btn">
                       <i>JE SUIS PARTICULIER</i>
                     </a>
                   </div>
                 </div>
                 <div className="group relative bg-transparent">
+                <img
+                      src={ImgPro}
+                      alt={"#"}
+                      className="object-center mx-auto rounded-xl w-96 h-96"
+                    />
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 items-left flex">
                   <a href="/login-pro" className="primary-bg-color first-letter: py-2 block text-black font-bold text-center mx-auto w-3/4 border-4 border-black border-l-transparent border-t-transparent btn btn-primary hover-btn">
+                    
                       <i>JE SUIS PROFESSIONNEL</i>
                     </a>
                   </div>
