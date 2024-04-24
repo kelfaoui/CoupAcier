@@ -61,10 +61,10 @@ export default function Header() {
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-between">
-          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
+          <a href="" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <ShoppingCartIcon width="24" />
           </a>
-          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
+          <a href="" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <HeartIcon width="24" />
           </a>
           <a href="/login" className="text-sm font-semibold leading-6 text-gray-900 mx-4">

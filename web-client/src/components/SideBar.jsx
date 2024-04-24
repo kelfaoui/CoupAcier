@@ -26,7 +26,7 @@ function DashboardSideBar() {
                     </div>
                 </div>
                 <ul className="options">
-                <a className="" href="/dashboard/clients">
+                <a className="" href="/dashboard/home">
                     <li className="flex my-10 bg-yellow-400 p-3 rounded-3xl text-black">
                         <BanknotesIcon width={24} className="mr-2 " />
                         <span className="text-black">
@@ -34,7 +34,7 @@ function DashboardSideBar() {
                         </span>
                     </li>
                 </a>
-                <a href="/dashboard/clients">
+                <a href="/dashboard/">
                     <li className="flex my-10 p-3">
                         <NewspaperIcon width={24} className="mr-2" />
                         <span className="text-white">
