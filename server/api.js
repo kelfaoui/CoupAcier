@@ -97,7 +97,7 @@ const isAuthenticated = async (req, res, next) => {
 }
 
 */
-
+/* Si l'utilisateur se connecte avec JSON WEB TOKEN
 const isAuthenticated = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const authToken = authHeader && authHeader.split(" ")[1];
@@ -109,10 +109,12 @@ const isAuthenticated = async (req, res, next) => {
   });
 };
 
+*/
+
 app.use("/users", UsersRouter);
 app.use("/employes", EmployesRouter);
 app.use("/clients", ClientsRouter);
-app.use("/providers", ProvidersRouter);
+app.use("/providers", ProvidersRouter); 
 app.use("/products", ProductsRouter);
 app.use("/warhouses", WarhousesRouter);
 app.use("/orders", OrdersRouter);

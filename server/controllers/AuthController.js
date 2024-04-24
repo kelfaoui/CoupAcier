@@ -10,17 +10,16 @@ const jwt = require("jsonwebtoken");
 /* register to application */
 const Register = async (req, res) => {
   try {
-    console.log("hellooo")
     // Vérifier si un utilisateur avec le même nom d'utilisateur ou la même adresse e-mail existe déjà
     const existingUser = await User.findOne({
       $or: [
-        { username: req.body.username },
+        { siret: req.body.siret },
         { email: req.body.email }
       ]
     });  
 
     if (existingUser) {
-      console.log("user exist")
+      console.log("L'utilisateur existe déjà")
       return res.status(400).json({ message: 'A user with the same username or email address already exists.' });
     }
 

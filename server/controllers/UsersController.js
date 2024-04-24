@@ -1,30 +1,30 @@
 const userModel = require("../models/User");
 
 const getAll = async (req, res) => {
-  userModel.getAll((err, Ingredients) => {
+  userModel.getAll((err, Users) => {
     if (err) {
       return res.status(500).json({"errorMessage": err.message});
     }
-    res.status(200).json({"data": Ingredients});
+    res.status(200).json({"data": Users});
   });
 };
 
 
 const createUser = async (req, res) => {
   const newUser = req.body;
-  userModel.createUser(newUser, (err, terminalId) => {
+  userModel.createUser(newUser, (err, userId) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
 
-    res.status(200).json({"terminalId": terminalId});
+    res.status(200).json({"terminalId": userId});
   });
 };
 
 
 const getUserById = async (req, res) => {
-  const terminalId = Number(req.params.id);
-  userModel.getUserById(terminalId, (err, terminal) => {
+  const userId = Number(req.params.id);
+  userModel.getUserById(userId, (err, terminal) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }

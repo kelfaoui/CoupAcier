@@ -26,32 +26,41 @@ function DashboardSideBar() {
                     </div>
                 </div>
                 <ul className="options">
-                    <a className="" href="/dashboard/clients">
-                        <li className="flex my-10 bg-yellow-400 p-3 rounded-3xl text-black">
-                            <BanknotesIcon width={24} className="mr-2 " />
-                            <span className="text-black">
-                                Service commercial
-                            </span>
-                        </li>
-                    </a>
-                    <a href="/dashboard/clients">
-                        <li className="flex my-10 p-3 ">
-                            <NewspaperIcon width={24} className="mr-2" />
-                            <span className="text-white">
-                                Approvisionnement
-                            </span>
-                        </li>
-                    </a>
-                    <a href="/dashboard/clients">
-                        <li className="flex my-10 p-3 ">
-                            <CreditCardIcon width={24} className="mr-2" />
-                            <span className="text-white">
-                                Commandes
-                            </span>
-                        </li>
-                    </a>
-                </ul>
-                <a className="fixed bottom-5" href="/dashboard/clients">
+                <a className="" href="/dashboard/clients">
+                    <li className="flex my-10 bg-yellow-400 p-3 rounded-3xl text-black">
+                        <BanknotesIcon width={24} className="mr-2 " />
+                        <span className="text-black">
+                            Service commercial
+                        </span>
+                    </li>
+                </a>
+                <a href="/dashboard/clients">
+                    <li className="flex my-10 p-3">
+                        <NewspaperIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Approvisionnement
+                        </span>
+                    </li>
+                </a>
+                <a href="/dashboard/commandes">
+                    <li className="flex my-10 p-3">
+                        <CreditCardIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Commandes
+                        </span>
+                    </li>
+                </a>
+              
+                <a href="/dashboard/clients">
+                    <li className="flex my-10 p-3">
+                        <UsersIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Clients
+                        </span>
+                    </li>
+
+                </a>
+                <a className="fixed bottom-5" href="">
                     <li className="flex my-4">
                         <ArrowLeftEndOnRectangleIcon width={24} className="mr-2" />
                         <span className="text-white">
@@ -59,9 +68,12 @@ function DashboardSideBar() {
                         </span>
                     </li>
                 </a>
-                <hr className="mt-4" />
+            </ul>
+              
             </div>
+           
         </div>
+        
     );
 }
 

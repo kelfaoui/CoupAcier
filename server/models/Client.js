@@ -2,7 +2,7 @@ const db = require("../db");
 
 const createClient = (Client, callback) => {
   const queryString =
-    "INSERT INTO Client(idClient, prenomClient, nomClient, email, motDePasse, numeroVoie, nomVoie, codePostal, ville, telephone, statusCompte, codeGenere, profilClient, siret) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO Client(idClient, prenomClient, nomClient, email, motDePasse, numeroVoie, nomVoie, codePostale, ville, telephone, statutCompte, codeGenere, profilClient, siret) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
   db.query(
     queryString,
@@ -11,29 +11,29 @@ const createClient = (Client, callback) => {
       Client.nomClient,
       Client.email,
       Client.motDePasse,
-      Client.numeroVoie,
+      1,
       Client.nomVoie,
-      Client.codePostal,
-      Client.ville,
+      75000,
+      "",
       Client.telephone,
-      Client.statusCompte,
+      Client.statutCompte,
       Client.codeGenere,
-      Client.profilClient,
-      Client.siret
+      1,
+      Client.siret 
     ],
     (err, result) => {
       if (err) { 
         console.log(err);
         callback(err);
       }
-      const insertId = (result).insertId;
-      callback(null, insertId);
+
+      callback(null, result);
     }
   );
 };
 
 const getClientById = (ClientId, callback) => {
-  const queryString = `SELECT * FROM Client WHERE idClient = ?`;
+  const queryString = `SELECT * FROM client WHERE idClient = ?`;
 
   db.query(queryString, ClientId, (err, result) => {
     if (err) {
@@ -42,14 +42,14 @@ const getClientById = (ClientId, callback) => {
     }
 
     const row = (result)[0];
-    const terminal = {
+    const client = {
       idClient: row.idClient,
       nomClient: row.nomClient,
       prenomClient: row.prenomClient,
       email: row.email,
       motDePasse: row.motDePasse
     };
-    callback(null, terminal);
+    callback(null, client);
   });
 };
 
@@ -84,7 +84,8 @@ const getAll = (callback) => {
         prenomClient: row.prenomClient,
         email: row.email,
         telephone: row.telephone,
-        motDePasse: row.motDePasse
+        motDePasse: row.motDePasse,
+        siret: row.siret
       };
       Clients.push(Client);
     });

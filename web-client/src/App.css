@@ -71,3 +71,10 @@
 .hover-btn2:hover{
   background-color: #fee715;
 }
+
+.error {
+  color: #FF3300;
+  font-size: 0.9rem;
+  font-weight: 400;
+  padding: 10px
+}
