@@ -47,6 +47,8 @@ const cors = require("cors");
 // Créer une application express
 const path = require("path");
 const WarhousesRouter = require("./routers/Warhouse");
+const CategoriesRouter = require("./routers/Category");
+const RolesRouter = require("./routers/Role");
 
 app.use(express.json());
 
@@ -117,6 +119,8 @@ app.use("/clients", ClientsRouter);
 app.use("/providers", ProvidersRouter); 
 app.use("/products", ProductsRouter);
 app.use("/warhouses", WarhousesRouter);
+app.use("/categories", CategoriesRouter);
+app.use("/roles", RolesRouter);
 app.use("/orders", OrdersRouter);
 app.use('/public', express.static('public'));
 

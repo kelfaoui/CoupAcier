@@ -74,9 +74,9 @@ const getAll = (callback) => {
       const Warhouse = {
         idEntrepot : row.idEntrepot,
         villeEntrepot : row.villeEntrepot,
-        codePostalEntrepot : row.codePostalEntrepot,
+        codePostaleEntrepot : row.codePostaleEntrepot,
         voieEntrepot : row.voieEntrepot,
-        numeroRueEntrepot : row.numeroRueEntrepot
+        NumeroRueEntrepot : row.NumeroRueEntrepot
       };
       Warhouses.push(Warhouse);
     });

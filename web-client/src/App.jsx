@@ -20,7 +20,12 @@ import Product from './pages/Product'
 import Produits from './pages/Produits'
 import DashboardHome from './pages/dashboard/Home'
 import Commandes from './pages/dashboard/Commandes'
-
+import DashboardProduits from './pages/dashboard/Produits'
+import DashboardDevis from './pages/dashboard/DashboardDevis';
+import Fournisseurs from './pages/dashboard/Fournisseurs'
+import DashboardCategories from './pages/dashboard/Categories'
+import Entrepots from './pages/dashboard/Entrepots'
+import DashboardRoles from './pages/dashboard/Roles' 
 function App() {
   return (
     <>
@@ -39,9 +44,16 @@ function App() {
           <Route path="/login-pro" element={<LoginPro />}></Route>
         </Route>LogintPart
         <Route path="/dashboard/" element={<DashboardLayout />}>
+           <Route path="/dashboard/" element={<DashboardHome />}></Route>
+          <Route path="/dashboard/produits" element={<DashboardProduits />}></Route>
           <Route path="/dashboard/clients" element={<Clientss />}></Route>
           <Route path="/dashboard/commandes" element={<Commandes />}></Route>
+          <Route path="/dashboard/demandes-devis" element={<DashboardDevis />}></Route>
           <Route path="/dashboard/home" element={<DashboardHome />}></Route>
+          <Route path="/dashboard/fournisseurs" element={<Fournisseurs />}></Route>
+          <Route path="/dashboard/categories" element={<DashboardCategories />}></Route>
+          <Route path="/dashboard/entrepots" element={<Entrepots />}></Route>
+          <Route path="/dashboard/roles" element={<DashboardRoles />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
        
