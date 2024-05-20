@@ -41,76 +41,25 @@ export default function Produits() {
             <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block mx-auto"><span>Choisir la découpe</span></h2>
               <section className="mt-5 text-left">
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-36 my-10 ">
-                <div className="group relative  border-black border-2">
+                {products.map((produit) => (
+                  <div className="group relative  border-black border-2">
                   <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
                     <img
-                      src={prod1}
+                      src={ "http://localhost:5000/public/" + produit.imagePrincipale}
                       alt={"#"}
-                      className="object-center mx-auto w-full"
+                      className="object-center mx-auto w-full product-image"
                     />
                   </div>
                   <div className="flex bg-yellow-300 p-4 border-2 border-black mt-4">
-                    <p class="text-xl font-bold text-center mx-auto">Fers plats</p>
+                    <p class="text-xl font-bold text-center mx-auto">{ produit.nomProduit }</p>
                   </div>
                   <div className="flex bg-gray-200 p-4">
-                    <a href="#" className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
+                    <a href={"/produit/" +  produit.idProduit } className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
                       Choisir et passer à la découpe 
                     </a>
                   </div>
                 </div>
-                <div className="group relative  border-black border-2">
-                  <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
-                    <img
-                      src={prod2}
-                      alt={"#"}
-                      className="object-center mx-auto w-full"
-                    />
-                  </div>
-                  <div className="flex bg-yellow-300 p-4 border-2 border-black mt-4">
-                    <p class="text-xl font-bold text-center mx-auto">CORNIERES A AILE EGALES</p>
-                  </div>
-                  <div className="flex bg-gray-200 p-4">
-                    <a href="#" className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
-                      Choisir et passer à la découpe 
-                    </a>
-                  </div>
-                </div>
-                <div className="group relative  border-black border-2">
-                  <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
-                    <img
-                      src={prod3}
-                      alt={"#"}
-                      className="object-center mx-auto w-full"
-                    />
-                  </div>
-                  
-                  <div className="flex bg-yellow-300 p-4 border-2 border-black mt-4">
-                    <p class="text-xl font-bold text-center mx-auto">CORNIERES A AILE INEGALES</p>
-                  </div>
-                  <div className="flex bg-gray-200 p-4">
-                    <a href="#" className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
-                      Choisir et passer à la découpe 
-                    </a>
-                  </div>
-                </div>
-                <div className="group relative  border-black border-2">
-                  <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
-                    <img
-                      src={prod4}
-                      alt={"#"}
-                      className="object-center mx-auto w-full"
-                    />
-                  </div>
-                  <div className="flex bg-yellow-300 p-4 border-2 border-black mt-4">
-                    <p class="text-xl font-bold text-center mx-auto">FERS EN T</p>
-                  </div>
-                  <div className="flex bg-gray-200 p-4">
-                    <a href="#" className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
-                      Choisir et passer à la découpe 
-                    </a>
-                  </div>
-                </div>
-                
+                ))} 
               </div>
               </section>
             </div>

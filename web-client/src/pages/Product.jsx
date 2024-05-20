@@ -1,5 +1,6 @@
 import { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from "react-router-dom"
 import { ShoppingCartIcon, InformationCircleIcon, StarIcon, QuestionMarkCircleIcon, PhoneIcon, BoltIcon, TableCellsIcon, WalletIcon, CreditCardIcon, TruckIcon } from '@heroicons/react/24/outline';
 import ProductsList from '../components/ProductsList';
 import homeImage1 from '/fer-plat.png'
@@ -11,13 +12,14 @@ import quote from '/quote.svg'
 import { LockClosedIcon } from '@heroicons/react/20/solid';
 
 export default function Product() {
-  const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false)
+  const { id } = useParams()
 
-  const getProducts = () => {
-    axios.get('http://127.0.0.1:5000/products')
+  const getProduct = () => {
+    axios.get('http://127.0.0.1:5000/products/' + id)
       .then(function (res) {
-        setProducts(res.data.data);
+        setProduct(res.data.data);
         console.log(res.data.data);
       })
       .catch(function (error) {
@@ -28,8 +30,10 @@ export default function Product() {
       });
   }
   useEffect(() => {
-    getProducts()
+    getProduct()
   })
+
+  if(!isLoaded) return ("Loading..")
 
   return (
     <>
@@ -41,17 +45,17 @@ export default function Product() {
                 <div className="group relative p-5 bg-gray-300">
                   <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
                     <img
-                      src={homeImage1}
+                      src={ "http://localhost:5000/public/" + product.imagePrincipale}
                       alt={"#"}
                       className="object-center mx-auto rounded-xl w-full"
                     />
                   </div>
                 </div>
-                <div className="group relative p-5 bg-white border-2 border-black">
+                <div className="group relative p-10 bg-white border-2 border-black">
                   <div className=" election:aspect-h-1 aspect-w-1 w-full rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-100 items-center ">
-                    <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block w-full"><span><i>Fers plats acier</i></span></h2>
+                    <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block w-full"><span><i>{product.nomProduit}</i></span></h2>
                     <div className="mt-4 flex">
-                      <p class="text-3xl font-bold text-black"><i>PRIX TTC :</i> 99.50 €</p>
+                      <p class="text-3xl font-bold text-black"><i>PRIX TTC :</i> {product.prixMetre} €</p>
                     </div>
                     <div className="mt-4 flex">
                       <p class="text-3xl font-bold text-black"><i>QUANTITE :</i></p><div class="ml-10 border-2 border-black px-3 text-2xl"> - </div><input class="border-2 border-black w-10 px-3" value="1"></input><div class="border-2 border-black px-3 text-2xl"> + </div>

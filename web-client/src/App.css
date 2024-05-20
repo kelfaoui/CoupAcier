@@ -78,3 +78,8 @@
   font-weight: 400;
   padding: 10px
 }
+
+.product-image {
+  height: 450px;
+  object-fit: contain;
+}

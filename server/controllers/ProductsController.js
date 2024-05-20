@@ -21,11 +21,11 @@ const createProduct = async (req, res) => {
 
 const getProductById = async (req, res) => {
   const idProduct = Number(req.params.id);
-  productModel.getProductById(idProduct, (err, terminal) => {
+  productModel.getProductById(idProduct, (err, product) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idProduct});
+    res.status(200).json({"data": product});
   })
 };
 
