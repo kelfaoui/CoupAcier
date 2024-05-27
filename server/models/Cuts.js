@@ -1,14 +1,15 @@
 const db = require("../db");
 
 const createCut = (Cut, callback) => {
-  const queryString = `INSERT INTO decoupagecommande(idDecoupage, dimensionCoupe, quanitite, idProduit, idCommande) 
-    VALUES(NULL, ?, ?, ?, ?)`;
+  const queryString = `INSERT INTO decoupagecommande(idDecoupage, dimensionCoupe, quanitite, ristourne, idProduit, idCommande) 
+    VALUES(NULL, ?, ?, ?, ?, ?)`;
   
   db.query(
     queryString,
     [
       Cut.dimensionCoupe,
       Cut.quanitite,
+      Cut.ristourne,
       Cut.idProduit,
       Cut.idCommande
     ],
@@ -37,6 +38,7 @@ const getCutById = (CutId, callback) => {
         idDecoupage : row.idDecoupage,
         dimensionCoupe : row.dimensionCoupe,
         quantite : row.quanitite,
+        ristourne : row.ristourne,
         idProduit : row.idProduit,
         idCommande : row.idCommande
     };
