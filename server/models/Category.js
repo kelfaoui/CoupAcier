@@ -2,13 +2,13 @@ const db = require("../db");
 
 const createCategory = (Category, callback) => {
   const queryString =
-    `INSERT INTO categorie(idRole, nomRole) 
+    `INSERT INTO categorie(idCategorie, nomCategorie) 
     VALUES (NULL, ?)`;
   
   db.query(
     queryString,
     [
-      Category.nomRole,
+      Category.nomCategorie,
     ],
     (err, result) => {
       if (err) { 
@@ -21,10 +21,10 @@ const createCategory = (Category, callback) => {
   );
 };
 
-const getCategoryById = (idRole, callback) => {
-  const queryString = `SELECT * FROM categorie WHERE idRole = ?`;
+const getCategoryById = (idCategorie, callback) => {
+  const queryString = `SELECT * FROM categorie WHERE idCategorie = ?`;
 
-  db.query(queryString, idRole, (err, result) => {
+  db.query(queryString, idCategorie, (err, result) => {
     if (err) {
       console.log(err);
       callback(err);
@@ -32,17 +32,17 @@ const getCategoryById = (idRole, callback) => {
 
     const row = (result)[0];
     const Category = {
-      idRole : row.idRole,
-      nomRole : row.nomRole
+      idCategorie : row.idCategorie,
+      nomCategorie : row.nomCategorie
     };
     callback(null, Category);
   });
 };
 
 const CategoryInDatabase = (Category, callback) => {
-  const queryString = `SELECT * FROM categorie WHERE idRole = ?`;
+  const queryString = `SELECT * FROM categorie WHERE idCategorie = ?`;
   let isCategory = false;
-  db.query(queryString, [Category.idRole], (err, result) => {
+  db.query(queryString, [Category.idCategorie], (err, result) => {
     if (err) {
       console.log(err);
       callback(err);
@@ -66,8 +66,8 @@ const getAll = (callback) => {
 
     rows.forEach((row) => {
       const Category = {
-        idRole : row.idRole,
-        nomRole : row.nomRole
+        idCategorie : row.idCategorie,
+        nomCategorie : row.nomCategorie
       };
       Categories.push(Category);
     });
@@ -77,25 +77,25 @@ const getAll = (callback) => {
 
 
 const updateCategory = (Category, callback) => {
-  const queryString = `UPDATE categorie SET nomRole = ? WHERE idRole = ?`;
+  const queryString = `UPDATE categorie SET nomCategorie = ? WHERE idCategorie = ?`;
 
   db.query(
     queryString,
     [
-      Category.nomRole
+      Category.nomCategorie
     ],
     (err, result) => {
       if (err) {
         callback(err);
       }
       console.log(result)
-      callback(null, Category.idCategory);
+      callback(null, Category.idCategorie);
     }
   );
 };
 
 const deleteCategory = (CategoryId, callback) => {
-  const queryString = `DELETE FROM categorie WHERE idRole = ?`;
+  const queryString = `DELETE FROM categorie WHERE idCategorie = ?`;
   db.query(queryString, [CategoryId], (err, result) => {
     if (err) {
       callback(err);
@@ -104,4 +104,4 @@ const deleteCategory = (CategoryId, callback) => {
   });
 };
 
-module.exports = { createCategory, getCategoryById, CategoryInDatabase, getAll, updateCategory, deleteCategory }
+module.exports = { createCategory, getCategoryById, getAll, updateCategory, deleteCategory }

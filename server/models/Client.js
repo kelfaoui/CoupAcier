@@ -1,25 +1,45 @@
 const db = require("../db");
 
+/**
+ CREATE TABLE `client` (
+	`idClient` INT(10) NOT NULL AUTO_INCREMENT,
+	`prenomClient` VARCHAR(50) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`nomClient` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
+	`motDePasse` VARCHAR(200) NOT NULL COLLATE 'latin1_swedish_ci',
+	`codeGenere` VARCHAR(100) NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
+	`siret` VARCHAR(14) NOT NULL COLLATE 'latin1_swedish_ci',
+	`telephone` VARCHAR(13) NOT NULL COLLATE 'latin1_swedish_ci',
+	`statutCompte` TINYINT(1) NOT NULL,
+	`profilClient` ENUM('Particulier','Professionnel') NOT NULL COLLATE 'latin1_swedish_ci',
+	`dateCreation` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`email` VARCHAR(200) NOT NULL COLLATE 'latin1_swedish_ci',
+	PRIMARY KEY (`idClient`) USING BTREE,
+	UNIQUE INDEX `client_AK` (`email`) USING BTREE
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+;
+
+ */
+
 const createClient = (Client, callback) => {
   const queryString =
-    "INSERT INTO Client(idClient, prenomClient, nomClient, email, motDePasse, numeroVoie, nomVoie, codePostale, ville, telephone, statutCompte, codeGenere, profilClient, siret) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    `INSERT INTO Client(idClient, prenomClient, nomClient, motDePasse, codeGenere, siret, telephone, statutCompte, profilClient, dateCreation, email) 
+    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
   db.query(
     queryString,
     [
       Client.prenomClient,
       Client.nomClient,
-      Client.email,
       Client.motDePasse,
-      1,
-      Client.nomVoie,
-      75000,
-      "",
-      Client.telephone,
-      Client.statutCompte,
       Client.codeGenere,
-      1,
-      Client.siret 
+      Client.siret,
+      Client.telephone,
+      Client.statutCompte, 
+      Client.profilClient,
+      Client.dateCreation,
+      Client.email
     ],
     (err, result) => {
       if (err) { 
@@ -43,11 +63,17 @@ const getClientById = (ClientId, callback) => {
 
     const row = (result)[0];
     const client = {
-      idClient: row.idClient,
-      nomClient: row.nomClient,
-      prenomClient: row.prenomClient,
-      email: row.email,
-      motDePasse: row.motDePasse
+      idClient : row.idClient,
+      prenomClient : row.prenomClient,
+      nomClient : row.nomClient,
+      motDePasse : row.motDePasse,
+      codeGenere : row.codeGenere,
+      siret : row.siret,
+      telephone : row.telephone,
+      statutCompte : row.statutCompte, 
+      profilClient : row.profilClient,
+      dateCreation : row.dateCreation,
+      email : row.email
     };
     callback(null, client);
   });
@@ -79,13 +105,17 @@ const getAll = (callback) => {
 
     rows.forEach((row) => {
       const Client = {
-        idClient: row.idClient,
-        nomClient: row.nomClient,
-        prenomClient: row.prenomClient,
-        email: row.email,
-        telephone: row.telephone,
-        motDePasse: row.motDePasse,
-        siret: row.siret
+        idClient : row.idClient,
+        prenomClient : row.prenomClient,
+        nomClient : row.nomClient,
+        motDePasse : row.motDePasse,
+        codeGenere : row.codeGenere,
+        siret : row.siret,
+        telephone : row.telephone,
+        statutCompte : row.statutCompte, 
+        profilClient : row.profilClient,
+        dateCreation : row.dateCreation,
+        email : row.email
       };
       Clients.push(Client);
     });
@@ -94,26 +124,24 @@ const getAll = (callback) => {
 };
 
 const updateClient = (Client, callback) => {
-  const queryString = `UPDATE Client SET nomClient=?, prenomClient=?, email=?, motDePasse=?, numeroVoie=?, 
-  nomVoie=?, codePostal=?, ville=?, telephone=?, statusCompte=?, codeGenere=?, profilClient=?, siret=? WHERE idClient=?`;
+  const queryString = `UPDATE Client SET prenomClient=?, nomClient=?, 
+  motDePasse=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, 
+  profilClient=?, dateCreation=?, email=? WHERE idClient=?`;
 
   db.query(
     queryString,
     [
-        Client.nomClient,
-        Client.prenomClient,
-        Client.email,
-        Client.motDePasse,
-        Client.numeroVoie,
-        Client.nomVoie,
-        Client.codePostal,
-        Client.ville,
-        Client.telephone,
-        Client.statusCompte,
-        Client.codeGenere,
-        Client.profilClient,
-        Client.siret,
-        Client.idClient
+      Client.prenomClient,
+      Client.nomClient,
+      Client.motDePasse,
+      Client.codeGenere,
+      Client.siret,
+      Client.telephone,
+      Client.statutCompte, 
+      Client.profilClient,
+      Client.dateCreation,
+      Client.email,
+      Client.idClient
     ],
     (err, result) => {
       if (err) {
