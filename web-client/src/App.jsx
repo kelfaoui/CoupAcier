@@ -21,11 +21,13 @@ import Produits from './pages/Produits'
 import DashboardHome from './pages/dashboard/Home'
 import Commandes from './pages/dashboard/Commandes'
 import DashboardProduits from './pages/dashboard/Produits'
-import DashboardDevis from './pages/dashboard/DashboardDevis';
+import DashboardDevis from './pages/dashboard/DashboardDevis'
 import Fournisseurs from './pages/dashboard/Fournisseurs'
 import DashboardCategories from './pages/dashboard/Categories'
 import Entrepots from './pages/dashboard/Entrepots'
 import DashboardRoles from './pages/dashboard/Roles' 
+import Products from './components/Products'
+
 function App() {
   return (
     <>
@@ -42,7 +44,8 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/login-part" element={<LoginPart />}></Route>
           <Route path="/login-pro" element={<LoginPro />}></Route>
-        </Route>LogintPart
+          <Route path="/prods" element={<Products />}></Route>
+        </Route>
         <Route path="/dashboard/" element={<DashboardLayout />}>
            <Route path="/dashboard/" element={<DashboardHome />}></Route>
           <Route path="/dashboard/produits" element={<DashboardProduits />}></Route>

@@ -83,3 +83,7 @@
   height: 450px;
   object-fit: contain;
 }
+
+.z-index-top {
+  z-index: 99999
+}
