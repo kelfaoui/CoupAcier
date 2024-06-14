@@ -43,7 +43,7 @@ export default function Produits() {
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-36 my-10 ">
                 {products.map((produit) => (
                   <div className="group relative  border-black border-2">
-                  <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
+                  <div className=" election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
                     <img
                       src={ "http://localhost:5000/public/" + produit.imagePrincipale}
                       alt={"#"}
@@ -54,8 +54,8 @@ export default function Produits() {
                     <p class="text-xl font-bold text-center mx-auto">{ produit.nomProduit }</p>
                   </div>
                   <div className="flex bg-gray-200 p-4">
-                    <a href={"/produit/" +  produit.idProduit } className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white">
-                      Choisir et passer à la découpe 
+                    <a href={"/produit/" +  produit.idProduit } className="text-center primary-bg-color w-full mx-auto p-2 rounded-full text-xl font-bold bg-black text-white w-100">
+                      Choisir et passer à la découpe
                     </a>
                   </div>
                 </div>

@@ -7,7 +7,6 @@ import 'react-toastify/dist/ReactToastify.css'
 export default function Cart ({showModal, toggle}) {
 
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
-
   const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
     position: 'top-center',
     autoClose: 2000,
@@ -41,6 +40,50 @@ export default function Cart ({showModal, toggle}) {
     notifyRemovedFromCart(product)
   }
 
+  const finalizeOrder = () => {
+    const nbrElement = document.getElementById("number")
+    const order = {
+      client_id: 1,
+      order_date: null,
+      order_total: myTotal,
+      state: 1,
+    }
+    if (cartItems.length === 0) {
+      alert("Panier vide")
+      return;
+    }
+
+    axios.post(`http://localhost:5000/orders/`, order)
+      .then(res => {
+        console.log(res);
+        console.log(res.data.OrderId);
+        console.log(cartItems);
+        cartItems.map(item => {
+          const prod = data.data.find((p) => p.idProduit === item.id)
+          if (prod) {
+            const ProductOrder = {
+              order_id: res.data.OrderId,
+              product_id: prod.product_id,
+              nbr: item.quantity,
+              applied_price: prod.price,
+              ingerdients: item.ingredients || '',
+              product_name: prod.name
+            }
+            axios.
+              post(
+                "http://localhost:5000/productOrders/", ProductOrder
+              ).then((res) => {
+                setData(res.data)
+                console.log(res.data)
+              })
+              .catch((err) => console.log(err))
+              .finally(() => setLoading(false))
+          }
+        })
+        window.location.href = "/checkin"
+      })
+    clearCart()
+  }
 
 
 
@@ -109,9 +152,10 @@ export default function Cart ({showModal, toggle}) {
           </button>
         </div>
           ) : (
-            <h1 className="text-lg font-bold">Your cart is empty</h1>
+            <h1 className="text-lg font-bold">Le panier est vide</h1>
           )
         }
+      <a href="#" onClick={() => finalizeOrder()} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Envoyer le commande</a>
       </div>
     )
   )

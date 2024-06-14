@@ -57,7 +57,7 @@ export default function Products() {
     };
 
   return (
-    <div className='flex flex-col justify-center bg-gray-100 pb-10 mb-0'>
+    <div className='flex flex-col justify-center bg-white pb-10 mb-0'>
       <ToastContainer />
       <div className='flex justify-between items-center px-20 py-5'>
       <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block mx-auto"><span>Choisir la découpe</span></h2>
@@ -68,7 +68,7 @@ export default function Products() {
       <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10'>
         {
           products.map(product => (
-            <div key={product.id} className='bg-white shadow-md rounded-lg px-10 py-10'>
+            <div key={product.id} className='bg-white shadow-md rounded-lg px-5 py-5'>
               <img src={"http://localhost:5000/public/" + product.imagePrincipale} alt={product.nomProduit} className='rounded-md h-48' />
               <div className='mt-4'>
                 <h1 className='text-lg uppercase font-bold'>{product.nomProduit}</h1>
@@ -78,7 +78,7 @@ export default function Products() {
               <div className='mt-6 flex justify-between items-center'>
                 {
                   !cartItems.find(item => item.id === product.idProduit) ? (
-                    <button className='px-4 py-2 bg-yellow-300 text-black rounded-full text-xs font-bold uppercase hover:bg-gray-700 focus:outline-none focus:bg-gray-700'
+                    <button className='w-full px-2 py-2 bg-yellow-300 text-black rounded-full text-xs font-bold uppercase hover:bg-gray-700 focus:outline-none focus:bg-gray-700'
                       onClick={() => {
                         addToCart(product)
                         notifyAddedToCart(product)

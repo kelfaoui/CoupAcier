@@ -51,7 +51,7 @@ export default function Product() {
                     />
                   </div>
                 </div>
-                <div className="group relative p-10 bg-white border-2 border-black">
+                <div className="group relative p-5 bg-white border-2 border-black">
                   <div className=" election:aspect-h-1 aspect-w-1 w-full rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-100 items-center ">
                     <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block w-full"><span><i>{product.nomProduit}</i></span></h2>
                     <div className="mt-4 flex">

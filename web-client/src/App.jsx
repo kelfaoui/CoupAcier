@@ -35,7 +35,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/produits" element={<Produits />}></Route>
+          <Route path="/produits" element={<Products />}></Route>
           <Route path="/register-part" element={<RegisterPart />}></Route>
           <Route path="/register-pro" element={<RegisterPro />}></Route>
           <Route path="/demande-de-devis" element={<Devis />}></Route>
@@ -44,7 +44,6 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/login-part" element={<LoginPart />}></Route>
           <Route path="/login-pro" element={<LoginPro />}></Route>
-          <Route path="/prods" element={<Products />}></Route>
         </Route>
         <Route path="/dashboard/" element={<DashboardLayout />}>
            <Route path="/dashboard/" element={<DashboardHome />}></Route>
