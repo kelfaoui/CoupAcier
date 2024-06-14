@@ -234,7 +234,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   CONSTRAINT `produit_categorie_FK` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.produit : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.produit : ~14 rows (environ)
 INSERT INTO `produit` (`idProduit`, `nomProduit`, `prixMetre`, `description`, `imagePrincipale`, `image1`, `image2`, `hauteur`, `epaisseur`, `marge`, `masseLineaire`, `tva`, `referenceProduit`, `idCategorie`) VALUES
 	(2, 'FER PLAT', 5, 'Fers plats pour ferronieries et forge', 'fer_plat_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'FERPLT', 0),
 	(3, 'CORNIERES A AILES EGALES', 7, 'Cornieres à ailes égales, utile pour la fabrication de portes', 'cornieres_egales_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'CRNAE', 0),
