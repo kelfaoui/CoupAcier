@@ -16,25 +16,22 @@ const db = require("../db");
 */
 
 const createOrder = (Order, callback) => {
-  const queryString = `INSERT INTO commande(idCommande, dateCommande, statusCommande, devis, type, dateLivraison, referenceLivraison, 
-    , ModeReception, reference, idClient, idLivreur, idAdresse) 
-    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  const queryString = `INSERT INTO commande(idCommande, statusCommande, devis, type, dateLivraison, referenceLivraison, ModeReception, reference, idClient, idLivreur, idAdresse) 
+    VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
   db.query(
     queryString,
     [
-      Order.dateCommande,
       Order.statusCommande,
       Order.devis,
       Order.type,
       Order.dateLivraison,
-      Order.referenceLivraison,
-      Order.reference,
+      Order.referenceLivraison, 
+      Order.ModeReception, 
       Order.reference,
       Order.idClient,
       Order.idLivreur,
-      Order.idClient,
-      Order.idLivreur
-    ],
+      Order.idAdresse
+    ], 
     (err, result) => {
       if (err) { 
         console.log(err);

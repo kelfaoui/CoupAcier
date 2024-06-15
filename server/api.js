@@ -49,6 +49,7 @@ const path = require("path");
 const WarhousesRouter = require("./routers/Warhouse");
 const CategoriesRouter = require("./routers/Category");
 const RolesRouter = require("./routers/Role");
+const ProductOrdersRouter = require("./routers/ProductOrders");
 
 app.use(express.json());
 
@@ -119,9 +120,10 @@ app.use("/clients", ClientsRouter);
 app.use("/providers", ProvidersRouter); 
 app.use("/products", ProductsRouter);
 app.use("/warhouses", WarhousesRouter);
-app.use("/categories", CategoriesRouter);
-app.use("/roles", RolesRouter);
+app.use("/categories", CategoriesRouter); 
+app.use("/roles", RolesRouter); 
 app.use("/orders", OrdersRouter);
+app.use("/product-orders", ProductOrdersRouter);
 app.use('/public', express.static('public'));
 
 /* A récupérer dans le fichier .env de la racine du dossier "server" */

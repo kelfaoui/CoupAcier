@@ -15,8 +15,7 @@ const createOrder = async (req, res) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-
-    res.status(200).json({"idOrder": idOrder});
+    res.status(200).json({"idCommande": idOrder});
   });
 };
 

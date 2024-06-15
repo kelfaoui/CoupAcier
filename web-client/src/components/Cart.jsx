@@ -2,9 +2,16 @@ import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { CartContext } from "../context/cart"
 import { ToastContainer, toast } from 'react-toastify'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 import 'react-toastify/dist/ReactToastify.css'
 
+var orderId = 0
+
 export default function Cart ({showModal, toggle}) {
+
+  const [loading, setLoading] =  useState(false)
+  const [data, setData] = useState([])
 
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
   const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
@@ -42,11 +49,22 @@ export default function Cart ({showModal, toggle}) {
 
   const finalizeOrder = () => {
     const nbrElement = document.getElementById("number")
+    /*
+    INSERT INTO commande(idCommande, statusCommande, devis, type, dateLivraison, referenceLivraison, ModeReception, reference, idClient, idLivreur, idAdresse) VALUES
+
+ (NULL, 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', 'REF', 1, NULL, NULL)
+    */
     const order = {
-      client_id: 1,
-      order_date: null,
-      order_total: myTotal,
-      state: 1,
+      statusCommande: 1,
+      devis: 0,
+      type: 1,
+      dateLivraison: null,
+      referenceLivraison: "123456789",
+      ModeReception: 1,
+      reference: String(Date.now()).substring(0, 10),
+      idClient: 1,
+      idLivreur: null,
+      idAdresse: null
     }
     if (cartItems.length === 0) {
       alert("Panier vide")
@@ -56,22 +74,21 @@ export default function Cart ({showModal, toggle}) {
     axios.post(`http://localhost:5000/orders/`, order)
       .then(res => {
         console.log(res);
-        console.log(res.data.OrderId);
-        console.log(cartItems);
-        cartItems.map(item => {
-          const prod = data.data.find((p) => p.idProduit === item.id)
+        orderId = res.data.idCommande
+        cartItems.map((item) => {
+          const prod = data.data.find((p) => p.idProduit === item.idProduit)
           if (prod) {
             const ProductOrder = {
-              order_id: res.data.OrderId,
-              product_id: prod.product_id,
-              nbr: item.quantity,
-              applied_price: prod.price,
-              ingerdients: item.ingredients || '',
-              product_name: prod.name
+              dimensionCoupe: 0,
+              quantite: item.quantity,
+              ristourne: 0,
+              prixMetre: item.prixMetre,
+              idProduit: item.idProduit,
+              idCommande: orderId
             }
             axios.
               post(
-                "http://localhost:5000/productOrders/", ProductOrder
+                "http://localhost:5000/product-orders/", ProductOrder
               ).then((res) => {
                 setData(res.data)
                 console.log(res.data)
@@ -80,12 +97,25 @@ export default function Cart ({showModal, toggle}) {
               .finally(() => setLoading(false))
           }
         })
-        window.location.href = "/checkin"
+       window.location.href = "/produits"
       })
     clearCart()
   }
 
-
+  const getProducts = () => {
+    axios.
+      get(
+        "http://localhost:5000/products/"
+      ).then((res) => {
+        setData(res.data)
+        console.log(res.data)
+      })
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false))
+  }
+  useEffect(() => {
+    getProducts()
+  }, [])
 
   return (
     showModal && (
