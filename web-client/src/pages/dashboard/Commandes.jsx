@@ -3,13 +3,13 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 function Commandes() {
-  const [clients, setClients] = useState();
+  const [dommandes, setCommandes] = useState();
   const [isLoaded, setIsLoaded] = useState(false)
 
-  const getClients = () => {
-    axios.get('http://127.0.0.1:5000/clients')
+  const getCommandes = () => {
+    axios.get('http://127.0.0.1:5000/orders')
       .then(function (res) {
-        setClients(res.data.data);
+        setCommandes(res.data.data);
         console.log(res.data.data);
       })
       .catch(function (error) {
@@ -20,7 +20,7 @@ function Commandes() {
       });
   }
   useEffect(() => {
-    getClients()
+    getCommandes()
   })
 
   if (!isLoaded) return ("Loading")
@@ -33,15 +33,16 @@ function Commandes() {
           <thead className="border">
             <th className="p-3 border" >Date</th>
             <th className="p-3 border" >Client</th>
-            <th className="p-3 border" >SIRET</th>
+            <th className="p-3 border" >Status</th>
             <th className="p-3 border" >Total</th>
             <th className="p-3 border" ></th>
           </thead>
           <tbody>
+          {dommandes.map((commande) => (
             <tr className="border">
-              <td className="border py-2 px-4 border-b border-gray-200">2024-10-05</td>
-              <td className="border py-2 px-4 border-b border-gray-200">Chabane Khelfaoui</td>
-              <td className="border py-2 px-4 border-b border-gray-200">1234556667789978</td>
+              <td className="border py-2 px-4 border-b border-gray-200">{commande.dateCommande.substr(0, 10)}</td>
+              <td className="border py-2 px-4 border-b border-gray-200">{commande.prenomClient + " " + commande.nomClient}</td>
+              <td className="border py-2 px-4 border-b border-gray-200">{commande.statusCommande}</td>
               <td className="border py-2 px-4 border-b border-gray-200">20000 €</td>
               <td className="border py-2 px-4 border-b border-gray-200 text-end">
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
@@ -53,23 +54,7 @@ function Commandes() {
                   <MagnifyingGlassIcon width={18}></MagnifyingGlassIcon> </a>
               </td>
             </tr>
-            <tr className="border">
-              <td className="border py-2 px-4 border-b border-gray-200">2024-10-05</td>
-              <td className="border py-2 px-4 border-b border-gray-200">Paris Saint Germain</td>
-              <td className="border py-2 px-4 border-b border-gray-200">1234556667787777</td>
-              <td className="border py-2 px-4 border-b border-gray-200">20000 €</td>
-              <td className="border py-2 px-4 border-b border-gray-200 text-end">
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
-                  <TrashIcon width={18}></TrashIcon>
-                </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
-                  <PencilSquareIcon width={18} />
-                </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
-                  <MagnifyingGlassIcon width={18}></MagnifyingGlassIcon>
-                </a>
-              </td>
-            </tr>
+          ))}
           </tbody>
         </table>
       </div>
@@ -78,4 +63,3 @@ function Commandes() {
 }
 
 export default Commandes;
-

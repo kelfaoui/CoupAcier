@@ -85,7 +85,7 @@ const orderInDatabase = (Order, callback) => {
 };
 
 const getAll = (callback) => {
-  const queryString = `SELECT * FROM commande`;
+  const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient`;
 
   db.query(queryString, (err, result) => {
     if (err) {
@@ -102,13 +102,8 @@ const getAll = (callback) => {
         statusCommande : row.statusCommande,
         devis : row.devis,
         type : row.type,
-        dateLivraison : row.dateLivraison,
-        referenceLivraison : row.referenceLivraison,
-        reference : row.reference,
-        idClient : row.idClient,
-        idLivreur : row.idLivreur,
-        idClient : row.idClient,
-        idLivreur : row.idLivreur
+        nomClient : row.nomClient,
+        prenomClient : row.prenomClient
       };
       Orders.push(Order);
     });
