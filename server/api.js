@@ -20,6 +20,7 @@ const jwt = require("jsonwebtoken");
 
 // Importer les routes
 const GuestsRouter = require("./routers/Guests");
+const userModel = require("./models/User");
 const UsersRouter = require("./routers/Users");
 const EmployesRouter = require("./routers/Employes");
 const ProductsRouter = require("./routers/Products");
@@ -100,7 +101,7 @@ const isAuthenticated = async (req, res, next) => {
 }
 
 */
-/* Si l'utilisateur se connecte avec JSON WEB TOKEN
+// Si l'utilisateur se connecte avec JSON WEB TOKEN
 const isAuthenticated = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const authToken = authHeader && authHeader.split(" ")[1];
@@ -112,18 +113,36 @@ const isAuthenticated = async (req, res, next) => {
   });
 };
 
-*/
+// L'authentification utilise
+app.post("/login", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+  console.log(email);
+  const User = {
+    email: email,
+    password: password,
+  };
+  userModel.userInDatabase(User, (result) => {
+    if (result) {
+      const accessToken = jwt.sign(User, process.env.AUTH_TOKEN); // Retourner le token de connexion
+      res.json({ accessToken: accessToken });
+      res.status(200).send();
+    } else  {
+      res.sendStatus(403); // Ne pas authoriser la connection
+    }
+  });
+});
 
 app.use("/users", UsersRouter);
-app.use("/employes", EmployesRouter);
-app.use("/clients", ClientsRouter);
-app.use("/providers", ProvidersRouter); 
+app.use("/employes", isAuthenticated, EmployesRouter);
+app.use("/clients", isAuthenticated, ClientsRouter);
+app.use("/providers", isAuthenticated, ProvidersRouter); 
 app.use("/products", ProductsRouter);
-app.use("/warhouses", WarhousesRouter);
-app.use("/categories", CategoriesRouter); 
-app.use("/roles", RolesRouter); 
-app.use("/orders", OrdersRouter);
-app.use("/product-orders", ProductOrdersRouter);
+app.use("/warhouses", isAuthenticated, WarhousesRouter);
+app.use("/categories", isAuthenticated, CategoriesRouter); 
+app.use("/roles", isAuthenticated, RolesRouter); 
+app.use("/orders", isAuthenticated, OrdersRouter);
+app.use("/product-orders", isAuthenticated, ProductOrdersRouter);
 app.use('/public', express.static('public'));
 
 /* A récupérer dans le fichier .env de la racine du dossier "server" */

@@ -48,8 +48,7 @@ const getUserById = (userId, callback) => {
 };
 
 const userInDatabase = (user, callback) => {
-  const queryString = `SELECT * FROM user WHERE email = ? AND password = ?`;
-  let isUser = false;
+  const queryString = `SELECT * FROM client WHERE email = ? AND motDePasse = ?`;
   db.query(queryString, [user.email, user.password], (err, result) => {
     if (err) {
       console.log(err);
