@@ -7,7 +7,11 @@ function DashboardRoles() {
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getRoles = () => {
-      axios.get('http://127.0.0.1:5000/roles')
+      axios.get('http://127.0.0.1:5000/roles', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
         .then(function (res) {
           setRoles(res.data.data);
           console.log(res.data.data);

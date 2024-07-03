@@ -119,7 +119,14 @@ function DashboardSideBar() {
                         </span>
                     </li>
                 </a>
-              
+                <a href="/dashboard/entrepots">
+                    <li className="flex my-2 p-1">
+                        <HomeIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Entrepots
+                        </span>
+                    </li>
+                </a>
             </ul>
               
             </div>

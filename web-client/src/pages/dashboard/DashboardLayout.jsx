@@ -5,6 +5,7 @@ import DashboardFooter from "../../components/DashboardFooter"
 import DashboardSideBar from "../../components/SideBar"
 
 function DashboardLayout() {
+  if(!localStorage["token"]) return (<p>Unauthorized!</p>)
     return (
       <>
         <DashboardHeader />

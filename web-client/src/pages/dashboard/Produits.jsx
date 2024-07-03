@@ -7,7 +7,11 @@ function DashboardProduits() {
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getProduits = () => {
-      axios.get('http://127.0.0.1:5000/products')
+      axios.get('http://127.0.0.1:5000/products', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
         .then(function (res) {
           setProduits(res.data.data);
           console.log(res.data.data);

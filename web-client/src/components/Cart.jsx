@@ -71,7 +71,11 @@ export default function Cart ({showModal, toggle}) {
       return;
     }
 
-    axios.post(`http://localhost:5000/orders/`, order)
+    axios.post(`http://localhost:5000/orders/`, order,  {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      }
+    })
       .then(res => {
         console.log(res);
         orderId = res.data.idCommande
@@ -88,7 +92,11 @@ export default function Cart ({showModal, toggle}) {
             }
             axios.
               post(
-                "http://localhost:5000/product-orders/", ProductOrder
+                "http://localhost:5000/product-orders/", ProductOrder,  {
+                  headers: {
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
+                  }
+                }
               ).then((res) => {
                 setData(res.data)
                 console.log(res.data)

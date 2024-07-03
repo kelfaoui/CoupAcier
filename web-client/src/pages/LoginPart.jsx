@@ -99,7 +99,6 @@ export default function LoginPart() {
                     </span>
                   </a>
                   <a href="#" className=" mb-5 text-center block"><i>Mot de passe oublié ? </i></a>
-
                 </div>
                 <div className="group relative p-10 bg-white rounded-xl">
                 <a className="pt-10 bg-white py-2 rounded block text-black font-bold text-center mx-auto button-to-front">

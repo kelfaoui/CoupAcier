@@ -7,7 +7,11 @@ function DashboardCategories() {
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getCategories = () => {
-      axios.get('http://127.0.0.1:5000/categories')
+      axios.get('http://127.0.0.1:5000/categories', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
         .then(function (res) {
           setCategories(res.data.data);
           console.log(res.data.data);

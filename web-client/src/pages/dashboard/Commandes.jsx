@@ -7,7 +7,11 @@ function Commandes() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const getCommandes = () => {
-    axios.get('http://127.0.0.1:5000/orders')
+    axios.get('http://127.0.0.1:5000/orders', {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      }
+    })
       .then(function (res) {
         setCommandes(res.data.data);
         console.log(res.data.data);
@@ -33,7 +37,7 @@ function Commandes() {
           <thead className="border">
             <th className="p-3 border" >Date</th>
             <th className="p-3 border" >Client</th>
-            <th className="p-3 border" >Status</th>
+            <th className="p-3 border" >SIRET</th>
             <th className="p-3 border" >Total</th>
             <th className="p-3 border" ></th>
           </thead>
@@ -63,3 +67,4 @@ function Commandes() {
 }
 
 export default Commandes;
+

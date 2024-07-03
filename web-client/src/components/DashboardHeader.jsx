@@ -30,7 +30,7 @@ function classNames(...classes) {
 
 export default function DashboardHeader() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-
+  
   return (
     <header className="bg-white">
       <nav className="mx-auto flex max-w-7xl items-center justify-between  lg:px-8" aria-label="Global">

@@ -7,7 +7,11 @@ function Entrepots() {
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getentrepots = () => {
-      axios.get('http://127.0.0.1:5000/warhouses')
+      axios.get('http://127.0.0.1:5000/warhouses', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
         .then(function (res) {
           setEntrepots(res.data.data);
           console.log(res.data.data);

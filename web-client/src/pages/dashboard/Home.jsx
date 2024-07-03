@@ -7,7 +7,11 @@ function DashboardHome() {
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getClients = () => {
-      axios.get('http://127.0.0.1:5000/clients')
+      axios.get('http://127.0.0.1:5000/clients', {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
         .then(function (res) {
           setClients(res.data.data);
           console.log(res.data.data);
