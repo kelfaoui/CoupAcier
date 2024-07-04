@@ -4,6 +4,11 @@ import React from "react";
 import viteLogo from '/logo.svg';
 
 function DashboardSideBar() {
+    const logout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/"
+    }
+
     return (
         <div className="w-1/5 bg-black text-white  ml-0 h-screen">
             <div className="bg-gray-200 p-4 w-full">
@@ -95,8 +100,8 @@ function DashboardSideBar() {
                     </li>
 
                 </a>
-                <a className="fixed bottom-5" href="">
-                    <li className="flex my-4">
+                <a className="fixed bottom-5" onClick={() => logout()}>
+                    <li className="flex my-4" >
                         <ArrowLeftEndOnRectangleIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Déconnexion
