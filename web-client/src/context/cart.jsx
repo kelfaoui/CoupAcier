@@ -13,12 +13,29 @@ export const CartProvider = ({ children }) => {
       setCartItems(
         cartItems.map((cartItem) =>
           cartItem.idProduit === item.idProduit
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            ? { ...cartItem, quantity: cartItem.quantity + 1, dimensionCoupe: item.dimensionCoupe }
             : cartItem
         )
       );
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+      setCartItems([...cartItems, { ...item, quantity: 1, dimensionCoupe: 0 }]);
+    }
+  };
+
+  const updateCut = (item) => {
+    const isItemInCart = cartItems.find((cartItem) => cartItem.idProduit === item.idProduit);
+    if (isItemInCart) {
+      console.log(item)
+      setCartItems(
+        cartItems.map((cartItem) =>
+          cartItem.idProduit === item.idProduit
+            ? { ...cartItem, dimensionCoupe: item.dimensionCoupe }
+            : cartItem
+        )
+      );
+    } else {
+      
+      setCartItems([...cartItems, { ...item, dimensionCoupe: 0 }]);
     }
   };
 
@@ -55,7 +72,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]); // Include cartItems as a dependency here
+  }, [cartItems]); 
 
   return (
     <CartContext.Provider
@@ -65,6 +82,7 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getCartTotal,
+        updateCut
       }}
     >
       {children}

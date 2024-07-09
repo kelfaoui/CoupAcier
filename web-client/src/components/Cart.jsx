@@ -8,12 +8,12 @@ import 'react-toastify/dist/ReactToastify.css'
 
 var orderId = 0
 
-export default function Cart ({showModal, toggle}) {
+export default function Cart({ showModal, toggle }) {
 
-  const [loading, setLoading] =  useState(false)
+  const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
 
-  const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal } = useContext(CartContext)
+  const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal, updateCut } = useContext(CartContext)
   const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
     position: 'top-center',
     autoClose: 2000,
@@ -71,7 +71,7 @@ export default function Cart ({showModal, toggle}) {
       return;
     }
 
-    axios.post(`http://localhost:5000/orders/`, order,  {
+    axios.post(`http://localhost:5000/orders/`, order, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem("token")}`,
       }
@@ -83,7 +83,7 @@ export default function Cart ({showModal, toggle}) {
           const prod = data.data.find((p) => p.idProduit === item.idProduit)
           if (prod) {
             const ProductOrder = {
-              dimensionCoupe: 0,
+              dimensionCoupe: item.dimensionCoupe,
               quantite: item.quantity,
               ristourne: 0,
               prixMetre: item.prixMetre,
@@ -92,11 +92,11 @@ export default function Cart ({showModal, toggle}) {
             }
             axios.
               post(
-                "http://localhost:5000/product-orders/", ProductOrder,  {
-                  headers: {
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`,
-                  }
+                "http://localhost:5000/product-orders/", ProductOrder, {
+                headers: {
+                  "Authorization": `Bearer ${localStorage.getItem("token")}`,
                 }
+              }
               ).then((res) => {
                 setData(res.data)
                 console.log(res.data)
@@ -105,7 +105,7 @@ export default function Cart ({showModal, toggle}) {
               .finally(() => setLoading(false))
           }
         })
-       window.location.href = "/produits"
+        window.location.href = "/produits"
       })
     clearCart()
   }
@@ -140,60 +140,76 @@ export default function Cart ({showModal, toggle}) {
         </div>
         <div className="flex flex-col gap-4">
           {cartItems.map((item) => (
-            <div className="flex justify-between items-center" key={item.id}>
-              <div className="flex gap-4">
-                <img src={"http://localhost:5000/public/" + item.imagePrincipale} alt={item.title} className="rounded-md w-24 h-24" />
-                <div className="flex gap-8 justify-center">
-                  <h1 className="text-lg font-bold">{item.nomProduit}</h1>
-                  <p className="text-gray-600">{item.prixMetre} €</p>
+            <>
+
+              <div className="flex justify-between items-center" key={item.id}>
+                <div className="flex gap-4">
+                  <img src={"http://localhost:5000/public/" + item.imagePrincipale} alt={item.title} className="rounded-md w-24 h-24" />
+                  <div className="flex gap-8 justify-center">
+                    <h1 className="text-lg font-bold">{item.nomProduit}</h1>
+                    <p className="text-gray-600">{item.prixMetre} €</p>
+                  </div>
+                </div>
+                <div className="flex gap-4">
+                  <button
+                    className="primary-bg-color first-letter:px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                    onClick={() => {
+                      addToCart(item)
+                    }}
+                  >
+                    +
+                  </button>
+                  <p>{item.quantity}</p>
+                  <button
+                    className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                    onClick={() => {
+                      const cartItem = cartItems.find((product) => product.id === item.id);
+                      if (cartItem.quantity === 1) {
+                        handleRemoveFromCart(item);
+                      } else {
+                        removeFromCart(item);
+                      }
+                    }}
+                  >
+                    -
+                  </button>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <button
-                  className="primary-bg-color first-letter:px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                  onClick={() => {
-                    addToCart(item)
-                  }}
-                >
-                  +
-                </button>
-                <p>{item.quantity}</p>
-                <button
-                  className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-                  onClick={() => {
+              <div className="flex justify-between items-center">
+                <label className=" font-bold mx-3 w-1/2">Dimension de la coupe </label>
+                <input type="text" className="text-gray-600 border-2 py-1 px-2 rounded w-1/2" value={item.dimensionCoupe}
+                  onChange={(e) => {
                     const cartItem = cartItems.find((product) => product.id === item.id);
-                    if (cartItem.quantity === 1) {
-                      handleRemoveFromCart(item);
-                    } else {
-                      removeFromCart(item);
+
+                    if (Number(e.target.value) < 6) {
+                      item.dimensionCoupe = e.target.value
+                      updateCut(item);
                     }
                   }}
-                >
-                  -
-                </button>
+                ></input>
               </div>
-            </div>
+            </>
           ))}
         </div>
         {
           cartItems.length > 0 ? (
             <div className="flex flex-col justify-between items-center">
-          <h1 className="text-lg font-bold">Total: {getCartTotal()} €</h1>
-          <button
-            className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            onClick={() => {
-              clearCart()
-              notifyCartCleared()
-            }}
-          >
-            Vider le panier
-          </button>
-        </div>
+              <h1 className="text-lg font-bold">Total: {getCartTotal()} €</h1>
+              <button
+                className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                onClick={() => {
+                  clearCart()
+                  notifyCartCleared()
+                }}
+              >
+                Vider le panier
+              </button>
+            </div>
           ) : (
             <h1 className="text-lg font-bold">Le panier est vide</h1>
           )
         }
-      <a href="#" onClick={() => finalizeOrder()} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Envoyer le commande</a>
+        <a href="#" onClick={() => finalizeOrder()} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Envoyer le commande</a>
       </div>
     )
   )
@@ -203,4 +219,3 @@ Cart.propTypes = {
   showModal: PropTypes.bool,
   toggle: PropTypes.func
 }
-
