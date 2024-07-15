@@ -14,7 +14,7 @@ export default function Cart({ showModal, toggle }) {
   const [data, setData] = useState([])
 
   const { cartItems, addToCart, removeFromCart, clearCart, getCartTotal, updateCut } = useContext(CartContext)
-  const notifyRemovedFromCart = (item) => toast.error(`${item.title} removed from cart!`, {
+  const notifyRemovedFromCart = (item) => toast.error(`${item.nomProduit} est retiré du panier!`, {
     position: 'top-center',
     autoClose: 2000,
     hideProgressBar: true,
@@ -28,7 +28,7 @@ export default function Cart({ showModal, toggle }) {
     }
   })
 
-  const notifyCartCleared = () => toast.error(`Cart cleared!`, {
+  const notifyCartCleared = () => toast.error(`Le panier a été vidé !`, {
     position: 'top-center',
     autoClose: 2000,
     hideProgressBar: true,
@@ -49,11 +49,7 @@ export default function Cart({ showModal, toggle }) {
 
   const finalizeOrder = () => {
     const nbrElement = document.getElementById("number")
-    /*
-    INSERT INTO commande(idCommande, statusCommande, devis, type, dateLivraison, referenceLivraison, ModeReception, reference, idClient, idLivreur, idAdresse) VALUES
 
- (NULL, 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', 'REF', 1, NULL, NULL)
-    */
     const order = {
       statusCommande: 1,
       devis: 0,
@@ -127,7 +123,7 @@ export default function Cart({ showModal, toggle }) {
 
   return (
     showModal && (
-      <div className="flex-col flex items-center fixed inset-0 left-1/4 bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-index-top">
+      <div className="flex-col flex items-center fixed inset-0 left-1/4 bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-index-top overflow-y-scroll">
         <ToastContainer />
         <h1 className="text-2xl font-bold">Panier</h1>
         <div className="absolute right-16 top-10">
@@ -176,8 +172,8 @@ export default function Cart({ showModal, toggle }) {
                 </div>
               </div>
               <div className="flex justify-between items-center">
-                <label className=" font-bold mx-3 w-1/2">Dimension de la coupe </label>
-                <input type="text" className="text-gray-600 border-2 py-1 px-2 rounded w-1/2" value={item.dimensionCoupe}
+                <label className="mx-3 w-1/2">Dimension coupe </label>
+                <input type="text" className="text-gray-600 py-1 px-2 rounded w-1/2" value={item.dimensionCoupe}
                   onChange={(e) => {
                     const cartItem = cartItems.find((product) => product.id === item.id);
 

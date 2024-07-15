@@ -7,28 +7,29 @@ export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [])
 
   const addToCart = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.idProduit === item.idProduit);
+    const isItemInCart = cartItems.find((cartItem) => cartItem.index === item.index);
 
     if (isItemInCart) {
       setCartItems(
         cartItems.map((cartItem) =>
-          cartItem.idProduit === item.idProduit
+          cartItem.index === item.index
             ? { ...cartItem, quantity: cartItem.quantity + 1, dimensionCoupe: item.dimensionCoupe }
             : cartItem
         )
       );
     } else {
-      setCartItems([...cartItems, { ...item, quantity: 1, dimensionCoupe: 0 }]);
+      setCartItems([...cartItems, { ...item, quantity: 1, dimensionCoupe: 1, index: cartItems.length + 1}]);
+     
     }
   };
 
   const updateCut = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.idProduit === item.idProduit);
+    const isItemInCart = cartItems.find((cartItem) => cartItem.index === item.index);
+    console.log("Im here?")
     if (isItemInCart) {
-      console.log(item)
       setCartItems(
         cartItems.map((cartItem) =>
-          cartItem.idProduit === item.idProduit
+          cartItem.index === item.index
             ? { ...cartItem, dimensionCoupe: item.dimensionCoupe }
             : cartItem
         )
@@ -40,14 +41,14 @@ export const CartProvider = ({ children }) => {
   };
 
   const removeFromCart = (item) => {
-    const isItemInCart = cartItems.find((cartItem) => cartItem.idProduit === item.idProduit);
+    const isItemInCart = cartItems.find((cartItem) => cartItem.index === item.index);
 
     if (isItemInCart.quantity === 1) {
-      setCartItems(cartItems.filter((cartItem) => cartItem.idProduit !== item.idProduit));
+      setCartItems(cartItems.filter((cartItem) => cartItem.index !== item.index));
     } else {
       setCartItems(
         cartItems.map((cartItem) =>
-          cartItem.idProduit === item.idProduit
+          cartItem.index === item.index
             ? { ...cartItem, quantity: cartItem.quantity - 1 }
             : cartItem
         )
@@ -60,7 +61,7 @@ export const CartProvider = ({ children }) => {
   };
 
   const getCartTotal = () => {
-    return cartItems.reduce((total, item) => total + item.prixMetre * item.quantity, 0);
+    return cartItems.reduce((total, item) => total + item.prixMetre * item.quantity * item.dimensionCoupe, 0);
   };
 
   useEffect(() => {
