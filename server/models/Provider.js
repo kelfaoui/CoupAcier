@@ -2,16 +2,12 @@ const db = require("../db");
 
 const createProvider = (Provider, callback) => {
   const queryString =
-    "INSERT INTO fournisseur(idFournisseur, nomFournisseur, numeroVoie, nomVoie, codePostal, ville, email, telephone) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO fournisseur(idFournisseur, nomFournisseur, email, telephone) VALUES (NULL, ?, ?, ?)";
 
   db.query(
     queryString,
     [
       Provider.nomFournisseur,
-      Provider.numeroVoie,
-      Provider.nomVoie,
-      Provider.codePostal,
-      Provider.ville,
       Provider.email,
       Provider.telephone
     ],

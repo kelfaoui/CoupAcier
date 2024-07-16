@@ -27,6 +27,9 @@ import DashboardCategories from './pages/dashboard/Categories'
 import Entrepots from './pages/dashboard/Entrepots'
 import DashboardRoles from './pages/dashboard/Roles' 
 import Products from './components/Products'
+import Fournisseur from './pages/dashboard/Fournisseur'
+import Categorie from './pages/dashboard/Categorie'
+import Entrepot from './pages/dashboard/Entrepot'
 
 function App() {
   return (
@@ -56,6 +59,9 @@ function App() {
           <Route path="/dashboard/categories" element={<DashboardCategories />}></Route>
           <Route path="/dashboard/entrepots" element={<Entrepots />}></Route>
           <Route path="/dashboard/roles" element={<DashboardRoles />}></Route>
+          <Route path="/dashboard/fournisseur" element={<Fournisseur />}></Route>
+          <Route path="/dashboard/categorie" element={<Categorie />}></Route>
+          <Route path="/dashboard/entrepot" element={<Entrepot />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
        

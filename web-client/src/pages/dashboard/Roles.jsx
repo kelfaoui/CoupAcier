@@ -3,7 +3,7 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
 function DashboardRoles() {
-    const [categories, setRoles] = useState();
+    const [roles, setRoles] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
   
     const getRoles = () => {
@@ -41,7 +41,7 @@ function DashboardRoles() {
           <th className="p-3 border" ></th>
         </thead>
         <tbody> 
-        {categories.map((category) => (
+        {roles.map((category) => (
               <tr className="border">
                 <td className="border py-2 px-4 border-b border-gray-200">{category.idRole}</td>
                 <td className="border py-2 px-4 border-b border-gray-200">{category.nomRole}</td>

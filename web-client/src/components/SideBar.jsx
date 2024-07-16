@@ -91,15 +91,6 @@ function DashboardSideBar() {
                     </li>
 
                 </a>
-                <a href="/dashboard/roles">
-                    <li className="flex my-1 p-1">
-                        <UserPlusIcon width={24} className="mr-2" />
-                        <span className="text-white">
-                            Roles
-                        </span>
-                    </li>
-
-                </a>
                 <a className="fixed bottom-5" onClick={() => logout()}>
                     <li className="flex my-4" >
                         <ArrowLeftEndOnRectangleIcon width={24} className="mr-2" />

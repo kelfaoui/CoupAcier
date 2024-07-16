@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 function DashboardProduits() {
     const [produits, setProduits] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
@@ -33,6 +33,9 @@ function DashboardProduits() {
     <div className="rounded w-full p-5 flex">
       <div class="w-full p-5">
       <a class="bg-yellow-400 rounded-xl py-2 px-24 mb-10 text-xl font-bold border-white" href="#"><i>Produits</i></a><hr className="-mt-3" ></hr>
+      <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2 mt-3 mb-3">
+                  <PlusIcon width={18} />
+      </a>
       <table border={1} className="mt-10 border-collapse table-auto text-sm bg-white text-left mb-20 w-full ">
         <thead className="border">
           <th className="p-3 border" >Id</th>

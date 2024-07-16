@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Hôte:                         127.0.0.1
+-- Hôte:                          127.0.0.1
 -- Version du serveur:           8.0.30 - MySQL Community Server - GPL
 -- SE du serveur:                Win64
 -- HeidiSQL Version:             12.1.0.6537
@@ -15,7 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Listage de la structure de table coupe_acier_final. adresse
-CREATE TABLE IF NOT EXISTS `adresse` (
+CREATE TABLE IF NOT EXISTS `adresse` (  
   `idAdresse` int NOT NULL AUTO_INCREMENT,
   `numeroVoie` int NOT NULL,
   `nomVoie` varchar(200) NOT NULL,
@@ -65,9 +65,14 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `idCategorie` int NOT NULL AUTO_INCREMENT,
   `nomCategorie` varchar(100) NOT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.categorie : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.categorie : ~4 rows (environ)
+INSERT INTO `categorie` (`idCategorie`, `nomCategorie`) VALUES
+	(1, 'Fers plats'),
+	(2, 'Cornières'),
+	(3, 'Tubes carrés'),
+	(4, 'Fers carrés');
 
 -- Listage de la structure de table coupe_acier_final. client
 CREATE TABLE IF NOT EXISTS `client` (
@@ -84,9 +89,12 @@ CREATE TABLE IF NOT EXISTS `client` (
   `email` varchar(200) NOT NULL,
   PRIMARY KEY (`idClient`),
   UNIQUE KEY `client_AK` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.client : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.client : ~2 rows (environ)
+INSERT INTO `client` (`idClient`, `prenomClient`, `nomClient`, `motDePasse`, `codeGenere`, `siret`, `telephone`, `statutCompte`, `profilClient`, `dateCreation`, `email`) VALUES
+	(1, 'Jean', 'Martin', '123456789', NULL, '123456789', '123456789', 1, 'Particulier', '2024-06-14 13:35:03', 'aaaa@cc.com'),
+	(2, 'Chabane', 'Kelfaoui', '123456789', NULL, '123456789', '123456789', 1, 'Particulier', '2024-07-15 16:35:20', 'admin@coupacier.fr');
 
 -- Listage de la structure de table coupe_acier_final. commande
 CREATE TABLE IF NOT EXISTS `commande` (
@@ -110,9 +118,41 @@ CREATE TABLE IF NOT EXISTS `commande` (
   CONSTRAINT `commande_adresse1_FK` FOREIGN KEY (`idAdresse`) REFERENCES `adresse` (`idAdresse`),
   CONSTRAINT `commande_client_FK` FOREIGN KEY (`idClient`) REFERENCES `client` (`idClient`),
   CONSTRAINT `commande_livreur0_FK` FOREIGN KEY (`idLivreur`) REFERENCES `livreur` (`idLivreur`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.commande : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.commande : ~26 rows (environ)
+INSERT INTO `commande` (`idCommande`, `dateCommande`, `statusCommande`, `devis`, `type`, `dateLivraison`, `referenceLivraison`, `ModeReception`, `reference`, `idClient`, `idLivreur`, `idAdresse`) VALUES
+	(11, '2024-06-14 14:06:24', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', 'REF10', 1, NULL, NULL),
+	(12, '2024-06-14 14:13:21', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718', 1, NULL, NULL),
+	(15, '2024-06-14 19:57:11', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391431', 1, NULL, NULL),
+	(16, '2024-06-14 19:58:04', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391484', 1, NULL, NULL),
+	(17, '2024-06-14 19:59:14', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391554', 1, NULL, NULL),
+	(18, '2024-06-14 20:01:32', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391692', 1, NULL, NULL),
+	(19, '2024-06-14 20:02:30', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391750', 1, NULL, NULL),
+	(20, '2024-06-14 20:03:14', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391794', 1, NULL, NULL),
+	(21, '2024-06-14 20:04:32', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718391872', 1, NULL, NULL),
+	(22, '2024-06-14 20:07:18', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392038', 1, NULL, NULL),
+	(23, '2024-06-14 20:10:03', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392203', 1, NULL, NULL),
+	(24, '2024-06-14 20:12:04', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392324', 1, NULL, NULL),
+	(25, '2024-06-14 20:14:08', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392448', 1, NULL, NULL),
+	(27, '2024-06-14 20:19:39', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', 'REddF', 1, NULL, NULL),
+	(28, '2024-06-14 20:20:09', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392809', 1, NULL, NULL),
+	(29, '2024-06-14 20:21:08', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392868', 1, NULL, NULL),
+	(30, '2024-06-14 20:22:20', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718392940', 1, NULL, NULL),
+	(31, '2024-06-14 20:24:04', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393044', 1, NULL, NULL),
+	(32, '2024-06-14 20:25:12', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393112', 1, NULL, NULL),
+	(33, '2024-06-14 20:32:00', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393520', 1, NULL, NULL),
+	(34, '2024-06-14 20:33:32', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393612', 1, NULL, NULL),
+	(35, '2024-06-14 20:35:22', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393722', 1, NULL, NULL),
+	(36, '2024-06-14 20:36:13', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393773', 1, NULL, NULL),
+	(37, '2024-06-14 20:37:33', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393853', 1, NULL, NULL),
+	(38, '2024-06-14 20:38:19', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393899', 1, NULL, NULL),
+	(39, '2024-06-14 20:38:34', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718393914', 1, NULL, NULL),
+	(40, '2024-07-03 19:28:12', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1720031292', 1, NULL, NULL),
+	(41, '2024-07-09 01:51:10', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1720486270', 1, NULL, NULL),
+	(42, '2024-07-09 01:56:53', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1720486613', 1, NULL, NULL),
+	(43, '2024-07-09 01:57:19', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1720486639', 1, NULL, NULL),
+	(44, '2024-07-14 18:05:04', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1720976703', 1, NULL, NULL);
 
 -- Listage de la structure de table coupe_acier_final. employe
 CREATE TABLE IF NOT EXISTS `employe` (
@@ -136,9 +176,11 @@ CREATE TABLE IF NOT EXISTS `entrepot` (
   `voieEntrepot` varchar(200) NOT NULL,
   `NumeroRueEntrepot` int NOT NULL,
   PRIMARY KEY (`idEntrepot`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.entrepot : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.entrepot : ~1 rows (environ)
+INSERT INTO `entrepot` (`idEntrepot`, `villeEntrepot`, `codePostaleEntrepot`, `voieEntrepot`, `NumeroRueEntrepot`) VALUES
+	(1, 'Paris', 75000, 'Avenue Foch', 25);
 
 -- Listage de la structure de table coupe_acier_final. favoris
 CREATE TABLE IF NOT EXISTS `favoris` (
@@ -178,9 +220,33 @@ CREATE TABLE IF NOT EXISTS `lignecommande` (
   KEY `ligneCommande_commande0_FK` (`idCommande`),
   CONSTRAINT `ligneCommande_commande0_FK` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`idCommande`),
   CONSTRAINT `ligneCommande_produit_FK` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.lignecommande : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.lignecommande : ~23 rows (environ)
+INSERT INTO `lignecommande` (`idDecoupage`, `dimensionCoupe`, `quantite`, `ristourne`, `prixMetre`, `idProduit`, `idCommande`) VALUES
+	(7, 0, 1, 0, 9, 5, 32),
+	(8, 0, 1, 0, 5, 2, 32),
+	(10, 0, 1, 0, 9, 5, 36),
+	(11, 0, 1, 0, 8, 4, 36),
+	(12, 0, 1, 0, 7, 3, 37),
+	(13, 0, 1, 0, 5, 2, 37),
+	(14, 0, 1, 0, 5, 2, 38),
+	(15, 0, 1, 0, 8, 4, 38),
+	(16, 0, 1, 0, 9, 5, 38),
+	(17, 0, 1, 0, 7, 3, 38),
+	(18, 0, 1, 0, 9, 5, 39),
+	(19, 0, 1, 0, 7, 3, 39),
+	(20, 0, 1, 0, 5, 2, 39),
+	(21, 0, 1, 0, 8, 4, 39),
+	(22, 0, 1, 0, 9, 5, 40),
+	(23, 0, 1, 0, 8, 4, 40),
+	(24, 5, 1, 0, 9, 5, 41),
+	(25, 5.3, 1, 0, 9, 5, 42),
+	(26, 3.2, 1, 0, 8, 4, 43),
+	(27, 2.5, 1, 0, 9, 5, 43),
+	(28, 5, 1, 0, 7, 3, 44),
+	(29, 4, 1, 0, 5, 2, 44),
+	(30, 2, 1, 0, 7, 3, 44);
 
 -- Listage de la structure de table coupe_acier_final. livreur
 CREATE TABLE IF NOT EXISTS `livreur` (

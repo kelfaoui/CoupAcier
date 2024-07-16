@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
-import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon } from "@heroicons/react/24/outline";
+import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/outline";
 function DashboardCategories() {
     const [categories, setCategories] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
@@ -33,6 +33,9 @@ function DashboardCategories() {
     <div className="rounded w-full p-5 flex">
       <div class="w-full p-5">
       <a class="bg-yellow-400 rounded-xl py-2 px-24 mb-10 text-xl font-bold border-white" href="#"><i>Catégories</i></a><hr className="-mt-3" ></hr>
+      <a href="/dashboard/categorie" className="bg-yellow-400 float-end rounded-lg p-2 mr-2 mt-3 mb-3">
+                  <PlusIcon width={18} />
+      </a>
       <table border={1} className="mt-10 border-collapse table-auto text-sm bg-white text-left mb-20 w-full ">
         <thead className="border">
           <th className="p-3 border" >Id</th>
@@ -43,8 +46,8 @@ function DashboardCategories() {
         <tbody> 
         {categories.map((category) => (
               <tr className="border">
-                <td className="border py-2 px-4 border-b border-gray-200">{category.idRole}</td>
-                <td className="border py-2 px-4 border-b border-gray-200">{category.nomRole}</td>
+                <td className="border py-2 px-4 border-b border-gray-200">{category.idCategorie}</td>
+                <td className="border py-2 px-4 border-b border-gray-200">{category.nomCategorie}</td>
                 <td>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon>

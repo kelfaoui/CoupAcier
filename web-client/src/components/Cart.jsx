@@ -215,3 +215,4 @@ Cart.propTypes = {
   showModal: PropTypes.bool,
   toggle: PropTypes.func
 }
+
