@@ -11,6 +11,9 @@ const getAll = async (req, res) => {
 
 const createProduct = async (req, res) => {
   const newProduct = req.body;
+  newProduct.imagePrincipale = req.files.imagePrincipale[0].originalname
+  newProduct.image1 = req.files.image1[0].originalname
+  newProduct.image2 = req.files.image2[0].originalname
   productModel.createProduct(newProduct, (err, idProduct) => {
     if (err) {
       return res.status(500).json({"message": err.message});

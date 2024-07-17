@@ -1,25 +1,5 @@
 const db = require("../db");
 
-
-/*
-
-	`idProduit` INT(10) NOT NULL AUTO_INCREMENT,
-	`nomProduit` VARCHAR(100) NOT NULL COLLATE 'latin1_swedish_ci',
-	`prixMetre` FLOAT NOT NULL,
-	`description` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
-	`imagePrincipale` TEXT NOT NULL COLLATE 'latin1_swedish_ci',
-	`image1` TEXT NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
-	`image2` TEXT NULL DEFAULT NULL COLLATE 'latin1_swedish_ci',
-	`hauteur` FLOAT NOT NULL,
-	`epaisseur` FLOAT NOT NULL,
-	`marge` FLOAT NOT NULL,
-	`masseLineaire` FLOAT NOT NULL,
-	`tva` FLOAT NOT NULL,
-	`referenceProduit` VARCHAR(50) NOT NULL COLLATE 'latin1_swedish_ci',
-	`idCategorie` INT(10) NOT NULL,
-
-*/
-
 const createProduct = (Product, callback) => {
   const queryString =
     `INSERT INTO produit(idProduit, nomProduit, prixMetre, description, imagePrincipale, image1, image2, hauteur, epaisseur, marge, masseLineaire, tva, referenceProduit, idCategorie)

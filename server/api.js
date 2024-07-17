@@ -139,20 +139,20 @@ app.use("/clients", isAuthenticated, ClientsRouter);
 app.use("/providers", isAuthenticated, ProvidersRouter); 
 app.use("/products", ProductsRouter);
 app.use("/warhouses", isAuthenticated, WarhousesRouter);
-app.use("/categories", isAuthenticated, CategoriesRouter); 
+app.use("/categories", CategoriesRouter); 
 app.use("/roles", isAuthenticated, RolesRouter); 
 app.use("/orders", isAuthenticated, OrdersRouter);
 app.use("/product-orders", isAuthenticated, ProductOrdersRouter);
 app.use('/public', express.static('public'));
-
+ 
 /* A récupérer dans le fichier .env de la racine du dossier "server" */
 if (!is_production) {
   const port_number = process.env.PORT_NUMBER;
   app.listen(port_number, () => {
     console.log(`Le server est démarré au port : ${port_number} `);
   });
-}
-
+} 
+ 
 if (is_production) {
   module.exports.handler = serverless(app);
 }

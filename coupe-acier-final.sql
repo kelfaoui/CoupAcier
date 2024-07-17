@@ -1,5 +1,5 @@
 -- --------------------------------------------------------
--- Hôte:                          127.0.0.1
+-- Hôte:                         127.0.0.1
 -- Version du serveur:           8.0.30 - MySQL Community Server - GPL
 -- SE du serveur:                Win64
 -- HeidiSQL Version:             12.1.0.6537
@@ -15,7 +15,7 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 -- Listage de la structure de table coupe_acier_final. adresse
-CREATE TABLE IF NOT EXISTS `adresse` (  
+CREATE TABLE IF NOT EXISTS `adresse` (
   `idAdresse` int NOT NULL AUTO_INCREMENT,
   `numeroVoie` int NOT NULL,
   `nomVoie` varchar(200) NOT NULL,
@@ -65,14 +65,16 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `idCategorie` int NOT NULL AUTO_INCREMENT,
   `nomCategorie` varchar(100) NOT NULL,
   PRIMARY KEY (`idCategorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.categorie : ~4 rows (environ)
+-- Listage des données de la table coupe_acier_final.categorie : ~6 rows (environ)
 INSERT INTO `categorie` (`idCategorie`, `nomCategorie`) VALUES
 	(1, 'Fers plats'),
 	(2, 'Cornières'),
 	(3, 'Tubes carrés'),
-	(4, 'Fers carrés');
+	(4, 'Fers carrés'),
+	(5, 'Fers ronds'),
+	(6, 'Tubes ronds');
 
 -- Listage de la structure de table coupe_acier_final. client
 CREATE TABLE IF NOT EXISTS `client` (
@@ -91,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   UNIQUE KEY `client_AK` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.client : ~2 rows (environ)
+-- Listage des données de la table coupe_acier_final.client : ~0 rows (environ)
 INSERT INTO `client` (`idClient`, `prenomClient`, `nomClient`, `motDePasse`, `codeGenere`, `siret`, `telephone`, `statutCompte`, `profilClient`, `dateCreation`, `email`) VALUES
 	(1, 'Jean', 'Martin', '123456789', NULL, '123456789', '123456789', 1, 'Particulier', '2024-06-14 13:35:03', 'aaaa@cc.com'),
 	(2, 'Chabane', 'Kelfaoui', '123456789', NULL, '123456789', '123456789', 1, 'Particulier', '2024-07-15 16:35:20', 'admin@coupacier.fr');
@@ -120,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   CONSTRAINT `commande_livreur0_FK` FOREIGN KEY (`idLivreur`) REFERENCES `livreur` (`idLivreur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.commande : ~26 rows (environ)
+-- Listage des données de la table coupe_acier_final.commande : ~25 rows (environ)
 INSERT INTO `commande` (`idCommande`, `dateCommande`, `statusCommande`, `devis`, `type`, `dateLivraison`, `referenceLivraison`, `ModeReception`, `reference`, `idClient`, `idLivreur`, `idAdresse`) VALUES
 	(11, '2024-06-14 14:06:24', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', 'REF10', 1, NULL, NULL),
 	(12, '2024-06-14 14:13:21', 'En attente', 0, 'Commande', NULL, '123456789', 'A LIVRER', '1718', 1, NULL, NULL),
@@ -178,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `entrepot` (
   PRIMARY KEY (`idEntrepot`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.entrepot : ~1 rows (environ)
+-- Listage des données de la table coupe_acier_final.entrepot : ~0 rows (environ)
 INSERT INTO `entrepot` (`idEntrepot`, `villeEntrepot`, `codePostaleEntrepot`, `voieEntrepot`, `NumeroRueEntrepot`) VALUES
 	(1, 'Paris', 75000, 'Avenue Foch', 25);
 
@@ -202,9 +204,12 @@ CREATE TABLE IF NOT EXISTS `fournisseur` (
   `email` varchar(200) NOT NULL,
   PRIMARY KEY (`idFournisseur`),
   UNIQUE KEY `fournisseur_AK` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.fournisseur : ~0 rows (environ)
+-- Listage des données de la table coupe_acier_final.fournisseur : ~2 rows (environ)
+INSERT INTO `fournisseur` (`idFournisseur`, `nomFournisseur`, `telephone`, `email`) VALUES
+	(1, 'Fournisseur test', '123456789', 'nom@societe.com'),
+	(2, 'Un autre fournisseur', '002254578', 'email@cc.com');
 
 -- Listage de la structure de table coupe_acier_final. lignecommande
 CREATE TABLE IF NOT EXISTS `lignecommande` (
@@ -222,7 +227,7 @@ CREATE TABLE IF NOT EXISTS `lignecommande` (
   CONSTRAINT `ligneCommande_produit_FK` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.lignecommande : ~23 rows (environ)
+-- Listage des données de la table coupe_acier_final.lignecommande : ~20 rows (environ)
 INSERT INTO `lignecommande` (`idDecoupage`, `dimensionCoupe`, `quantite`, `ristourne`, `prixMetre`, `idProduit`, `idCommande`) VALUES
 	(7, 0, 1, 0, 9, 5, 32),
 	(8, 0, 1, 0, 5, 2, 32),
@@ -298,9 +303,9 @@ CREATE TABLE IF NOT EXISTS `produit` (
   UNIQUE KEY `produit_AK` (`referenceProduit`),
   KEY `produit_categorie_FK` (`idCategorie`),
   CONSTRAINT `produit_categorie_FK` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.produit : ~14 rows (environ)
+-- Listage des données de la table coupe_acier_final.produit : ~15 rows (environ)
 INSERT INTO `produit` (`idProduit`, `nomProduit`, `prixMetre`, `description`, `imagePrincipale`, `image1`, `image2`, `hauteur`, `epaisseur`, `marge`, `masseLineaire`, `tva`, `referenceProduit`, `idCategorie`) VALUES
 	(2, 'FER PLAT', 5, 'Fers plats pour ferronieries et forge', 'fer_plat_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'FERPLT', 0),
 	(3, 'CORNIERES A AILES EGALES', 7, 'Cornieres à ailes égales, utile pour la fabrication de portes', 'cornieres_egales_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'CRNAE', 0),
@@ -315,7 +320,9 @@ INSERT INTO `produit` (`idProduit`, `nomProduit`, `prixMetre`, `description`, `i
 	(12, 'TUBE CARRES (100 CM)', 13.5, 'Tubes carrés 100 cm', 'tubes_rectangulaires_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'TUBCAR100CM', 0),
 	(13, 'TUBES RECTANGULAIRES', 20, 'Tubes réctangulaires', 'tubes_rectangulaires_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'TUBRECP', 0),
 	(14, 'BARRES RONDES (PLEINES)', 23.7, 'Barres rondes', 'barres_rondes_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'BARRONP', 0),
-	(15, 'BARRE CARRES (PLEINES)', 22, 'Barres pleines', 'barres_carrees_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'BARCARP', 0);
+	(15, 'BARRE CARRES (PLEINES)', 22, 'Barres pleines', 'barres_carrees_img.gif', NULL, NULL, 0, 0, 0, 0, 0, 'BARCARP', 0),
+	(18, 'Corniere nouveau modele', 0, '', 'confident.jpg', 'taxonomie.png', 'cnn.png', 0, 0, 0, 0, 0, 'REFPRODD', 2),
+	(19, 'Fer plat solide pour artisan', 35, 'Fer plat épais', 'graphe-connexe.png', 'camion-hayon-2.jpg', 'Codeigniter.png', 20, 15, 20, 2.5, 10, 'REFID2455', 1);
 
 -- Listage de la structure de table coupe_acier_final. societelivraison
 CREATE TABLE IF NOT EXISTS `societelivraison` (
