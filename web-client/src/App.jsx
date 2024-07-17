@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 
@@ -30,6 +31,7 @@ import Products from './components/Products'
 import Fournisseur from './pages/dashboard/Fournisseur'
 import Categorie from './pages/dashboard/Categorie'
 import Entrepot from './pages/dashboard/Entrepot'
+import ProductDashboard from './pages/dashboard/Product'
 
 function App() {
   return (
@@ -62,6 +64,7 @@ function App() {
           <Route path="/dashboard/fournisseur" element={<Fournisseur />}></Route>
           <Route path="/dashboard/categorie" element={<Categorie />}></Route>
           <Route path="/dashboard/entrepot" element={<Entrepot />}></Route>
+          <Route path="/dashboard/produit" element={<ProductDashboard />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
        
