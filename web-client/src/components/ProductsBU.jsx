@@ -4,7 +4,7 @@ import Cart from './Cart.jsx'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function Products() {
+export default function ProductsBU() {
   const [showModal, setshowModal] = useState(false);
   const [products, setProducts] = useState([])
   const { cartItems, addToCart , removeFromCart} = useContext(CartContext)
@@ -80,7 +80,8 @@ export default function Products() {
                   !cartItems.find(item => item.id === product.idProduit) ? (
                     <button className='w-full px-2 py-2 bg-yellow-300 text-black rounded-full text-xs font-bold uppercase hover:bg-gray-700 focus:outline-none focus:bg-gray-700'
                       onClick={() => {
-                        window.location.href = `/produit/${product.idProduit}`
+                        addToCart(product)
+                        notifyAddedToCart(product)
                       }
                       }
                       >
