@@ -2,13 +2,15 @@ const db = require("../db");
 
 const createEmploye = (Employe, callback) => {
   const queryString =
-    "INSERT INTO Employe(idEmploye, nomEmploye, prenomEmploye, email, motDePasse) VALUES (NULL, ?, ?, ?, ?)";
+    "INSERT INTO Employe(idEmploye, nomEmploye, prenomEmploye, nomRole, email, motDePasse) VALUES (NULL, ?, ?, ?, ?, ?)";
 
+    console.log(Employe) 
   db.query(
     queryString,
     [
       Employe.nomEmploye,
       Employe.prenomEmploye,
+      Employe.nomRole,
       Employe.email,
       Employe.motDePasse
     ],
@@ -37,6 +39,7 @@ const getEmployeById = (EmployeId, callback) => {
       idEmploye: row.idEmploye,
       nomEmploye: row.nomEmploye,
       prenomEmploye: row.prenomEmploye,
+      nomRole: row.nomRole,
       email: row.email,
       motDePasse: row.motDePasse
     };
@@ -74,6 +77,7 @@ const getAll = (callback) => {
         idEmploye: row.idEmploye,
         nomEmploye: row.nomEmploye,
         prenomEmploye: row.prenomEmploye,
+        nomRole: row.nomRole,
         email: row.email,
         motDePasse: row.motDePasse
       };

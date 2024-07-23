@@ -1,5 +1,5 @@
 import { CubeIcon, FaceSmileIcon, UserPlusIcon } from "@heroicons/react/20/solid";
-import { NewspaperIcon, TagIcon, UsersIcon, ArrowLeftEndOnRectangleIcon, BanknotesIcon, CreditCardIcon, WalletIcon, ArchiveBoxIcon, MapIcon, HomeIcon} from "@heroicons/react/24/outline";
+import { NewspaperIcon, TagIcon, UsersIcon, ArrowLeftEndOnRectangleIcon, BanknotesIcon, CreditCardIcon, WalletIcon, ArchiveBoxIcon, MapIcon, HomeIcon, LockClosedIcon} from "@heroicons/react/24/outline";
 import React from "react";
 import viteLogo from '/logo.svg';
 
@@ -120,6 +120,14 @@ function DashboardSideBar() {
                         <HomeIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Entrepots
+                        </span>
+                    </li>
+                </a>
+                <a href="/dashboard/employes">
+                    <li className="flex my-1 p-1">
+                        <LockClosedIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Employes
                         </span>
                     </li>
                 </a>

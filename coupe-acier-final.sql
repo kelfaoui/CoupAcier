@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `nomClient` varchar(50) NOT NULL,
   `motDePasse` varchar(200) NOT NULL,
   `codeGenere` varchar(100) DEFAULT NULL,
-  `siret` varchar(14) NOT NULL,
+  `siret` varchar(14)  NULL,
   `telephone` varchar(13) NOT NULL,
   `statutCompte` tinyint(1) NOT NULL,
   `profilClient` enum('Particulier','Professionnel') NOT NULL,
