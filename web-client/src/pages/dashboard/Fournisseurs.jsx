@@ -42,7 +42,7 @@ function Fournisseurs() {
           <th className="p-3 border" >Nom / Nom société</th>
           <th className="p-3 border" >Email</th>
           <th className="p-3 border" >Téléphone</th>
-          
+          <th className="p-3 border" ></th>l
         </thead>
         <tbody> 
         {clients.map((client) => (
@@ -72,3 +72,4 @@ function Fournisseurs() {
 }
 
 export default Fournisseurs;
+

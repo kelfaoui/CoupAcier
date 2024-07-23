@@ -37,3 +37,4 @@ ProductsRouter.delete("/:id", ProductsController.deleteProduct);
 
 // Exporter le module
 module.exports = ProductsRouter   
+

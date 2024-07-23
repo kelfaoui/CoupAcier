@@ -33,6 +33,10 @@ import Entrepot from './pages/dashboard/Entrepot'
 import ProductDashboard from './pages/dashboard/Product'
 import DashboardEmployees from './pages/dashboard/Employes'
 import DashboardEmployee from './pages/dashboard/Employee'
+import MonTableauDeBord from './pages/MonTableauDeBord'
+import MesCommandes from './pages/MesCommandes'
+import ClientLayout from './pages/ClientLayout'
+import Profil from './pages/Profil'
 
 function App() {
   return (
@@ -68,6 +72,11 @@ function App() {
           <Route path="/dashboard/produit" element={<ProductDashboard />}></Route>
           <Route path="/dashboard/employes" element={<DashboardEmployees />}></Route>
           <Route path="/dashboard/employe" element={<DashboardEmployee />}></Route>
+        </Route>
+        <Route path="/tableau-de-bord/" element={<ClientLayout />}>
+          <Route path="/tableau-de-bord/" element={<MonTableauDeBord />}></Route>
+          <Route path="/tableau-de-bord/mes-commandes/" element={<MesCommandes />}></Route>
+          <Route path="/tableau-de-bord/profile/" element={<Profil />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
        

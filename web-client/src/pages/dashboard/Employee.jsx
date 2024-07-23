@@ -97,7 +97,7 @@ function DashboardEmployee() {
     </div>
    
     <div class="mb-10">
-        <label for="nomRole" class="block text-sm font-medium text-gray-700">Catégorie</label>
+        <label for="nomRole" class="block text-sm font-medium text-gray-700">Role</label>
         <select id="nomRole" onChange={changeNomRole} class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option value={""} selected>Veuillez sélectionner</option>
             <option value={"Administrateur"}>Administrateur</option>
@@ -117,3 +117,4 @@ function DashboardEmployee() {
 }
 
 export default DashboardEmployee;
+

@@ -1,5 +1,8 @@
 const db = require("../db");
 
+
+
+
 const createProduct = (Product, callback) => {
   const queryString =
     `INSERT INTO produit(idProduit, nomProduit, prixMetre, description, imagePrincipale, image1, image2, hauteur, epaisseur, marge, masseLineaire, tva, referenceProduit, idCategorie)
