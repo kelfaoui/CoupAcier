@@ -32,7 +32,7 @@ export default function LoginPart() {
     })
     .then(res => {
       localStorage.setItem("token", res.data.accessToken)
-      console.log(localStorage["token"])
+      localStorage.setItem("user_id", res.data.user_id)
       window.location.href = "/"
     })
   }

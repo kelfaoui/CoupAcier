@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`idCategorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
--- Listage des données de la table coupe_acier_final.categorie : ~6 rows (environ)
+-- Listage des données de la table coupe_acier_final.categorie : ~4 rows (environ)
 INSERT INTO `categorie` (`idCategorie`, `nomCategorie`) VALUES
 	(1, 'Fers plats'),
 	(2, 'Cornières'),
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `nomClient` varchar(50) NOT NULL,
   `motDePasse` varchar(200) NOT NULL,
   `codeGenere` varchar(100) DEFAULT NULL,
-  `siret` varchar(14)  NULL,
+  `siret` varchar(14) NOT NULL,
   `telephone` varchar(13) NOT NULL,
   `statutCompte` tinyint(1) NOT NULL,
   `profilClient` enum('Particulier','Professionnel') NOT NULL,
@@ -166,9 +166,15 @@ CREATE TABLE IF NOT EXISTS `employe` (
   `email` varchar(200) NOT NULL,
   PRIMARY KEY (`idEmploye`),
   UNIQUE KEY `employe_AK` (`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- Listage des données de la table coupe_acier_final.employe : ~0 rows (environ)
+INSERT INTO `employe` (`idEmploye`, `nomEmploye`, `prenomEmploye`, `motDePasse`, `nomRole`, `email`) VALUES
+	(1, 'Martin', 'Jules', '1123456789', 'Préparateur de Commande', 'martin.jules@coupeacier.fr'),
+	(2, 'Martin', 'Jean', '123456789', 'Préparateur de Commande', 'martin.jean@coupeacier.fr'),
+	(3, 'Kelfaoui', 'Chabane', '1234556789', 'Administrateur', 'kelfaoui.chabane@coupeacier.fr'),
+	(4, 'Mbappe', 'Kylian', '123456789', 'Préparateur de Commande', 'fayzalamari@gmail.com'),
+	(5, 'Mbappé', 'Ethan', '123456789', 'Préparateur de Commande', 'fayzalamari2@gmail.com');
 
 -- Listage de la structure de table coupe_acier_final. entrepot
 CREATE TABLE IF NOT EXISTS `entrepot` (

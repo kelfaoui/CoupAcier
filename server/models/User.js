@@ -47,6 +47,25 @@ const getUserById = (userId, callback) => {
   });
 };
 
+const getUserByEmail = (email, callback) => {
+  const queryString = `SELECT * FROM client WHERE email = ?`;
+
+  db.query(queryString, email, (err, result) => {
+    if (err) {
+      console.log(err);
+      callback(err);
+    }
+
+    const row = (result)[0];
+    console.log(row.idClient)
+    const client = {
+      idClient: row.idClient,
+      
+    };
+    return callback(null, client);
+  });
+};
+
 const userInDatabase = (user, callback) => {
   const queryString = `SELECT * FROM client WHERE email = ? AND motDePasse = ?`;
   db.query(queryString, [user.email, user.password], (err, result) => {
@@ -55,7 +74,7 @@ const userInDatabase = (user, callback) => {
       callback(err);
     }
     const rows = result;
-    return callback(rows.length > 0);
+    return callback(rows[0]);
   });
 };
 
@@ -119,4 +138,4 @@ const deleteUser = (userId, callback) => {
   });
 };
 
-module.exports = { createUser, getUserById, userInDatabase, getAll, updateUser, deleteUser }
+module.exports = { createUser, getUserById, userInDatabase, getAll, updateUser, deleteUser, getUserByEmail }

@@ -25,7 +25,6 @@ const UsersRouter = require("./routers/Users");
 const EmployesRouter = require("./routers/Employes");
 const ProductsRouter = require("./routers/Products");
 const EmailRouter = require("./routers/Email");
-
 const AuthRouter = require("./routers/Auth");
 const ProviderDeliveriesRouter = require("./routers/ProviderDeliveries");
 const UploadRouter = require("./routers/Upload");
@@ -125,8 +124,10 @@ app.post("/login", (req, res) => {
   userModel.userInDatabase(User, (result) => {
     if (result) {
       const accessToken = jwt.sign(User, process.env.AUTH_TOKEN); // Retourner le token de connexion
-      res.json({ accessToken: accessToken });
-      res.status(200).send();
+        res.json({ accessToken: accessToken, user_id: result.idClient});
+        res.status(200).send();
+
+     
     } else  {
       res.sendStatus(403); // Ne pas authoriser la connection
     }
