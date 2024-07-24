@@ -25,6 +25,7 @@ const UsersRouter = require("./routers/Users");
 const EmployesRouter = require("./routers/Employes");
 const ProductsRouter = require("./routers/Products");
 const EmailRouter = require("./routers/Email");
+
 const AuthRouter = require("./routers/Auth");
 const ProviderDeliveriesRouter = require("./routers/ProviderDeliveries");
 const UploadRouter = require("./routers/Upload");
@@ -136,7 +137,7 @@ app.post("/login", (req, res) => {
 
 app.use("/users", UsersRouter);
 app.use("/employes", isAuthenticated, EmployesRouter);
-app.use("/clients", isAuthenticated, ClientsRouter);
+app.use("/clients", ClientsRouter);
 app.use("/providers", isAuthenticated, ProvidersRouter); 
 app.use("/products", ProductsRouter);
 app.use("/warhouses", isAuthenticated, WarhousesRouter);

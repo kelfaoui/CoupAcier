@@ -88,13 +88,19 @@ export default function RegisterPart() {
     else return;
   } 
   const Register = () => {
+    var today = new Date();
+    
     axios.post(`http://localhost:5000/clients/`, {
       nomClient: nomClient,
       prenomClient: prenomClient,
       email: email,
       telephone: telephone,
       motDePasse: password,
-      nomVoie: adresse + " " + complementAdresse
+      nomVoie: adresse + " " + complementAdresse,
+      siret: '',
+      statutCompte: 1,
+      profilClient: 1,
+      dateCreation: today.getFullYear()  + '-' + today.getMonth() + '-' + today.getDate()
     })
       .then(() => {
         window.location.href = '/';
