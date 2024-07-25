@@ -100,7 +100,7 @@ export default function RegisterPart() {
       siret: '',
       statutCompte: 1,
       profilClient: 1,
-      dateCreation: today.getFullYear()  + '-' + today.getMonth() + '-' + today.getDate()
+      dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     })
       .then(() => {
         window.location.href = '/';

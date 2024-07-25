@@ -18,6 +18,7 @@ export default function RegisterPart() {
   const [adresse, setAdresse] = useState('');
   const [complementAdresse, setComplementAdresse] = useState('');
   const [password, setPassword] = useState('');
+  const [siret, setSiret] = useState('')
 
   const [errors, setErrors] = useState({});
 
@@ -25,8 +26,8 @@ export default function RegisterPart() {
     setNomClient(e.target.value);
   };
 
-  const prenomClientChange = (e) => {
-    setPrenomClient(e.target.value);
+  const siretChange = (e) => {
+    setSiret(e.target.value);
   };
 
   const emailChange = (e) => {
@@ -64,8 +65,8 @@ export default function RegisterPart() {
     if (!nomClient.trim()) errors.nomClient = 'Le nom est obligatoire';
     else if (nomClient.trim().length < 3) errors.nomClient = 'Le nom est trop court';
 
-    if (!prenomClient.trim()) errors.prenomClient = 'Le N° SIRET est obligatoire';
-    else if (prenomClient.trim().length < 3) errors.prenomClient = 'Le N° SIRET est trop court';
+    if (!siret.trim()) errors.siret = 'Le N° SIRET est obligatoire';
+    else if (siret.trim().length < 3) errors.siret = 'Le N° SIRET est trop court';
 
     if (!email.trim()) errors.email = 'L\'email est obligatoire';
     else if (!validateEmail(email.trim())) errors.email = 'L\'email est trop court';
@@ -87,14 +88,21 @@ export default function RegisterPart() {
     if (Object.keys(errors).length === 0) Register();
     else return;
   } 
+
   const Register = () => {
+    var today = new Date();
+    
     axios.post(`http://localhost:5000/clients/`, {
       nomClient: nomClient,
-      siret: prenomClient,
+      prenomClient: prenomClient,
       email: email,
       telephone: telephone,
       motDePasse: password,
-      nomVoie: adresse + " " + complementAdresse
+      nomVoie: adresse + " " + complementAdresse,
+      siret: siret,
+      statutCompte: 1,
+      profilClient: 2,
+      dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     })
       .then(() => {
         window.location.href = '/';
@@ -130,8 +138,8 @@ export default function RegisterPart() {
               <div className="group relative p-5 bg-white rounded-xl">
                 <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
                   <label className="w-full font-bold">N° SIRET :
-                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={prenomClient} onChange={prenomClientChange}></input>
-                    {errors.prenomClient && <span className="error"> {errors.prenomClient} </span>}
+                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={siret} onChange={siretChange}></input>
+                    {errors.siret && <span className="error"> {errors.siret} </span>}
                   </label>
                 </div>
               </div>
@@ -143,7 +151,7 @@ export default function RegisterPart() {
                     <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="adresse" value={adresse} onChange={adresseChange}></input>
                     {errors.adresse && <span className="error"> {errors.adresse} </span>}
                   </label>
-                </div>
+                </div>  
               </div>
               <div className="group relative p-5 bg-white rounded-xl">
                 <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
