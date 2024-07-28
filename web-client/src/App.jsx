@@ -37,6 +37,7 @@ import MonTableauDeBord from './pages/MonTableauDeBord'
 import MesCommandes from './pages/MesCommandes'
 import ClientLayout from './pages/ClientLayout'
 import Profil from './pages/Profil'
+import LoginEmploye from './pages/dashboard/LoginEmploye'
 
 function App() {
   return (
@@ -56,7 +57,7 @@ function App() {
           <Route path="/login-pro" element={<LoginPro />}></Route>
         </Route>
         <Route path="/dashboard/" element={<DashboardLayout />}>
-           <Route path="/dashboard/" element={<DashboardHome />}></Route>
+          <Route path="/dashboard/" element={<DashboardHome />}></Route>
           <Route path="/dashboard/produits" element={<DashboardProduits />}></Route>
           <Route path="/dashboard/clients" element={<Clientss />}></Route>
           <Route path="/dashboard/commandes" element={<Commandes />}></Route>
@@ -72,6 +73,7 @@ function App() {
           <Route path="/dashboard/produit" element={<ProductDashboard />}></Route>
           <Route path="/dashboard/employes" element={<DashboardEmployees />}></Route>
           <Route path="/dashboard/employe" element={<DashboardEmployee />}></Route>
+          
         </Route>
         <Route path="/tableau-de-bord/" element={<ClientLayout />}>
           <Route path="/tableau-de-bord/" element={<MonTableauDeBord />}></Route>
@@ -79,7 +81,7 @@ function App() {
           <Route path="/tableau-de-bord/profile/" element={<Profil />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
-       
+        <Route path="/dashboard/login" element={<LoginEmploye />}></Route>
         </Routes>
       </BrowserRouter>
     </>

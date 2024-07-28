@@ -169,7 +169,6 @@ export default function RegisterPart() {
                     <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={email} onChange={emailChange}></input>
                     {errors.email && <span className="error"> {errors.email} </span>}
                   </label>
-                 
                 </div>
               </div>
               <div className="group relative p-5 bg-white rounded-xl">

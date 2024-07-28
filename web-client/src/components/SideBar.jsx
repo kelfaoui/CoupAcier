@@ -6,6 +6,7 @@ import viteLogo from '/logo.svg';
 function DashboardSideBar() {
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("employe_id");
         window.location.href = "/"
     }
 

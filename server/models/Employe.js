@@ -120,4 +120,17 @@ const deleteEmploye = (EmployeId, callback) => {
   });
 };
 
-module.exports = { createEmploye, getEmployeById, EmployeInDatabase, getAll, updateEmploye, deleteEmploye }
+const employeInDatabase = (employe, callback) => {
+  const queryString = `SELECT * FROM employe WHERE email = ? AND motDePasse = ?`;
+  db.query(queryString, [employe.email, employe.password], (err, result) => {
+    if (err) {
+      console.log(err);
+      callback(err);
+    }
+    const rows = result;
+    
+    return callback(rows[0]);
+  });
+};
+
+module.exports = { createEmploye, getEmployeById, EmployeInDatabase, getAll, updateEmploye, deleteEmploye, employeInDatabase}

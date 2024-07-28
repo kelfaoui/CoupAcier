@@ -21,6 +21,7 @@ const jwt = require("jsonwebtoken");
 // Importer les routes
 const GuestsRouter = require("./routers/Guests");
 const userModel = require("./models/User");
+const employeModel = require("./models/Employe");
 const UsersRouter = require("./routers/Users");
 const EmployesRouter = require("./routers/Employes");
 const ProductsRouter = require("./routers/Products");
@@ -135,8 +136,30 @@ app.post("/login", (req, res) => {
   });
 });
 
+// L'authentification utilise
+app.post("/login-employee", (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const employe = {
+    email: email,
+    password: password,
+  };
+  console.log("test")
+  employeModel.employeInDatabase(employe, (result) => {
+    if (result) {
+      const accessToken = jwt.sign(employe, process.env.AUTH_TOKEN); 
+      
+        res.json({ accessToken: accessToken, user_id: result.idEmploye});
+        res.status(200).send();
+    } else  {
+      res.sendStatus(403); 
+    }
+  });
+});
+
 app.use("/users", UsersRouter);
-app.use("/employes", isAuthenticated, EmployesRouter);
+app.use("/employes", EmployesRouter);
 app.use("/clients", ClientsRouter);
 app.use("/providers", isAuthenticated, ProvidersRouter); 
 app.use("/products", ProductsRouter);
