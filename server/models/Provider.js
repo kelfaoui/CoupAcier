@@ -23,7 +23,7 @@ const createProvider = (Provider, callback) => {
 };
 
 const getProviderById = (ProviderId, callback) => {
-  const queryString = `SELECT * FROM Provider WHERE idProvider = ?`;
+  const queryString = `SELECT * FROM fournisseur WHERE idFournisseur = ?`;
 
   db.query(queryString, ProviderId, (err, result) => {
     if (err) {
@@ -35,10 +35,6 @@ const getProviderById = (ProviderId, callback) => {
     const provider = {
         idFournisseur : row.idFournisseur,
         nomFournisseur : row.nomFournisseur,
-        numeroVoie : row.numeroVoie,
-        nomVoie : row.nomVoie,
-        codePostal : row.codePostal,
-        ville : row.ville,
         email : row.email,
         telephone : row.telephone
     };
@@ -88,17 +84,12 @@ const getAll = (callback) => {
 };
 
 const updateProvider = (Provider, callback) => {
-  const queryString = `UPDATE fournisseur SET nomFournisseur=?, numeroVoie=?, nomVoie=?, codePostal=?, 
-  ville=?, email=?, telephone=? WHERE idFournisseur=?`;
+  const queryString = `UPDATE fournisseur SET nomFournisseur=?, email=?, telephone=? WHERE idFournisseur=?`;
 
   db.query(
     queryString,
     [
         Provider.nomFournisseur,
-        Provider.numeroVoie,
-        Provider.nomVoie,
-        Provider.codePostal,
-        Provider.ville,
         Provider.email,
         Provider.telephone,
         Provider.idFournisseur
@@ -106,6 +97,7 @@ const updateProvider = (Provider, callback) => {
     (err, result) => {
       if (err) {
         callback(err);
+        console.log(err)
       }
       callback(null, Provider.idProvider);
     }

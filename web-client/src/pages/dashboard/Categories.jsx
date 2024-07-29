@@ -52,7 +52,7 @@ function DashboardCategories() {
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon>
                 </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
+                <a href={ "/dashboard/categorie?id=" + category.idCategorie } className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <PencilSquareIcon width={18} />
                 </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">

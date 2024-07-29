@@ -50,12 +50,12 @@ function Entrepots() {
                 <td className="border py-2 px-4 border-b border-gray-200">{ entrepot.idEntrepot }</td>
                 <td className="border py-2 px-4 border-b border-gray-200">{ entrepot.villeEntrepot }</td>
                 <td className="border py-2 px-4 border-b border-gray-200">{ entrepot.codePostaleEntrepot }</td>
-                <td className="border py-2 px-4 border-b border-gray-200">{ entrepot.NumeroRueEntrepot + " " + entrepot.voieEntrepot }</td>
+                <td className="border py-2 px-4 border-b border-gray-200">{ entrepot.numeroRueEntrepot + " " + entrepot.voieEntrepot }</td>
                 <td>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon>
                 </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
+                <a href={"/dashboard/entrepot?id=" + entrepot.idEntrepot} className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <PencilSquareIcon width={18} />
                 </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">

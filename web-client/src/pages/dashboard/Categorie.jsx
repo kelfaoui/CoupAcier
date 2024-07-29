@@ -1,15 +1,41 @@
 
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
+import { useSearchParams  } from 'react-router-dom';
 
 function Categorie() {
-  const [nomCategorie, setNomcategorie] = useState('');
+  const [nomCategorie, setNomCategorie] = useState('');
+
+
+  const [ params ] = useSearchParams()
+  const id = params.get("id")
 
   const changeNomCategorie = (e) => {
-    setNomcategorie(e.target.value)
+    setNomCategorie(e.target.value)
   }
 
+  const getCategorie = () => {
+
+    axios.get(`http://127.0.0.1:5000/categories/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage["token"]}`
+      }
+    })
+    .then(function (res) {
+      console.log(res.data.data)
+      setNomCategorie(res.data.data.nomCategorie)
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+      setIsLoaded(true)
+    });
+}
+
   const submit = () => {
+    if(!id)
     axios.post(`http://localhost:5000/categories/`, {
       nomCategorie: nomCategorie
     },
@@ -26,13 +52,36 @@ function Categorie() {
         console.log(error);
       });
 
+      if(id)
+      axios.put(`http://localhost:5000/categories/`, {
+        idCategorie: id,
+        nomCategorie: nomCategorie
+      },
+        {
+          headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          }
+        }
+      )
+        .then(() => {
+          window.location.href = '/dashboard/categories';
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
   };
+
+  useEffect(() => {
+    if(id)
+      getCategorie()
+  }, [])
 
   return (
     <div className="rounded w-4/5 p-5 flex">
       <div class="w-3/4 p-5">
         <form class="bg-white p-6 rounded w-full max-w-sm">
-          <h2 class="text-2xl font-bold mb-4">Nouvelle catégorie</h2>
+                { id == null ? <h2 class="text-2xl font-bold mb-4">Nouvelle catégorie</h2> : <h2 class="text-2xl font-bold mb-4">Modifier catégorie</h2>}
 
           <div class="mb-10">
             <label for="nomFournisseur" class="block text-gray-700">Nom catégorie</label>

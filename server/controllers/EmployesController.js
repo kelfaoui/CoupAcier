@@ -22,11 +22,11 @@ const createEmploye = async (req, res) => {
 
 const getEmployeById = async (req, res) => {
   const idEmploye = Number(req.params.id);
-  employeModel.getEmployeById(idEmploye, (err, terminal) => {
+  employeModel.getEmployeById(idEmploye, (err, employe) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idEmploye});
+    res.status(200).json({"data": employe});
   })
 };
 
@@ -36,7 +36,7 @@ const updateEmploye = async (req, res) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).send({"message": Employe.idEmploye});
+    res.status(200).send({"message": Employe});
   })
 };
 

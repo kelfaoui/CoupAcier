@@ -38,6 +38,7 @@ import MesCommandes from './pages/MesCommandes'
 import ClientLayout from './pages/ClientLayout'
 import Profil from './pages/Profil'
 import LoginEmploye from './pages/dashboard/LoginEmploye'
+import DashboardClient from './pages/dashboard/Client'
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
           <Route path="/dashboard/produit" element={<ProductDashboard />}></Route>
           <Route path="/dashboard/employes" element={<DashboardEmployees />}></Route>
           <Route path="/dashboard/employe" element={<DashboardEmployee />}></Route>
+          <Route path="/dashboard/client" element={<DashboardClient />}></Route>
           
         </Route>
         <Route path="/tableau-de-bord/" element={<ClientLayout />}>

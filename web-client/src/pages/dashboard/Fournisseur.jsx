@@ -1,12 +1,16 @@
 
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
+import { useSearchParams  } from 'react-router-dom';
 
 function Fournisseur() {
 
   const [nomFournisseur, setNomFournisseur] = useState('');
   const [email, setEmail] = useState('');
   const [telephone, setTelephone] = useState('');
+
+  const [ params ] = useSearchParams()
+  const id = params.get("id")
 
   const nomFournisseurChange = (e) => {
     setNomFournisseur(e.target.value)
@@ -20,7 +24,30 @@ function Fournisseur() {
     setTelephone(e.target.value)
   }
 
+  const getFournisseur = () => {
+
+    axios.get(`http://127.0.0.1:5000/providers/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage["token"]}`
+      }
+    })
+    .then(function (res) {
+      console.log(res.data.data)
+      setNomFournisseur(res.data.data.nomFournisseur)
+      setEmail(res.data.data.email)
+      setTelephone(res.data.data.telephone)
+      
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+    .finally(function () {
+      setIsLoaded(true)
+    });
+}
+
   const submit = () => {
+    if(!id)
     axios.post(`http://localhost:5000/providers/`, {
       nomFournisseur: nomFournisseur,
       email: email,
@@ -39,7 +66,32 @@ function Fournisseur() {
         console.log(error);
       });
 
+      if(id)
+      axios.put(`http://localhost:5000/providers/`, {
+        idFournisseur: id,
+        nomFournisseur: nomFournisseur,
+        email: email,
+        telephone: telephone
+      },
+        {
+          headers: {
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          }
+        }
+      )
+        .then(() => {
+          window.location.href = '/dashboard/fournisseurs';
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
   };
+
+  useEffect(() => {
+    if(id)
+      getFournisseur()
+  }, [])
 
 
   return (

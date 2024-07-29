@@ -82,7 +82,8 @@ const updateCategory = (Category, callback) => {
   db.query(
     queryString,
     [
-      Category.nomCategorie
+      Category.nomCategorie,
+      Category.idCategorie
     ],
     (err, result) => {
       if (err) {

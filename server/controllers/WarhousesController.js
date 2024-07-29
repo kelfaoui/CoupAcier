@@ -22,11 +22,11 @@ const createWarhouse = async (req, res) => {
 
 const getWarhouseById = async (req, res) => {
   const idWarhouse = Number(req.params.id);
-  warhouseModel.getWarhouseById(idWarhouse, (err, terminal) => {
+  warhouseModel.getWarhouseById(idWarhouse, (err, warhouse) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idWarhouse});
+    res.status(200).json({"data": warhouse});
   })
 };
 

@@ -2,17 +2,17 @@ const db = require("../db");
 
 const createWarhouse = (Warhouse, callback) => {
   const queryString =
-    `INSERT INTO entrepot(idEntrepot, villeEntrepot, codePostalEntrepot, voieEntrepot, numeroRueEntrepot) 
+    `INSERT INTO entrepot(idEntrepot, villeEntrepot, codePostaleEntrepot, voieEntrepot, numeroRueEntrepot) 
     VALUES (NULL, ?, ?, ?, ?)`;
   
   db.query(
     queryString,
     [
       Warhouse.villeEntrepot,
-      Warhouse.codePostalEntrepot,
+      Warhouse.codePostaleEntrepot,
       Warhouse.voieEntrepot,
-      Warhouse.numeroRueEntrepot
-    ],
+      Warhouse.numeroRueEntrepot  
+    ], 
     (err, result) => {
       if (err) { 
         console.log(err);
@@ -37,7 +37,7 @@ const getWarhouseById = (WarhouseId, callback) => {
     const warhouse = {
       idEntrepot : row.idEntrepot,
       villeEntrepot : row.villeEntrepot,
-      codePostalEntrepot : row.codePostalEntrepot,
+      codePostaleEntrepot : row.codePostaleEntrepot,
       voieEntrepot : row.voieEntrepot,
       numeroRueEntrepot : row.numeroRueEntrepot
     };
@@ -76,7 +76,7 @@ const getAll = (callback) => {
         villeEntrepot : row.villeEntrepot,
         codePostaleEntrepot : row.codePostaleEntrepot,
         voieEntrepot : row.voieEntrepot,
-        NumeroRueEntrepot : row.NumeroRueEntrepot
+        numeroRueEntrepot : row.numeroRueEntrepot
       };
       Warhouses.push(Warhouse);
     });
@@ -86,13 +86,13 @@ const getAll = (callback) => {
 
 
 const updateWarhouse = (Warhouse, callback) => {
-  const queryString = `UPDATE entrepot SET villeEntrepot=?, codePostalEntrepot=?, voieEntrepot=?, numeroRueEntrepot=? WHERE idEntrepot=?`;
+  const queryString = `UPDATE entrepot SET villeEntrepot=?, codePostaleEntrepot=?, voieEntrepot=?, numeroRueEntrepot=? WHERE idEntrepot=?`;
 
   db.query(
     queryString,
     [
       Warhouse.villeEntrepot,
-      Warhouse.codePostalEntrepot,
+      Warhouse.codePostaleEntrepot,
       Warhouse.voieEntrepot,
       Warhouse.numeroRueEntrepot,
       Warhouse.idEntrepot,

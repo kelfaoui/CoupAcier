@@ -21,11 +21,11 @@ const createProvider = async (req, res) => {
 
 const getProviderById = async (req, res) => {
   const idProvider = Number(req.params.id);
-  providerModel.getProviderById(idProvider, (err, terminal) => {
+  providerModel.getProviderById(idProvider, (err, provider) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idProvider});
+    res.status(200).json({"data": provider});
   })
 };
 

@@ -35,7 +35,7 @@ const getEmployeById = (EmployeId, callback) => {
     }
 
     const row = (result)[0];
-    const terminal = {
+    const employe = {
       idEmploye: row.idEmploye,
       nomEmploye: row.nomEmploye,
       prenomEmploye: row.prenomEmploye,
@@ -43,7 +43,7 @@ const getEmployeById = (EmployeId, callback) => {
       email: row.email,
       motDePasse: row.motDePasse
     };
-    callback(null, terminal);
+    callback(null, employe);
   });
 };
 
@@ -105,7 +105,7 @@ const updateEmploye = (Employe, callback) => {
         callback(err);
       }
       console.log(result)
-      callback(null, Employe.idEmploye);
+      callback(null, result);
     }
   );
 };

@@ -124,33 +124,55 @@ const getAll = (callback) => {
 };
 
 const updateClient = (Client, callback) => {
-  const queryString = `UPDATE Client SET prenomClient=?, nomClient=?, 
-  motDePasse=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, 
-  profilClient=?, dateCreation=?, email=? WHERE idClient=?`;
-
-  db.query(
-    queryString,
-    [
-      Client.prenomClient,
-      Client.nomClient,
-      Client.motDePasse,
-      Client.codeGenere,
-      Client.siret,
-      Client.telephone,
-      Client.statutCompte, 
-      Client.profilClient,
-      Client.dateCreation,
-      Client.email,
-      Client.idClient
-    ],
-    (err, result) => {
-      if (err) {
-        callback(err);
+  let queryString = ''
+  if (!Client.motDePasse) {
+    queryString = `UPDATE Client SET prenomClient=?, nomClient=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, email=? WHERE idClient=?`;
+    db.query(
+      queryString,
+      [
+        Client.prenomClient,
+        Client.nomClient,
+        Client.codeGenere,
+        Client.siret,
+        Client.telephone,
+        Client.statutCompte,
+        Client.email,
+        Client.idClient
+      ],
+      (err, result) => {
+        if (err) {
+          callback(err);
+        }
+        console.log(result)
+        callback(null, Client.idClient);
       }
-      console.log(result)
-      callback(null, Client.idClient);
-    }
-  );
+    );
+  }
+  else {
+    queryString = `UPDATE Client SET prenomClient=?, nomClient=?, motDePasse=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, email=? WHERE idClient=?`;
+    db.query(
+      queryString,
+      [
+        Client.prenomClient,
+        Client.nomClient,
+        Client.motDePasse,
+        Client.codeGenere,
+        Client.siret,
+        Client.telephone,
+        Client.statutCompte,
+        Client.email,
+        Client.idClient
+      ],
+      (err, result) => {
+        if (err) {
+          callback(err);
+        }
+        console.log(result)
+        callback(null, Client.idClient);
+      }
+    );
+  }
+  
 };
 
 const deleteClient = (ClientId, callback) => {

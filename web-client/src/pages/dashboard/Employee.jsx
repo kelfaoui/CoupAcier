@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import { React, useEffect, useState } from 'react';
+import { useSearchParams  } from 'react-router-dom';
 
 function DashboardEmployee() {
   const [categories, setCategories] = useState([])
@@ -14,6 +15,8 @@ function DashboardEmployee() {
   const [nomRole, setNomRole] = useState('')
   const [motDePasse, setMotDepasse] = useState('')
  
+  const [ params ] = useSearchParams()
+  const id = params.get("id")
 
   const changeNomEmploye = (e) => {
     setNomEmploye(e.target.value)
@@ -45,8 +48,7 @@ function DashboardEmployee() {
     formData.append('email', email)
     formData.append('nomRole', nomRole)
 
-    console.log(nomEmploye)
-    
+    if(!id)
     axios.post('http://localhost:5000/employes', {
       nomEmploye: nomEmploye,
       prenomEmploye: prenomEmploye,
@@ -69,12 +71,66 @@ function DashboardEmployee() {
       }).finally(() => {
         
       })
+    if(id)
+      axios.put('http://localhost:5000/employes', {
+        idEmploye: id,
+        nomEmploye: nomEmploye,
+        prenomEmploye: prenomEmploye,
+        email: email,
+        nomRole: nomRole,
+        motDePasse: motDePasse
+      }, {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+        .then(() => {
+          window.location.href = '/dashboard/employes';
+        })
+        .catch((error) => {
+          console.log(error);
+          if (error.response && error.response.status === 400) {
+            setErrors({ global: "A storage error triggered" });
+          }
+        }).finally(() => {
+          
+        })
   }
+
+  const getEmployee = () => {
+    console.log(id)
+    axios.get(`http://127.0.0.1:5000/employes/${id}`, {
+      headers: {
+        'Authorization': `Bearer ${localStorage["token"]}`
+      }
+    })
+      .then(function (res) {
+        
+        console.log(res.data.data)
+        setNomEmploye(res.data.data.nomEmploye)
+        setPrenomEmploye(res.data.data.prenomEmploye)
+        setEmail(res.data.data.email)
+        setNomRole(res.data.data.nomRole)
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(function () {
+        setIsLoaded(true)
+      });
+  }  
+
+  useEffect(() => {
+    if(id)
+      getEmployee()
+  }, [])
 
   return (
     <div className="rounded w-4/5 p-5 flex">
       <div class="w-full p-5">
-      <h2 class="text-2xl font-bold mb-4">Nouvel employé</h2>
+      { id == null ? <h2 class="text-2xl font-bold mb-4">Nouvel employé</h2> : <h2 class="text-2xl font-bold mb-4">Modifier employé</h2>}
+     
 
         <form class="bg-white p-6 rounded w-full">
         <div class="grid grid-cols-2 gap-10">
@@ -98,7 +154,7 @@ function DashboardEmployee() {
    
     <div class="mb-10">
         <label for="nomRole" class="block text-sm font-medium text-gray-700">Role</label>
-        <select id="nomRole" onChange={changeNomRole} class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+        <select id="nomRole" onChange={changeNomRole} value={nomRole} class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             <option value={""} selected>Veuillez sélectionner</option>
             <option value={"Administrateur"}>Administrateur</option>
             <option value={"Service Commercial"}>Service Commercial</option>

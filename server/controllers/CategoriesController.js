@@ -22,11 +22,11 @@ const createCategory = async (req, res) => {
 
 const getCategoryById = async (req, res) => {
   const idcategory = Number(req.params.id);
-  categoryModel.getCategoryById(idcategory, (err, terminal) => {
+  categoryModel.getCategoryById(idcategory, (err, categorie) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idcategory});
+    res.status(200).json({"data": categorie});
   })
 };
 
