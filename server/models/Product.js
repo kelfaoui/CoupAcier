@@ -102,9 +102,10 @@ const getAll = (callback) => {
 
 
 const updateProduct = (Product, callback) => {
-  const queryString = `UPDATE produit SET nomProduit=?, prixMetre=?, description=?, imagePrincipale=?, image1=?, image2=?,  
-                       hauteur=?, epaisseur=?, marge=? masseLineaire=?, tva=?, referenceProduit=?, idCategorie=? 
+  const queryString = `UPDATE produit SET nomProduit=?, prixMetre=?, description=?,  
+                       hauteur=?, epaisseur=?, marge=?, masseLineaire=?, tva=?, referenceProduit=?, idCategorie=? 
                        WHERE idProduit=?`;
+
 
   db.query(
     queryString,
@@ -112,9 +113,6 @@ const updateProduct = (Product, callback) => {
       Product.nomProduit,
       Product.prixMetre,
       Product.description,
-      Product.imagePrincipale,
-      Product.image1,
-      Product.image2,
       Product.hauteur,
       Product.epaisseur,
       Product.marge,
@@ -128,7 +126,6 @@ const updateProduct = (Product, callback) => {
       if (err) {
         callback(err);
       }
-      console.log(result)
       callback(null, Product.idProduit);
     }
   );

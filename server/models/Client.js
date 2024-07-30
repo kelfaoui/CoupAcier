@@ -46,14 +46,34 @@ const createClient = (Client, callback) => {
         console.log(err);
         callback(err);
       }
+      const queryString =
+      `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idClient) 
+      VALUES (NULL, ?, ?, ?, ?, ?)`;
 
+      db.query(
+        queryString,
+        [
+          Client.numeroVoie,
+          Client.nomVoie,
+          Client.codePostale,
+          Client.ville,
+          (result).insertId,
+        ],
+        (err, result) => {
+          if (err) { 
+            console.log(err);
+            callback(err);
+          }
+         
+        }
+      )
       callback(null, result);
-    }
+    } 
   );
 };
 
 const getClientById = (ClientId, callback) => {
-  const queryString = `SELECT * FROM client WHERE idClient = ?`;
+  const queryString = `SELECT A.*, B.* FROM client A, adresse B WHERE A.idClient = B.idClient AND A.idClient = ?`;
 
   db.query(queryString, ClientId, (err, result) => {
     if (err) {
@@ -62,6 +82,7 @@ const getClientById = (ClientId, callback) => {
     }
 
     const row = (result)[0];
+    
     const client = {
       idClient : row.idClient,
       prenomClient : row.prenomClient,
@@ -73,7 +94,11 @@ const getClientById = (ClientId, callback) => {
       statutCompte : row.statutCompte, 
       profilClient : row.profilClient,
       dateCreation : row.dateCreation,
-      email : row.email
+      email : row.email,
+      numeroVoie: row.numeroVoie,
+      nomVoie: row.nomVoie,
+      codePostale: row.codePostale,
+      ville: row.ville
     };
     callback(null, client);
   });
@@ -143,7 +168,26 @@ const updateClient = (Client, callback) => {
         if (err) {
           callback(err);
         }
-        console.log(result)
+        const queryString =
+      `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idClient = ?`;
+
+      db.query(
+        queryString,
+        [
+          Client.numeroVoie,
+          Client.nomVoie,
+          Client.codePostale,
+          Client.ville,
+          Client.idClient
+        ],
+        (err, result) => {
+          if (err) { 
+            console.log(err);
+            callback(err);
+          }
+         
+        }
+      )
         callback(null, Client.idClient);
       }
     );
@@ -167,7 +211,26 @@ const updateClient = (Client, callback) => {
         if (err) {
           callback(err);
         }
-        console.log(result)
+        const queryString =
+      `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idClient = ?`;
+
+        db.query(
+          queryString,
+          [
+            Client.numeroVoie,
+            Client.nomVoie,
+            Client.codePostale,
+            Client.ville,
+            Client.idClient
+          ],
+          (err, result) => {
+            if (err) { 
+              console.log(err);
+              callback(err);
+            }
+          
+          }
+        )
         callback(null, Client.idClient);
       }
     );

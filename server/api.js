@@ -128,8 +128,6 @@ app.post("/login", (req, res) => {
       const accessToken = jwt.sign(User, process.env.AUTH_TOKEN); // Retourner le token de connexion
         res.json({ accessToken: accessToken, user_id: result.idClient});
         res.status(200).send();
-
-     
     } else  {
       res.sendStatus(403); // Ne pas authoriser la connection
     }

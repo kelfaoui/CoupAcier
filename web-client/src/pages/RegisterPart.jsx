@@ -19,6 +19,13 @@ export default function RegisterPart() {
   const [complementAdresse, setComplementAdresse] = useState('');
   const [password, setPassword] = useState('');
 
+  // Adresse ici :
+  const [numeroVoie, setNumeroVoie] = useState('')
+  const [nomVoie, setNomVoie] = useState('')
+  const [codePostale, setCodePostale] = useState('')
+  const [ville, setVille] = useState('')
+
+
   const [errors, setErrors] = useState({});
 
   const nomClientChange = (e) => {
@@ -45,6 +52,23 @@ export default function RegisterPart() {
   const complementAdresseChange = (e) => {
     setComplementAdresse(e.target.value);
   };
+
+  const numeroVoieChange = (e) => {
+    setNumeroVoie(e.target.value)
+  }
+
+  const nomVoieChange = (e) => {
+    setNomVoie(e.target.value)
+  }
+
+  const codePostaleChange = (e) => {
+    setCodePostale(e.target.value)
+  }
+
+  const villeChange = (e) => {
+    setVille(e.target.value)
+  }
+
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
@@ -73,11 +97,6 @@ export default function RegisterPart() {
     if (!password.trim()) errors.password = 'Le mot de passe est obligatoire';
     else if (password.trim().length < 3) errors.password = 'Le mot de passe est trop court';
 
-    if (!adresse.trim()) errors.adresse = "L'adresse est obligatoire";
-    else if (adresse.trim().length < 3) errors.adresse = "L'adresse est obligatoire";
-
-    if (!complementAdresse.trim()) errors.complementAdresse = "Le complément d'adresse est obligatoire";
-    else if (complementAdresse.trim().length < 3) errors.complementAdresse = "Le complément d'adresse est obligatoire";
 
     if (!telephone.trim()) errors.telephone = 'Le téléphone est obligatoire';
     else if (telephone.trim().length < 3) errors.telephone = 'Le téléphone est trop court';
@@ -89,18 +108,21 @@ export default function RegisterPart() {
   } 
   const Register = () => {
     var today = new Date();
-    
+
     axios.post(`http://localhost:5000/clients/`, {
       nomClient: nomClient,
       prenomClient: prenomClient,
       email: email,
       telephone: telephone,
       motDePasse: password,
-      nomVoie: adresse + " " + complementAdresse,
       siret: '',
       statutCompte: 1,
       profilClient: 1,
-      dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+      dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
+      numeroVoie: numeroVoie,
+      nomVoie: nomVoie,
+      codePostale: codePostale,
+      ville: ville
     })
       .then(() => {
         window.location.href = '/';
@@ -145,17 +167,35 @@ export default function RegisterPart() {
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
                 <div className="group relative p-5 bg-white rounded-xl">
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Adresse postale :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="adresse" value={adresse} onChange={adresseChange}></input>
-                      {errors.adresse && <span className="error"> {errors.adresse} </span>}
+                    <label className="w-full font-bold">Numéro voie :
+                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="numeroVoie" value={numeroVoie} onChange={numeroVoieChange}></input>
+                      {errors.numeroVoie && <span className="error"> {errors.numeroVoie} </span>}
                     </label>
                   </div>
                 </div>
                 <div className="group relative p-5 bg-white rounded-xl">
                   <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Complément d'adresse :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={complementAdresse} onChange={complementAdresseChange}></input>
-                      {errors.complementAdresse && <span className="error"> {errors.complementAdresse} </span>}
+                    <label className="w-full font-bold">Nom voie :
+                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomVoie" value={nomVoie} onChange={nomVoieChange}></input>
+                      {errors.nomVoie && <span className="error"> {errors.nomVoie} </span>}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
+                <div className="group relative p-5 bg-white rounded-xl">
+                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                    <label className="w-full font-bold">Code postal :
+                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="codePostale" value={codePostale} onChange={codePostaleChange}></input>
+                      {errors.codePostale && <span className="error"> {errors.codePostale} </span>}
+                    </label>
+                  </div>
+                </div>
+                <div className="group relative p-5 bg-white rounded-xl">
+                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                    <label className="w-full font-bold">Ville :
+                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="ville" value={ville} onChange={villeChange}></input>
+                      {errors.ville && <span className="error"> {errors.ville} </span>}
                     </label>
                   </div>
                 </div>
@@ -199,7 +239,7 @@ export default function RegisterPart() {
                 </div>
               </div>
               <div className="pt-10">
-                <a className="bg-white  px-3 py-2 rounded lg:w-1/3 block text-black font-bold text-center mx-auto button-to-front" onClick={validateForm}>
+                <a href="" className="bg-white  px-3 py-2 rounded lg:w-1/3 block text-black font-bold text-center mx-auto button-to-front" onClick={validateForm}>
                 <span className="bg-blue-500  px-3 py-2 rounded lg:w-4/5 block text-black font-bold text-center mx-auto button-to-front" >S'inscrire
                 </span>
                 </a>

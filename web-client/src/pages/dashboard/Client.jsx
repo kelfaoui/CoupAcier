@@ -14,7 +14,13 @@ function DashboardClient() {
   const [password, setPassword] = useState('');
   const [siret, setSiret] = useState('');
 
-  const [ params ] = useSearchParams()
+  // Adresse ici :
+  const [numeroVoie, setNumeroVoie] = useState('')
+  const [nomVoie, setNomVoie] = useState('')
+  const [codePostale, setCodePostale] = useState('')
+  const [ville, setVille] = useState('')
+
+  const [params] = useSearchParams()
   const id = params.get("id")
 
   const [errors, setErrors] = useState({});
@@ -40,17 +46,25 @@ function DashboardClient() {
     setTelephone(e.target.value);
   };
 
-  const adresseChange = (e) => {
-    setAdresse(e.target.value);
-  };
-
-  const complementAdresseChange = (e) => {
-    setComplementAdresse(e.target.value);
-  };
-
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const numeroVoieChange = (e) => {
+    setNumeroVoie(e.target.value)
+  }
+
+  const nomVoieChange = (e) => {
+    setNomVoie(e.target.value)
+  }
+
+  const codePostaleChange = (e) => {
+    setCodePostale(e.target.value)
+  }
+
+  const villeChange = (e) => {
+    setVille(e.target.value)
+  }
 
 
   const validateEmail = (email) => {
@@ -104,8 +118,10 @@ function DashboardClient() {
         setPrenomClient(res.data.data.prenomClient)
         setEmail(res.data.data.email)
         setTelephone(res.data.data.telephone)
-        setAdresse(res.data.data.adresse)
-        setComplementAdresse(res.data.data.complementAdresse)
+        setNumeroVoie(res.data.data.numeroVoie)
+        setNomVoie(res.data.data.nomVoie)
+        setCodePostale(res.data.data.codePostale)
+        setVille(res.data.data.ville)
         setSiret(res.data.data.siret)
 
       })
@@ -128,10 +144,14 @@ function DashboardClient() {
         telephone: telephone,
         motDePasse: password,
         nomVoie: adresse + " " + complementAdresse,
-        siret: '',
+        siret: siret,
         statutCompte: 1,
         profilClient: 1,
-        dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate()
+        dateCreation: today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
+        numeroVoie: numeroVoie,
+        nomVoie: nomVoie,
+        codePostale: codePostale,
+        ville: ville
       },
         {
           headers: {
@@ -146,7 +166,7 @@ function DashboardClient() {
           console.log(error);
         });
 
-      if (id)
+    if (id)
       axios.put(`http://localhost:5000/clients/`, {
         idClient: id,
         nomClient: nomClient,
@@ -157,7 +177,11 @@ function DashboardClient() {
         nomVoie: adresse + " " + complementAdresse,
         siret: siret,
         statutCompte: 1,
-        profilClient: 1
+        profilClient: 1,
+        numeroVoie: numeroVoie,
+        nomVoie: nomVoie,
+        codePostale: codePostale,
+        ville: ville
       },
         {
           headers: {
@@ -184,7 +208,7 @@ function DashboardClient() {
     <main>
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-start">
-        { id == null ? <h2 class="text-2xl font-bold mb-4">Créer client</h2> : <h2 class="text-2xl font-bold mb-4">Modifier client</h2>}
+          {id == null ? <h2 class="text-2xl font-bold mb-4">Créer client</h2> : <h2 class="text-2xl font-bold mb-4">Modifier client</h2>}
           <section className="mt-5 text-left">
             <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-0">
               <div className="group relative p-5 bg-white rounded-xl">
@@ -204,20 +228,38 @@ function DashboardClient() {
                 </div>
               </div>
             </div>
-            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-0">
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
               <div className="group relative p-5 bg-white rounded-xl">
                 <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                  <label className="w-full font-bold">Adresse postale :
-                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="adresse" value={adresse} onChange={adresseChange}></input>
-                    {errors.adresse && <span className="error"> {errors.adresse} </span>}
+                  <label className="w-full font-bold">Numéro voie :
+                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="numeroVoie" value={numeroVoie} onChange={numeroVoieChange}></input>
+                    {errors.numeroVoie && <span className="error"> {errors.numeroVoie} </span>}
                   </label>
                 </div>
               </div>
               <div className="group relative p-5 bg-white rounded-xl">
                 <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                  <label className="w-full font-bold">Complément d'adresse :
-                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={complementAdresse} onChange={complementAdresseChange}></input>
-                    {errors.complementAdresse && <span className="error"> {errors.complementAdresse} </span>}
+                  <label className="w-full font-bold">Nom voie :
+                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomVoie" value={nomVoie} onChange={nomVoieChange}></input>
+                    {errors.nomVoie && <span className="error"> {errors.nomVoie} </span>}
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
+              <div className="group relative p-5 bg-white rounded-xl">
+                <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                  <label className="w-full font-bold">Code postal :
+                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="codePostale" value={codePostale} onChange={codePostaleChange}></input>
+                    {errors.codePostale && <span className="error"> {errors.codePostale} </span>}
+                  </label>
+                </div>
+              </div>
+              <div className="group relative p-5 bg-white rounded-xl">
+                <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                  <label className="w-full font-bold">Ville :
+                    <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="ville" value={ville} onChange={villeChange}></input>
+                    {errors.ville && <span className="error"> {errors.ville} </span>}
                   </label>
                 </div>
               </div>
@@ -260,8 +302,8 @@ function DashboardClient() {
               </div>
             </div>
             <div className="pt-10">
-            <a onClick={() => submit()} class="w-full bg-yellow-400 text-black py-2 px-4 rounded-md hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Enregistrer</a>
-            
+              <a onClick={() => submit()} class="w-full bg-yellow-400 text-black py-2 px-4 rounded-md hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Enregistrer</a>
+
             </div>
           </section>
         </div>
