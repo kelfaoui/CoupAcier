@@ -72,4 +72,3 @@ function Fournisseurs() {
 }
 
 export default Fournisseurs;
-

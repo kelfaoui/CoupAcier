@@ -16,14 +16,34 @@ const createProvider = (Provider, callback) => {
         console.log(err);
         callback(err);
       }
-      const insertId = (result).insertId;
-      callback(null, insertId);
+      const queryString =
+      `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idFournisseur) 
+      VALUES (NULL, ?, ?, ?, ?, ?)`;
+
+      db.query(
+        queryString,
+        [
+          Provider.numeroVoie,
+          Provider.nomVoie,
+          Provider.codePostale,
+          Provider.ville,
+          (result).insertId,
+        ],
+        (err, result) => {
+          if (err) { 
+            console.log(err);
+            callback(err);
+          }
+         
+        }
+      )
+      callback(null, (result).insertId);
     }
   );
 };
 
 const getProviderById = (ProviderId, callback) => {
-  const queryString = `SELECT * FROM fournisseur WHERE idFournisseur = ?`;
+  const queryString = `SELECT A.*, B.* FROM fournisseur A, adresse B WHERE A.idFournisseur = B.idFournisseur AND A.idFournisseur = ?`;
 
   db.query(queryString, ProviderId, (err, result) => {
     if (err) {
@@ -36,7 +56,11 @@ const getProviderById = (ProviderId, callback) => {
         idFournisseur : row.idFournisseur,
         nomFournisseur : row.nomFournisseur,
         email : row.email,
-        telephone : row.telephone
+        telephone : row.telephone,
+        numeroVoie: row.numeroVoie,
+        nomVoie: row.nomVoie,
+        codePostale: row.codePostale,
+        ville: row.ville
     };
     callback(null, provider);
   });
@@ -92,13 +116,33 @@ const updateProvider = (Provider, callback) => {
         Provider.nomFournisseur,
         Provider.email,
         Provider.telephone,
-        Provider.idFournisseur
+        Provider.idFournisseur,
     ],
     (err, result) => {
       if (err) {
         callback(err);
         console.log(err)
       }
+      const queryString =
+      `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idFournisseur = ?`;
+
+      db.query(
+        queryString,
+        [
+          Provider.numeroVoie,
+          Provider.nomVoie,
+          Provider.codePostale,
+          Provider.ville,
+          Provider.idFournisseur
+        ],
+        (err, result) => {
+          if (err) { 
+            console.log(err);
+            callback(err);
+          }
+         
+        }
+      )
       callback(null, Provider.idProvider);
     }
   );
