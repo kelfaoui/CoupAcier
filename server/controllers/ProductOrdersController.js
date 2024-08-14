@@ -29,6 +29,17 @@ const getProductOrderById = async (req, res) => {
   })
 };
 
+
+const getOrderItemsByOrderId = async (req, res) => {
+  const orderId = Number(req.params.id);
+  productOrdersModel.getOrderItemsByOrderId(orderId, (err, orders) => {
+    if (err) {
+      return res.status(500).json({"message": err.message});
+    }
+    res.status(200).json({"data": orders});
+  })
+};
+
 const updateProductOrder = async (req, res) => {
   const ProductOrder = req.body;
   productOrdersModel.updateProductOrder(ProductOrder, (err) => {
@@ -52,4 +63,4 @@ const login = async (req, res) => {
   
 };
 
-module.exports = { getAll, createProductOrder, getProductOrderById, updateProductOrder, deleteProductOrder, login }
+module.exports = { getAll, getOrderItemsByOrderId, createProductOrder, getProductOrderById, updateProductOrder, deleteProductOrder, login }

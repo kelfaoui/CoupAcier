@@ -40,7 +40,7 @@ function Commandes() {
           <thead className="border">
             <th className="p-3 border" >Date</th>
             <th className="p-3 border" >Client</th>
-            <th className="p-3 border" >SIRET</th>
+            <th className="p-3 border" >Status commande</th>
             <th className="p-3 border" >Total</th>
             <th className="p-3 border" ></th>
           </thead>
@@ -54,7 +54,7 @@ function Commandes() {
               <td className="border py-2 px-4 border-b border-gray-200 text-end">
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon> </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
+                <a href={"/dashboard/order?id=" + commande.idCommande} className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <PencilSquareIcon width={18} />
                 </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">

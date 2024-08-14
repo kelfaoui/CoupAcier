@@ -27,7 +27,10 @@ const EmployesRouter = require("./routers/Employes");
 const ProductsRouter = require("./routers/Products");
 const EmailRouter = require("./routers/Email");
 
+
 const AuthRouter = require("./routers/Auth");
+const DeliveryCompanyRouter = require("./routers/DeliveryCompany");
+const DeliveryManRouter =  require("./routers/DeliveryMan");
 const ProviderDeliveriesRouter = require("./routers/ProviderDeliveries");
 const UploadRouter = require("./routers/Upload");
 const ClientDeliveriesRouter = require("./routers/ClientDeliveries");
@@ -52,6 +55,7 @@ const WarhousesRouter = require("./routers/Warhouse");
 const CategoriesRouter = require("./routers/Category");
 const RolesRouter = require("./routers/Role");
 const ProductOrdersRouter = require("./routers/ProductOrders");
+const FavorisRouter = require("./routers/Favoris");
 
 app.use(express.json());
 
@@ -166,6 +170,9 @@ app.use("/categories", CategoriesRouter);
 app.use("/roles", isAuthenticated, RolesRouter); 
 app.use("/orders", isAuthenticated, OrdersRouter);
 app.use("/product-orders", isAuthenticated, ProductOrdersRouter);
+app.use("/delivery-companies", isAuthenticated, DeliveryCompanyRouter);
+app.use("/delivery-men", isAuthenticated, DeliveryManRouter);
+app.use("/favoris", isAuthenticated, FavorisRouter);
 app.use('/public', express.static('public'));
  
 /* A récupérer dans le fichier .env de la racine du dossier "server" */

@@ -51,6 +51,34 @@ const getProductOrderById = (ProductOrderId, callback) => {
   });
 };
 
+const getOrderItemsByOrderId = (OrderId, callback) => {
+  const queryString = `SELECT A.*, B.* FROM lignecommande A, produit B WHERE A.idProduit = B.idProduit AND idCommande = ?`;
+
+  db.query(queryString, OrderId, (err, result) => {
+    if (err) {
+      console.log(err);
+      callback(err);
+    }
+
+    const rows = result;
+    const ProductOrders = [];
+
+    rows.forEach((row) => {
+      const ProductOrder = {
+        idDecoupage : row.idDecoupage,
+        dimensionCoupe : row.dimensionCoupe,
+        quantite : row.quantite,
+        prixMetre : row.prixMetre,
+        idProduit : row.idProduit,
+        idCommande : row.idCommande,
+        nomProduit: row.nomProduit
+      };
+      ProductOrders.push(ProductOrder);
+    });
+    callback(null, ProductOrders);
+  });
+};
+
 const getAll = (callback) => {
   const queryString = `SELECT * FROM lignecommande`;
 
@@ -113,4 +141,4 @@ const deleteProductOrder = (ProductOrderId, callback) => {
   });
 };
 
-module.exports = { createProductOrder, getProductOrderById, getAll, updateProductOrder, deleteProductOrder }
+module.exports = { createProductOrder, getProductOrderById, getAll, updateProductOrder, deleteProductOrder, getOrderItemsByOrderId }

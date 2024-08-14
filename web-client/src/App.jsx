@@ -39,6 +39,14 @@ import ClientLayout from './pages/ClientLayout'
 import Profil from './pages/Profil'
 import LoginEmploye from './pages/dashboard/LoginEmploye'
 import DashboardClient from './pages/dashboard/Client'
+import DashboardCommande from './pages/dashboard/Commande'
+import Commande from './pages/Commande'
+import SocieteLivraison from './pages/dashboard/SocieteLivraison'
+import Livreur from './pages/dashboard/Livreur'
+import SocietesLivraison from './pages/dashboard/SocietesLivraison'
+import Livreurs from './pages/dashboard/Livreurs'
+import ClientFavorites from './components/ClientFavorites'
+import MesFavoris from './pages/MesFavoris'
 
 function App() {
   return (
@@ -75,12 +83,19 @@ function App() {
           <Route path="/dashboard/employes" element={<DashboardEmployees />}></Route>
           <Route path="/dashboard/employe" element={<DashboardEmployee />}></Route>
           <Route path="/dashboard/client" element={<DashboardClient />}></Route>
+          <Route path="/dashboard/order" element={<DashboardCommande />}></Route>
+          <Route path="/dashboard/societelivraison" element={<SocieteLivraison />}></Route>
+          <Route path="/dashboard/societes-livraison" element={<SocietesLivraison />}></Route>
+          <Route path="/dashboard/livreurs" element={<Livreurs />}></Route>
+          <Route path="/dashboard/livreur" element={<Livreur />}></Route>
           
         </Route>
         <Route path="/tableau-de-bord/" element={<ClientLayout />}>
           <Route path="/tableau-de-bord/" element={<MonTableauDeBord />}></Route>
           <Route path="/tableau-de-bord/mes-commandes/" element={<MesCommandes />}></Route>
+          <Route path="/tableau-de-bord/favoris/" element={<MesFavoris />}></Route>
           <Route path="/tableau-de-bord/profile/" element={<Profil />}></Route>
+          <Route path="/tableau-de-bord/commande/" element={<Commande />}></Route>
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard/login" element={<LoginEmploye />}></Route>

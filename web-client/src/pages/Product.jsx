@@ -10,6 +10,7 @@ import homeImage4 from '/home-presentation-image.png'
 import homeBanner from '/home-banner.png'
 import quote from '/quote.svg'
 import { LockClosedIcon } from '@heroicons/react/20/solid';
+
 import { useState, useEffect, useContext } from 'react'
 import { CartContext } from "../context/cart"
 
@@ -28,6 +29,22 @@ export default function Product() {
     setshowModal(!showModal);
   };
 
+  const addToFavorites = (idProduit, idClient) => {
+    const tuple = {
+      idProduit: idProduit,
+      idClient: idClient
+    }
+
+    axios.post(`http://localhost:5000/favoris/`, tuple, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+    })
+    .then(res => {
+      
+    })
+  }
 
   const notifyAddedToCart = (item) => toast.success(`${item.nomProduit} ajouté au panier !`, {
     position: "top-center",
@@ -209,7 +226,7 @@ export default function Product() {
                 }
               </div>
               <div>
-                      <a href="#" className="text-center block w-full px-2 py-2 bg-yellow-300 text-black rounded-full text-xs font-bold uppercase hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                      <a onClick={()=> addToFavorites(product.idProduit, localStorage["user_id"])} className="text-center block w-full px-2 py-2 bg-yellow-300 text-black rounded-full text-xs font-bold uppercase hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                         Ajouter au favoris
                       </a>
                       </div>

@@ -16,14 +16,14 @@ function DashboardSideBar() {
                 <img className="h-8 w-auto mx-auto" src={viteLogo} alt="Vite Logo" />
             </div>
             <div className="bg-black text-white px-4 py-1 ml-0 h-screen">
-                <div className="group relative py-3 px-3 bg-black rounded-xl">
+                <div className="group relative py-1 px-3 bg-black rounded-xl">
                     <div className="text-center election:aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-center flex">
                         <div className="rounded-full primary-bg-color py-4 block text-4xl px-6 font-bold mx-auto text-black">
                             C 
                         </div>
                     </div>
                     <div>
-                        <p className=" border-black text-xl text-white text-center pt-3">
+                        <p className=" border-black text-l text-white text-center pt-1">
                             <i>Chabane KELFAOUI</i>
                         </p>
                         <p className=" border-black text-l text-yellow-400 text-center pt-0 mb-0">
@@ -33,7 +33,7 @@ function DashboardSideBar() {
                 </div>
                 <ul className="options">
                 <a className="" href="/dashboard/home">
-                    <li className="flex my-1 bg-yellow-400 p-3 rounded-3xl text-black">
+                    <li className="flex my-0 bg-yellow-400 p-2 rounded-3xl text-black">
                         <BanknotesIcon width={24} className="mr-2 " />
                         <span className="text-black">
                             Service commercial
@@ -101,15 +101,31 @@ function DashboardSideBar() {
                     </li>
                 </a>
                 <a href="/dashboard/fournisseurs">
-                    <li className="flex my-2 p-1">
+                    <li className="flex my-1 p-1">
                         <UsersIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Fournisseurs
                         </span>
                     </li>
                 </a>
+                <a href="/dashboard/societes-livraison">
+                    <li className="flex my-1 p-1">
+                        <CubeIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Sociétés de livraison
+                        </span>
+                    </li>
+                </a>
+                <a href="/dashboard/livreurs">
+                    <li className="flex my-1 p-1">
+                        <UsersIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Livreurs
+                        </span>
+                    </li>
+                </a>
                 <a href="/dashboard/categories">
-                    <li className="flex my-2 p-1">
+                    <li className="flex my-1 p-1">
                         <ArchiveBoxIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Catégories produits
@@ -117,7 +133,7 @@ function DashboardSideBar() {
                     </li>
                 </a>
                 <a href="/dashboard/entrepots">
-                    <li className="flex my-2 p-1">
+                    <li className="flex my-1 p-1">
                         <HomeIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Entrepots

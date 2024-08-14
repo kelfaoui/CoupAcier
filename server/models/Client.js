@@ -73,16 +73,18 @@ const createClient = (Client, callback) => {
 };
 
 const getClientById = (ClientId, callback) => {
+
   const queryString = `SELECT A.*, B.* FROM client A, adresse B WHERE A.idClient = B.idClient AND A.idClient = ?`;
+  console.log(ClientId)
 
   db.query(queryString, ClientId, (err, result) => {
     if (err) {
       console.log(err);
       callback(err);
     }
-
+    console.log(result)
     const row = (result)[0];
-    
+  
     const client = {
       idClient : row.idClient,
       prenomClient : row.prenomClient,

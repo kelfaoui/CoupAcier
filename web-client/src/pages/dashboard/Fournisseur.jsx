@@ -135,7 +135,7 @@ function Fournisseur() {
     <div className="rounded w-4/5 p-5 flex">
       <div class="w-3/4 p-5">
         <form class="bg-white p-6 rounded w-full max-w-sm">
-          <h2 class="text-2xl font-bold mb-4">Nouveau fournisseur</h2>
+          {/* <h2 class="text-2xl font-bold mb-4">Nouveau fournisseur</h2> */}
 
           <div class="mb-4">
             <label for="nomFournisseur" class="block text-gray-700">Nom Fournisseur</label>
@@ -186,3 +186,4 @@ function Fournisseur() {
 }
 
 export default Fournisseur;
+

@@ -29,6 +29,14 @@ function ClientSidebar() {
                         </span>
                     </li>
                 </a>
+                <a href="/tableau-de-bord/favoris"className="mt-10">
+                    <li className="flex my-5 p-1">
+                        <CreditCardIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Favoris
+                        </span>
+                    </li>
+                </a>
                 <a href="/tableau-de-bord/profile"className="mt-10">
                     <li className="flex my-5 p-1">
                         <CreditCardIcon width={24} className="mr-2" />

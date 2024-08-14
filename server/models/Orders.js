@@ -59,6 +59,7 @@ const getOrderById = (OrderId, callback) => {
       statusCommande : row.statusCommande,
       devis : row.devis,
       type : row.type,
+      ModeReception : row.ModeReception,
       dateLivraison : row.dateLivraison,
       referenceLivraison : row.referenceLivraison,
       reference : row.reference,
@@ -155,33 +156,25 @@ const getAll = (callback) => {
 */
 
 const updateOrder = (Order, callback) => {
-  const queryString = `UPDATE commande SET 
-                        dateCommande = ?,                                     
+
+  const queryString = `UPDATE commande SET                                   
                         statusCommande = ?,                                  
-                        devis = ?                               
+                        devis = ? ,                              
                         type = ?, 
-                        dateLivraison = ? 
+                        dateLivraison = ?,
                         referenceLivraison = ?, 
-                        ModeReception = ? 
-                        reference = ? 
-                        idClient = ?, 
-                        idAdresse = ?
+                        ModeReception = ?
                         WHERE idCommande = ?`;
 
   db.query(
     queryString,
     [
-      Order.dateCommande,
       Order.statusCommande,
       Order.devis,
       Order.type,
-      Order.dateLivraison,
+      Order.dateLivraison, 
       Order.referenceLivraison,
-      Order.reference,
-      Order.idClient,
-      Order.idLivreur,
-      Order.idClient,
-      Order.idLivreur,
+      Order.ModeReception,
       Order.idCommande
     ],
     (err, result) => {

@@ -33,11 +33,11 @@ const createOrder = async (req, res) => {
 
 const getOrderById = async (req, res) => {
   const idOrder = Number(req.params.id);
-  ordersModel.getOrderById(idOrder, (err, terminal) => {
+  ordersModel.getOrderById(idOrder, (err, order) => {
     if (err) {
       return res.status(500).json({"message": err.message});
     }
-    res.status(200).json({"data": idOrder});
+    res.status(200).json({"data": order});
   })
 };
 

@@ -4,6 +4,7 @@ const ProductOrdersController = require('../controllers/ProductOrdersController'
 
 ProductOrdersRouter.get("/", ProductOrdersController.getAll);
 ProductOrdersRouter.get("/:id", ProductOrdersController.getProductOrderById);
+ProductOrdersRouter.get("/order-items/:id", ProductOrdersController.getOrderItemsByOrderId);
 ProductOrdersRouter.post("/", ProductOrdersController.createProductOrder);
 ProductOrdersRouter.put("/", ProductOrdersController.updateProductOrder);
 ProductOrdersRouter.delete("/:id", ProductOrdersController.deleteProductOrder);
