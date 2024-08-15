@@ -4,8 +4,11 @@ import React from "react";
 import viteLogo from '/logo.svg';
 
 function ClientSidebar() {
+
+
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("user_id");
         window.location.href = "/"
     }
 
@@ -42,6 +45,14 @@ function ClientSidebar() {
                         <CreditCardIcon width={24} className="mr-2" />
                         <span className="text-white">
                             Mon profil
+                        </span>
+                    </li>
+                </a>
+                <a className="fixed bottom-5" onClick={() => logout()}>
+                    <li className="flex my-4" >
+                        <ArrowLeftEndOnRectangleIcon width={24} className="mr-2" />
+                        <span className="text-white">
+                            Déconnexion
                         </span>
                     </li>
                 </a>

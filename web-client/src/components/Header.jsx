@@ -64,10 +64,11 @@ export default function Header() {
           <a href="" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <ShoppingCartIcon width="24" />
           </a>
-          <a href="" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
+          <a href={localStorage["user_id"] ? "/favoris" : "/login"} className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <HeartIcon width="24" />
           </a>
-          <a href="/login" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
+          
+          <a href={localStorage["user_id"] ? "/tableau-de-bord" : "/login"} className="text-sm font-semibold leading-6 text-gray-900 mx-4">
            <UserIcon width="24" />
           </a>
         </div>
