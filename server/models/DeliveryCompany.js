@@ -13,7 +13,7 @@ const createDeliveryCompany = (DeliveryCompany, callback) => {
   const queryString =
     `INSERT INTO societelivraison(idLivraison, nomSocieteLivraison, siretLivraison, telephone, email) 
     VALUES (NULL, ?, ?, ?, ?)`;
-
+  console.log(DeliveryCompany);
   db.query(
     queryString,
     [
@@ -24,37 +24,36 @@ const createDeliveryCompany = (DeliveryCompany, callback) => {
     ],
     (err, result) => {
       if (err) { 
-        
         console.log(err);
-        const queryString =
-        `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idLivraison) 
-        VALUES (NULL, ?, ?, ?, ?, ?)`;
-  
-        db.query(
-          queryString,
-          [
-            DeliveryMan.numeroVoie,
-            DeliveryMan.nomVoie,
-            DeliveryMan.codePostale,
-            DeliveryMan.ville,
-            (result).insertId
-          ],
-          (err, result) => {
-            if (err) { 
-              console.log(err);
-              callback(err);
-            }
-          }
-        )
         callback(err);
       }
+      const queryString =
+      `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idLivraison) 
+      VALUES (NULL, ?, ?, ?, ?, ?)`;
+
+      db.query(
+        queryString,
+        [
+          DeliveryCompany.numeroVoie,
+          DeliveryCompany.nomVoie,
+          DeliveryCompany.codePostale,
+          DeliveryCompany.ville,
+          (result).insertId,
+        ],
+        (err, result) => {
+          if (err) { 
+            console.log(err);
+            callback(err);
+          }
+        }
+      )
       callback(null, result);
     }
   );
 };
 
 const getDeliveryCompanyById = (DeliveryCompanyId, callback) => {
-  const queryString = `SELECT * from societelivraison WHERE idLivraison = ?`;
+  const queryString = `SELECT A.*, B.* from societelivraison A, adresse B WHERE A.idLivraison = B.idLivraison AND A.idLivraison = ?`;
 
   db.query(queryString, DeliveryCompanyId, (err, result) => {
     if (err) {
@@ -65,11 +64,15 @@ const getDeliveryCompanyById = (DeliveryCompanyId, callback) => {
     const row = (result)[0];
     
     const client = {
-      idLivraison : row.idLivraison,
       nomSocieteLivraison : row.nomSocieteLivraison,
       siretLivraison : row.siretLivraison,
       telephone : row.telephone,
-      email : row.email
+      email : row.email,
+      numeroVoie: row.numeroVoie,
+      nomVoie: row.nomVoie,
+      codePostale: row.codePostale,
+      ville: row.ville,
+      idLivraison : row.idLivraison
     };
     callback(null, client);
   });
@@ -132,13 +135,31 @@ const updateDeliveryCompany = (DeliveryCompany, callback) => {
           callback(err);
           console.log(err)
         }
-
+        const queryString =
+        `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idLivraison = ?`;
+  
+        db.query(
+          queryString,
+          [
+            DeliveryCompany.numeroVoie,
+            DeliveryCompany.nomVoie,
+            DeliveryCompany.codePostale,
+            DeliveryCompany.ville,
+            DeliveryCompany.idLivraison
+          ],
+          (err, result) => {
+            if (err) { 
+              console.log(err);
+              callback(err);
+            }
+          }
+        )
         callback(null, DeliveryCompany.idLivraison);
       }
     );
   }
   else {
-    queryString = `UPDATE DeliveryCompany SET prenomDeliveryCompany=?, nomDeliveryCompany=?, motDePasse=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, email=? WHERE idDeliveryCompany=?`;
+    queryString = `UPDATE societelivraison SET prenomDeliveryCompany=?, nomDeliveryCompany=?, motDePasse=?, codeGenere=?, siret=?, telephone=?, statutCompte=?, email=? WHERE idDeliveryCompany=?`;
     db.query(
       queryString,
       [
