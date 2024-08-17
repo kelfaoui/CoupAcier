@@ -3,6 +3,7 @@ const OrdersRouter = express.Router()
 const OrdersController = require('../controllers/OrdersController')
 
 OrdersRouter.get("/", OrdersController.getAll);
+OrdersRouter.get("/quots", OrdersController.getAllQuots);
 OrdersRouter.get("/client-orders/:idClient", OrdersController.getClientOrders);
 OrdersRouter.get("/:id", OrdersController.getOrderById);
 OrdersRouter.post("/", OrdersController.createOrder);

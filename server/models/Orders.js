@@ -113,6 +113,33 @@ const getClientOrders = (idClient, callback) => {
 };
 
 
+const getAllQuots = (callback) => {
+  const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient AND A.devis = 1`;
+
+  db.query(queryString, (err, result) => {
+    if (err) {
+      callback(err);
+    }
+
+    const rows = result;
+    const Orders = [];
+
+    rows.forEach((row) => {
+      const Order = {
+        idCommande : row.idCommande,
+        dateCommande : row.dateCommande,
+        statusCommande : row.statusCommande,
+        devis : row.devis,
+        type : row.type,
+        nomClient : row.nomClient,
+        prenomClient : row.prenomClient
+      };
+      Orders.push(Order);
+    });
+    callback(null, Orders);
+  });
+};
+
 const getAll = (callback) => {
   const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient`;
 
@@ -197,4 +224,4 @@ const deleteOrder = (OrderId, callback) => {
   });
 };
 
-module.exports = { createOrder, getOrderById, orderInDatabase, getAll, getClientOrders, updateOrder, deleteOrder }
+module.exports = { createOrder, getOrderById, orderInDatabase, getAll, getAllQuots, getClientOrders, updateOrder, deleteOrder }

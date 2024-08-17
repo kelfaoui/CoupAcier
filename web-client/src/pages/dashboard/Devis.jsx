@@ -3,8 +3,7 @@ import axios from 'axios';
 import { React, useEffect, useState } from 'react';
 import { MagnifyingGlassIcon, PencilSquareIcon, TrashIcon , PlusIcon} from "@heroicons/react/24/outline";
 
-function DashboardDevis() {
-
+function Devis() {
   const [commandes, setCommandes] = useState();
   const [isLoaded, setIsLoaded] = useState(false)
 
@@ -42,7 +41,7 @@ function DashboardDevis() {
           <thead className="border">
             <th className="p-3 border" >Date</th>
             <th className="p-3 border" >Client</th>
-
+            <th className="p-3 border" >Status commande</th>
             <th className="p-3 border" >Total</th>
             <th className="p-3 border" ></th>
           </thead>
@@ -51,7 +50,7 @@ function DashboardDevis() {
             <tr className="border">
               <td className="border py-2 px-4 border-b border-gray-200">{commande.dateCommande.substr(0, 10)}</td>
               <td className="border py-2 px-4 border-b border-gray-200">{commande.prenomClient + " " + commande.nomClient}</td>
-             
+              <td className="border py-2 px-4 border-b border-gray-200">{commande.statusCommande}</td>
               <td className="border py-2 px-4 border-b border-gray-200">20000 €</td>
               <td className="border py-2 px-4 border-b border-gray-200 text-end">
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
@@ -71,4 +70,4 @@ function DashboardDevis() {
   );
 }
 
-export default DashboardDevis;
+export default Devis;

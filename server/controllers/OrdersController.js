@@ -9,6 +9,16 @@ const getAll = async (req, res) => {
   });
 };
 
+const getAllQuots = async (req, res) => {
+  ordersModel.getAllQuots((err, Orders) => {
+    if (err) {
+      return res.status(500).json({"errorMessage": err.message});
+    }
+    res.status(200).json({"data": Orders});
+  });
+};
+
+
 
 const getClientOrders = async (req, res) => {
   const idClient = Number(req.params.idClient);
@@ -64,4 +74,4 @@ const login = async (req, res) => {
   
 };
 
-module.exports = { getAll, getClientOrders, createOrder, getOrderById, updateOrder, deleteOrder, login }
+module.exports = { getAll, getClientOrders, createOrder, getOrderById, updateOrder, deleteOrder, login, getAllQuots }

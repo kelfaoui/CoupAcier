@@ -47,15 +47,15 @@ export default function Cart({ showModal, toggle }) {
     notifyRemovedFromCart(product)
   }
 
-  const finalizeOrder = () => {
+  const finalizeOrder = (devis) => {
     const nbrElement = document.getElementById("number")
 
     const order = {
       statusCommande: 1,
-      devis: 0,
+      devis: devis,
       type: 1,
       dateLivraison: null,
-      referenceLivraison: "123456789",
+      referenceLivraison: String(Date.now()).substring(0, 10),
       ModeReception: 1,
       reference: String(Date.now()).substring(0, 10),
       idClient: 1,
@@ -205,7 +205,8 @@ export default function Cart({ showModal, toggle }) {
             <h1 className="text-lg font-bold">Le panier est vide</h1>
           )
         }
-        <a href="#" onClick={() => finalizeOrder()} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Envoyer le commande</a>
+        <a href="#" onClick={() => finalizeOrder(0)} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Envoyer le commande</a>
+        <a href="#" onClick={() => finalizeOrder(1)} className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700">Devis</a>
       </div>
     )
   )
@@ -215,4 +216,3 @@ Cart.propTypes = {
   showModal: PropTypes.bool,
   toggle: PropTypes.func
 }
-

@@ -14,7 +14,7 @@ import RegisterPro from './pages/RegisterPro'
 import LoginPage from './pages/LoginPage'
 import LoginPro from './pages/LoginPro'
 import LoginPart from './pages/LoginPart'
-import Devis from './pages/Devis'
+import Devis from './pages/dashboard/Devis'
 import Favoris from './pages/Favoris'
 import Product from './pages/Product'
 import Produits from './pages/Produits'
@@ -70,6 +70,7 @@ function App() {
           <Route path="/dashboard/produits" element={<DashboardProduits />}></Route>
           <Route path="/dashboard/clients" element={<Clientss />}></Route>
           <Route path="/dashboard/commandes" element={<Commandes />}></Route>
+          <Route path="/dashboard/devis" element={<Devis />}></Route>
           <Route path="/dashboard/demandes-devis" element={<DashboardDevis />}></Route>
           <Route path="/dashboard/home" element={<DashboardHome />}></Route>
           <Route path="/dashboard/fournisseurs" element={<Fournisseurs />}></Route>
