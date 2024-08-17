@@ -8,11 +8,7 @@ const Livreur = () => {
     prenomLivreur: '',
     motDePasse: '',
     email: '',
-    idLivraison: '',
-    numeroVoie: '',
-    nomVoie: '',
-    codePostale: '',
-    ville: ''
+    idLivraison: ''
   });
 
   const [params] = useSearchParams()
@@ -157,40 +153,7 @@ const Livreur = () => {
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
       </div>
-      Adresse
-      <div className="group relative  bg-white rounded-xl">
-        <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-          <label className="w-full font-bold">Numéro voie
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="numeroVoie" value={formData.numeroVoie} onChange={handleChange}></input>
-
-          </label>
-        </div>
-      </div>
-      <div className="group relative  bg-white rounded-xl">
-        <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-          <label className="w-full font-bold">Nom voie
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="nomVoie" value={formData.nomVoie} onChange={handleChange}></input>
-
-          </label>
-        </div>
-      </div>
-
-      <div className="group relative  bg-white rounded-xl">
-        <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-          <label className="w-full font-bold">Code postal
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="codePostale" value={formData.codePostale} onChange={handleChange}></input>
-
-          </label>
-        </div>
-      </div>
-      <div className="group relative  bg-white rounded-xl mb-10">
-        <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-          <label className="w-full font-bold">Ville
-            <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" name="ville" value={formData.ville} onChange={handleChange}></input>
-
-          </label>
-        </div>
-      </div>
+     
 
       <div className="flex items-center justify-between">
         <a onClick={() => submit()} class="w-1/2 bg-yellow-400 text-black py-2 px-4 rounded-md hover:bg-yellow-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50">Enregistrer</a>

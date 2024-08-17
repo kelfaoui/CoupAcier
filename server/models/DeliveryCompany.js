@@ -24,11 +24,31 @@ const createDeliveryCompany = (DeliveryCompany, callback) => {
     ],
     (err, result) => {
       if (err) { 
+        
         console.log(err);
+        const queryString =
+        `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idLivraison) 
+        VALUES (NULL, ?, ?, ?, ?, ?)`;
+  
+        db.query(
+          queryString,
+          [
+            DeliveryMan.numeroVoie,
+            DeliveryMan.nomVoie,
+            DeliveryMan.codePostale,
+            DeliveryMan.ville,
+            (result).insertId
+          ],
+          (err, result) => {
+            if (err) { 
+              console.log(err);
+              callback(err);
+            }
+          }
+        )
         callback(err);
       }
-      const insertId = (result).insertId;
-      callback(null, insertId);
+      callback(null, result);
     }
   );
 };

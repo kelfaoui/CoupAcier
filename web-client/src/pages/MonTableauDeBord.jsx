@@ -47,7 +47,7 @@ function MonTableauDeBord() {
   useEffect(() => {
     getCommandes()
     getClient()
-  })
+  }, [])
 
   if (!isLoaded) return ("Loading")
 
@@ -77,4 +77,3 @@ function MonTableauDeBord() {
 }
 
 export default MonTableauDeBord;
-

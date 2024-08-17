@@ -1,16 +1,5 @@
 const db = require("../db");
 
-/**
- 	`idLivreur` INT(10) NOT NULL AUTO_INCREMENT,
-	`nomLivreur` VARCHAR(100) NOT NULL COLLATE 'latin1_swedish_ci',
-	`prenomLivreur` VARCHAR(100) NOT NULL COLLATE 'latin1_swedish_ci',
-	`motDePasse` VARCHAR(200) NOT NULL COLLATE 'latin1_swedish_ci',
-	`email` VARCHAR(200) NOT NULL COLLATE 'latin1_swedish_ci',
-	`idLivraison` INT(10) NOT NULL,
-;
-
- */
-
 const createDeliveryMan = (DeliveryMan, callback) => {
   const queryString =
     `INSERT INTO livreur(idLivreur, nomLivreur, prenomLivreur, motDePasse, email, idLivraison) 
@@ -30,34 +19,13 @@ const createDeliveryMan = (DeliveryMan, callback) => {
         console.log(err);
         callback(err);
       }
-      const queryString =
-      `INSERT INTO adresse(idAdresse, numeroVoie, nomVoie, codePostale, ville, idLivraison) 
-      VALUES (NULL, ?, ?, ?, ?, ?)`;
-
-      db.query(
-        queryString,
-        [
-          DeliveryMan.numeroVoie,
-          DeliveryMan.nomVoie,
-          DeliveryMan.codePostale,
-          DeliveryMan.ville,
-          DeliveryMan.idLivraison
-        ],
-        (err, result) => {
-          if (err) { 
-            console.log(err);
-            callback(err);
-          }
-         
-        }
-      )
       callback(null, result);
     } 
   );
 };
 
 const getDeliveryManById = (DeliveryManId, callback) => {
-  const queryString = `SELECT A.*, B.* FROM livreur A, adresse B WHERE A.idLivraison = B.idLivraison AND A.idLivreur = ?`;
+  const queryString = `SELECT * FROM livreur WHERE idLivreur = ?`;
 
   db.query(queryString, DeliveryManId, (err, result) => {
     if (err) {
@@ -71,12 +39,7 @@ const getDeliveryManById = (DeliveryManId, callback) => {
       idLivreur : row.idLivreur,
       nomLivreur : row.nomLivreur,
       prenomLivreur : row.prenomLivreur,
-      email : row.email,
-      idLivraison : row.idLivraison,
-      numeroVoie: row.numeroVoie,
-      nomVoie: row.nomVoie,
-      codePostale: row.codePostale,
-      ville: row.ville
+      email : row.email
     };
     callback(null, livreur);
   });
@@ -137,26 +100,6 @@ const updateDeliveryMan = (DeliveryMan, callback) => {
           console.log(err)
           callback(err);
         }
-        const queryString =
-      `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idLivraison = ?`;
-
-      db.query(
-        queryString,
-        [
-          DeliveryMan.numeroVoie,
-          DeliveryMan.nomVoie,
-          DeliveryMan.codePostale,
-          DeliveryMan.ville,
-          DeliveryMan.idLivraison
-        ],
-        (err, result) => {
-          if (err) { 
-            console.log(err);
-            callback(err);
-          }
-         
-        }
-      )
         callback(null, DeliveryMan.idLivreur);
       }
     );
@@ -171,38 +114,17 @@ const updateDeliveryMan = (DeliveryMan, callback) => {
         DeliveryMan.motDePasse,
         DeliveryMan.email,
         DeliveryMan.idLivraison,
-        DeliveryMan.idDeliveryMan
+        DeliveryMan.idLivreur
       ],
       (err, result) => {
         if (err) {
           callback(err);
-          c
+          console.log(err)
         }
-        const queryString =
-      `UPDATE adresse SET numeroVoie = ?, nomVoie = ?, codePostale = ?, ville = ? WHERE idLivraison = ?`;
-
-        db.query(
-          queryString,
-          [
-            DeliveryMan.numeroVoie,
-            DeliveryMan.nomVoie,
-            DeliveryMan.codePostale,
-            DeliveryMan.ville,
-            DeliveryMan.idLivreur
-          ],
-          (err, result) => {
-            if (err) { 
-              console.log(err);
-              callback(err);
-            }
-          
-          }
-        )
         callback(null, DeliveryMan.idLivreur);
       }
     );
   }
-  
 };
 
 const deleteDeliveryMan = (DeliveryManId, callback) => {
