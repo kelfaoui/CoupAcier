@@ -114,7 +114,32 @@ const getClientOrders = (idClient, callback) => {
 
 
 const getAllQuots = (callback) => {
-  const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient AND A.devis = 1`;
+  const queryString = `SELECT 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient, 
+  SUM(C.prixMetre * C.quantite - C.ristourne) AS total 
+FROM 
+  commande A
+JOIN 
+  client B ON A.idClient = B.idClient
+JOIN 
+  lignecommande C ON A.idCommande = C.idCommande
+
+WHERE A.devis = 1 
+
+GROUP BY 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient`;
 
   db.query(queryString, (err, result) => {
     if (err) {
@@ -132,7 +157,8 @@ const getAllQuots = (callback) => {
         devis : row.devis,
         type : row.type,
         nomClient : row.nomClient,
-        prenomClient : row.prenomClient
+        prenomClient : row.prenomClient,
+        total : row.total
       };
       Orders.push(Order);
     });
@@ -141,7 +167,29 @@ const getAllQuots = (callback) => {
 };
 
 const getAll = (callback) => {
-  const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient`;
+  const queryString = `SELECT 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient, 
+  SUM(C.prixMetre * C.quantite - C.ristourne) AS total 
+FROM 
+  commande A
+JOIN 
+  client B ON A.idClient = B.idClient
+JOIN 
+  lignecommande C ON A.idCommande = C.idCommande
+GROUP BY 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient`;
 
   db.query(queryString, (err, result) => {
     if (err) {
@@ -159,7 +207,8 @@ const getAll = (callback) => {
         devis : row.devis,
         type : row.type,
         nomClient : row.nomClient,
-        prenomClient : row.prenomClient
+        prenomClient : row.prenomClient,
+        total: row.total
       };
       Orders.push(Order);
     });

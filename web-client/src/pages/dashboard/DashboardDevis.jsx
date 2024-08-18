@@ -40,19 +40,17 @@ function DashboardDevis() {
       </a>
         <table border={1} className="mt-10 border-collapse table-auto text-sm bg-white text-left mb-20 w-full ">
           <thead className="border">
-            <th className="p-3 border" >Date</th>
-            <th className="p-3 border" >Client</th>
-
-            <th className="p-3 border" >Total</th>
-            <th className="p-3 border" ></th>
+            <th className="p-3 border">Date</th>
+            <th className="p-3 border">Client</th>
+            <th className="p-3 border">Total</th>
+            <th className="p-3 border"></th>
           </thead>
           <tbody>
           {commandes.map((commande) => (
             <tr className="border">
               <td className="border py-2 px-4 border-b border-gray-200">{commande.dateCommande.substr(0, 10)}</td>
               <td className="border py-2 px-4 border-b border-gray-200">{commande.prenomClient + " " + commande.nomClient}</td>
-             
-              <td className="border py-2 px-4 border-b border-gray-200">20000 €</td>
+              <td className="border py-2 px-4 border-b border-gray-200">{commande.total} €</td>
               <td className="border py-2 px-4 border-b border-gray-200 text-end">
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon> </a>
