@@ -1,3 +1,4 @@
+
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { CartContext } from "../context/cart"
@@ -58,7 +59,7 @@ export default function Cart({ showModal, toggle }) {
       referenceLivraison: String(Date.now()).substring(0, 10),
       ModeReception: 1,
       reference: String(Date.now()).substring(0, 10),
-      idClient: 1,
+      idClient: localStorage["user_id"],
       idLivreur: null,
       idAdresse: null
     }
@@ -75,6 +76,7 @@ export default function Cart({ showModal, toggle }) {
       .then(res => {
         console.log(res);
         orderId = res.data.idCommande
+        console.log(cartItems)
         cartItems.map((item) => {
           const prod = data.data.find((p) => p.idProduit === item.idProduit)
           if (prod) {
@@ -123,16 +125,11 @@ export default function Cart({ showModal, toggle }) {
 
   return (
     showModal && (
-      <div className="flex-col flex items-center fixed inset-0 left-1/4 bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-index-top overflow-y-scroll">
+      <div className="flex-col flex items-center inset-0 left-1/4 bg-white dark:bg-black gap-8  p-10  text-black dark:text-white font-normal uppercase text-sm z-index-top overflow-y-scroll">
         <ToastContainer />
         <h1 className="text-2xl font-bold">Panier</h1>
         <div className="absolute right-16 top-10">
-          <button
-            className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-            onClick={toggle}
-          >
-            Fermer
-          </button>
+          
         </div>
         <div className="flex flex-col gap-4">
           {cartItems.map((item) => (

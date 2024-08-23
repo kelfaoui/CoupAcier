@@ -47,6 +47,7 @@ import SocietesLivraison from './pages/dashboard/SocietesLivraison'
 import Livreurs from './pages/dashboard/Livreurs'
 import ClientFavorites from './components/ClientFavorites'
 import MesFavoris from './pages/MesFavoris'
+import MyCart from './pages/Cart'
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           <Route path="/login" element={<LoginPage />}></Route>
           <Route path="/login-part" element={<LoginPart />}></Route>
           <Route path="/login-pro" element={<LoginPro />}></Route>
+          <Route path="/cart" element={<MyCart />}></Route>
         </Route>
         <Route path="/dashboard/" element={<DashboardLayout />}>
           <Route path="/dashboard/" element={<DashboardHome />}></Route>
@@ -89,7 +91,7 @@ function App() {
           <Route path="/dashboard/societes-livraison" element={<SocietesLivraison />}></Route>
           <Route path="/dashboard/livreurs" element={<Livreurs />}></Route>
           <Route path="/dashboard/livreur" element={<Livreur />}></Route>
-          
+           
         </Route>
         <Route path="/tableau-de-bord/" element={<ClientLayout />}>
           <Route path="/tableau-de-bord/" element={<MonTableauDeBord />}></Route>
@@ -100,6 +102,7 @@ function App() {
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard/login" element={<LoginEmploye />}></Route>
+       
         </Routes>
       </BrowserRouter>
     </>

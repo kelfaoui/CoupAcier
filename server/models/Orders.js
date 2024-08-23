@@ -86,7 +86,32 @@ const orderInDatabase = (Order, callback) => {
 };
 
 const getClientOrders = (idClient, callback) => {
-  const queryString = `SELECT A.idCommande, A.dateCommande, A.statusCommande, A.devis, A.type, B.nomClient, B.prenomClient FROM commande A, client B WHERE A.idClient = B.idClient AND A.idClient = ?`;
+  const queryString = `SELECT 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient, 
+  SUM(C.prixMetre * C.quantite - C.ristourne) AS total 
+FROM 
+  commande A
+JOIN 
+  client B ON A.idClient = B.idClient
+JOIN 
+  lignecommande C ON A.idCommande = C.idCommande
+
+WHERE A.idClient = ? 
+
+GROUP BY 
+  A.idCommande, 
+  A.dateCommande, 
+  A.statusCommande, 
+  A.devis, 
+  A.type, 
+  B.nomClient, 
+  B.prenomClient`;
 
   db.query(queryString,  [idClient], (err, result) => {
     if (err) {
@@ -104,7 +129,8 @@ const getClientOrders = (idClient, callback) => {
         devis : row.devis,
         type : row.type,
         nomClient : row.nomClient,
-        prenomClient : row.prenomClient
+        prenomClient : row.prenomClient,
+        total: row.total
       };
       Orders.push(Order);
     });

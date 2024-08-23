@@ -1,4 +1,6 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useContext} from 'react'
+import { CartContext } from "../context/cart"
+import Cart from '../components/Cart';
 import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import viteLogo from '/logo.svg'
 import {
@@ -31,8 +33,16 @@ function classNames(...classes) {
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const [showModal, setshowModal] = useState(false);
+
+  const { cartItems, addToCart , removeFromCart} = useContext(CartContext)
+
+  const toggle = () => {
+    setshowModal(!showModal);
+  };
+
   return (
-    <header className="bg-gray-100">
+   <header className="bg-gray-100">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -57,19 +67,19 @@ export default function Header() {
             Produits
           </a>
           <a href="/contact" className="text-sm font-semibold leading-6 text-gray-900">
-            Contact 
+            Contact
           </a>
         </Popover.Group>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end justify-between">
-          <a href="" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
+          <a href="/cart" className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <ShoppingCartIcon width="24" />
           </a>
           <a href={localStorage["user_id"] ? "/favoris" : "/login"} className="text-sm font-semibold leading-6 text-gray-900 mx-4">
             <HeartIcon width="24" />
           </a>
-          
+
           <a href={localStorage["user_id"] ? "/tableau-de-bord" : "/login"} className="text-sm font-semibold leading-6 text-gray-900 mx-4">
-           <UserIcon width="24" />
+            <UserIcon width="24" />
           </a>
         </div>
       </nav>
@@ -82,8 +92,7 @@ export default function Header() {
               <img
                 className="h-8 w-auto"
                 src={viteLogo}
-                alt=""
-              />
+                alt="" />
             </a>
             <button
               type="button"
@@ -104,8 +113,7 @@ export default function Header() {
                         Product
                         <ChevronDownIcon
                           className={classNames(open ? 'rotate-180' : '', 'h-5 w-5 flex-none')}
-                          aria-hidden="true"
-                        />
+                          aria-hidden="true" />
                       </Disclosure.Button>
                       <Disclosure.Panel className="mt-2 space-y-2">
                         {[...products, ...callsToAction].map((item) => (
@@ -153,6 +161,7 @@ export default function Header() {
           </div>
         </Dialog.Panel>
       </Dialog>
+      <Cart showModal={showModal} toggle={toggle} ></Cart>
     </header>
   )
 }
