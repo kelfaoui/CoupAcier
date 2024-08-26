@@ -49,6 +49,7 @@ import Livreurs from './pages/dashboard/Livreurs'
 import ClientFavorites from './components/ClientFavorites'
 import MesFavoris from './pages/MesFavoris'
 import MyCart from './pages/Cart'
+import CommandeClient from './pages/Commande'
 
 function App() {
 
@@ -102,7 +103,8 @@ function App() {
           <Route path="/tableau-de-bord/mes-commandes/" element={<MesCommandes />}></Route>
           <Route path="/tableau-de-bord/favoris/" element={<MesFavoris />}></Route>
           <Route path="/tableau-de-bord/profile/" element={<Profil />}></Route>
-          <Route path="/tableau-de-bord/commande/" element={<Commande />}></Route>
+          <Route path="/tableau-de-bord/commande/" element={<CommandeClient />}></Route>
+          
         </Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard/login" element={<LoginEmploye />}></Route>

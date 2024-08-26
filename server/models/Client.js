@@ -1,4 +1,5 @@
 const db = require("../db");
+const bcrypt = require('bcryptjs');
 
 /**
  CREATE TABLE `client` (
@@ -22,11 +23,14 @@ ENGINE=InnoDB
 
  */
 
-const createClient = (Client, callback) => {
+const createClient = async (Client, callback) => {
   const queryString =
     `INSERT INTO Client(idClient, prenomClient, nomClient, motDePasse, codeGenere, siret, telephone, statutCompte, profilClient, dateCreation, email) 
     VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
 
+  const salt = await bcrypt.genSalt(10);
+  Client.motDePasse = await bcrypt.hash(Client.motDePasse, salt);
+  
   db.query(
     queryString,
     [

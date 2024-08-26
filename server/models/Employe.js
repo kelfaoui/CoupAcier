@@ -1,10 +1,13 @@
 const db = require("../db");
+const bcrypt = require('bcryptjs');
 
-const createEmploye = (Employe, callback) => {
+const createEmploye = async (Employe, callback) => {
   const queryString =
     "INSERT INTO Employe(idEmploye, nomEmploye, prenomEmploye, nomRole, email, motDePasse) VALUES (NULL, ?, ?, ?, ?, ?)";
 
-    console.log(Employe) 
+    
+  const salt = await bcrypt.genSalt(10);
+  Employe.motDePasse = await bcrypt.hash(Employe.motDePasse, salt);
   db.query(
     queryString,
     [
@@ -121,14 +124,15 @@ const deleteEmploye = (EmployeId, callback) => {
 };
 
 const employeInDatabase = (employe, callback) => {
-  const queryString = `SELECT * FROM employe WHERE email = ? AND motDePasse = ?`;
-  db.query(queryString, [employe.email, employe.password], (err, result) => {
+  const queryString = `SELECT * FROM employe WHERE email = ?`;
+  db.query(queryString, [employe.email], async (err, result) => {
     if (err) {
       console.log(err);
       callback(err);
     }
     const rows = result;
-    
+    const password = await bcrypt.compare(employe.password, rows[0].motDePasse)
+    if(password)
     return callback(rows[0]);
   });
 };

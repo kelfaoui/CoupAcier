@@ -50,7 +50,7 @@ function MonTableauDeBord() {
   }, [])
 
   if (!isLoaded) return ("Loading")
-
+  if(!localStorage["user_id"]) return (<p>Unauthorized!</p>)
   return (
     <div className="rounded w-full p-5 flex">
        

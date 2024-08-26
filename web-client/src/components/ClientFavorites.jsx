@@ -66,7 +66,7 @@ function ClientFavorites() {
                   <p class="text-3xl font-bold text-blue-700 mx-auto">{favori.nomProduit}</p>
                 </div>
                 <div className="mt-4 flex">
-                  <a href="#" className="text-center primary-bg-color w-full mx-auto p-2 border-2 rounded-full text-xl font-bold bg-green-600">
+                  <a href={"http://localhost:5173/produit/" + favori.idProduit} className="text-center primary-bg-color w-full mx-auto p-2 border-2 rounded-full text-xl font-bold bg-green-600">
                     Ajouter au panier
                   </a>
                 </div>
@@ -85,4 +85,3 @@ function ClientFavorites() {
 }
 
 export default ClientFavorites;
-

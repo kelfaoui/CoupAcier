@@ -42,6 +42,7 @@ export default function Profil() {
     getClient()
   }, [])
   if(!isLoaded) return ("Loading..")
+  if(!localStorage["user_id"]) return (<p>Unauthorized!</p>)
   return (
     <>
       <main>

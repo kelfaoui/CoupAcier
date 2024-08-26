@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types'
 import { useContext } from 'react'
 import { CartContext } from "../context/cart"
@@ -103,7 +102,7 @@ export default function Cart({ showModal, toggle }) {
               .finally(() => setLoading(false))
           }
         })
-        window.location.href = "/produits"
+        window.location.href = "/tableau-de-bord/"
       })
     clearCart()
   }

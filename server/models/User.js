@@ -1,4 +1,6 @@
 const db = require("../db");
+const bcrypt = require('bcryptjs');
+
 
 const createUser = (user, callback) => {
   const queryString =
@@ -67,13 +69,15 @@ const getUserByEmail = (email, callback) => {
 };
 
 const userInDatabase = (user, callback) => {
-  const queryString = `SELECT * FROM client WHERE email = ? AND motDePasse = ?`;
-  db.query(queryString, [user.email, user.password], (err, result) => {
+  const queryString = `SELECT * FROM client WHERE email = ?`;
+  db.query(queryString, [user.email], async (err, result) => {
     if (err) {
       console.log(err);
       callback(err);
     }
     const rows = result;
+    const password = await bcrypt.compare(user.password, rows[0].motDePasse)
+    if(password)
     return callback(rows[0]);
   });
 };

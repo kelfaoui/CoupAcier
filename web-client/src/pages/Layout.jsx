@@ -5,7 +5,7 @@ import Footer from "../components/Footer"
 import { useEffect } from "react"
 
 function Layout() {
- 
+    
     return (
       <>
         <Header />

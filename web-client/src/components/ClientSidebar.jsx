@@ -4,7 +4,7 @@ import React from "react";
 import viteLogo from '/logo.svg';
 
 function ClientSidebar() {
-
+    if(!localStorage["user_id"]) return (<p>Unauthorized!</p>)
 
     const logout = () => {
         localStorage.removeItem("token");

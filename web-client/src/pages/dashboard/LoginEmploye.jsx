@@ -32,7 +32,7 @@ export default function LoginEmploye() {
     .then(res => {
       localStorage.setItem("token", res.data.accessToken)
       localStorage.setItem("employe_id", res.data.user_id)
-      window.location.href = "/"
+      window.location.href = "/dashboard/clients"
     })
   }
 

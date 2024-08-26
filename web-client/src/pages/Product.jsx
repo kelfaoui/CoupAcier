@@ -101,9 +101,7 @@ export default function Product() {
       <main>
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-5 sm:px-6 sm:py-12 lg:max-w-7xl lg:px-8 text-end">
-          {!showModal && <button className='px-10 py-4 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700'
-          onClick={toggle}
-        >Mon panier ({cartItems.length})</button>}
+
             <section className="mt-5 text-left">
               <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-8 my-10">
                 <div className="group relative p-5 bg-gray-300">
