@@ -11,7 +11,6 @@ const csrf = require('csurf')
 var cookieParser = require('cookie-parser')
 
 // Used for session saving
-
 const http = require("http");
 
 // Accepter les variables d'environnement
@@ -19,6 +18,8 @@ const env = require("dotenv").config();
 
 // Json Web Token
 const jwt = require("jsonwebtoken");
+// Limiter le nombre de tentatives de connexion
+const rateLimit = require('express-rate-limit');
 
 // Importer les routes
 const GuestsRouter = require("./routers/Guests");
@@ -71,7 +72,7 @@ const is_production = process.env.IS_PRODUCTION === "yes" ? true : false;
 app.use(
   cors({
     origin: "http://localhost:5173",
-    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
     credentials: true,
   })
 ); 
@@ -131,8 +132,16 @@ const isAuthenticated = async (req, res, next) => {
   });
 };
 
+
+const loginLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes d'attente
+  max: 5, 
+  message: 'Trop de tentatives de connexion depuis cette IP, veuillez réessayer après 15 minutes'
+});
+
+
 // L'authentification utilise
-app.post("/login", (req, res) => {
+app.post("/login", loginLimiter, (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
   console.log(email);
@@ -152,7 +161,7 @@ app.post("/login", (req, res) => {
 });
 
 // L'authentification utilise
-app.post("/login-employee", (req, res) => {
+app.post("/login-employee", loginLimiter, (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 

@@ -5,6 +5,27 @@ import { MagnifyingGlassIcon, PencilSquareIcon, PlusIcon, TrashIcon } from "@her
 function Clientss() {
     const [clients, setClients] = useState();
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const deleteClient = (id) => {
+      axios.delete(`http://127.0.0.1:5000/clients/${id}`, {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        }
+      })
+        .then(function (res) {
+          setClients(res.data.data);
+          console.log(res.data.data);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+        .finally(function () {
+          setIsLoaded(true)
+        });
+    }
+    useEffect(() => {
+      getClients()
+    }, [])
   
     const getClients = () => {
       axios.get('http://127.0.0.1:5000/clients', {
@@ -60,7 +81,7 @@ function Clientss() {
                 <a href={"/dashboard/client?id=" + client.idClient} className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <PencilSquareIcon width={18} />
                 </a>
-                <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
+                <a onClick={() => deleteClient(client.idClient)} className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <MagnifyingGlassIcon width={18}></MagnifyingGlassIcon>
                 </a>
                 </td>
@@ -74,4 +95,3 @@ function Clientss() {
 }
 
 export default Clientss;
-
