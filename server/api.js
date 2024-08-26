@@ -7,6 +7,8 @@ const app = express();
 var session = require("express-session");
 var jsonParser = bodyParser.json();
 // const { Server } = require("socket.io");
+const csrf = require('csurf')
+var cookieParser = require('cookie-parser')
 
 // Used for session saving
 
@@ -63,16 +65,27 @@ app.set("trust proxy", 1);
 
 const is_production = process.env.IS_PRODUCTION === "yes" ? true : false;
 
-/*
+
+// Authoriser une seule source pour éviter les attaques CSRF
+// Seuls les requetes venant du site client peuvent entrer : http://localhost:5173/
 app.use(
   cors({
-    origin: "*",
+    origin: "http://localhost:5173",
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
   })
-); */
+); 
 
 app.use(cors())
+
+app.use(cookieParser());
+// app.use(csrf({ cookie: true }));
+
+app.get('/csrf-token', (req, res) => {
+  res.json({ csrfToken: req.csrfToken() });
+});
+
+/*
 
 const sessionConfig = {
   secret: process.env.SESSION_SECRET,
@@ -159,6 +172,7 @@ app.post("/login-employee", (req, res) => {
     }
   });
 });
+
 
 app.use("/users", UsersRouter);
 app.use("/employes", EmployesRouter);

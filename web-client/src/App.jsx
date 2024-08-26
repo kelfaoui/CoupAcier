@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
+import axios from 'axios'
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import './App.css'
@@ -50,6 +51,9 @@ import MesFavoris from './pages/MesFavoris'
 import MyCart from './pages/Cart'
 
 function App() {
+
+
+  
   return (
     <>
       <BrowserRouter>
