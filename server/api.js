@@ -133,6 +133,7 @@ const isAuthenticated = async (req, res, next) => {
 };
 
 
+// Permet de limiter le nombre de tentatives de connexion avec mot de passe
 const loginLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes d'attente
   max: 5, 

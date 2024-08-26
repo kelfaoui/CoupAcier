@@ -3,6 +3,7 @@
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
+    "chai": "4.1",
     "connect-mongo": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
@@ -19,5 +20,12 @@
     "path": "^0.12.7",
     "rate-limit": "^0.1.1",
     "serverless-http": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "^10.7.3",
+    "sinon": "^18.0.0"
   }
 }
