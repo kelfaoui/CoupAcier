@@ -92,3 +92,8 @@
   line-height: 2.9rem !important;
   font-size: 3.2 !important;
 }
+
+.InputContainer .InputElement {
+  padding: 10px !important;
+  border: 1px solid #666 !important;
+}

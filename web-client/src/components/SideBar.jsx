@@ -83,7 +83,7 @@ function DashboardSideBar() {
                     </li>
 
                 </a>
-                <a href="/dashboard/entrepots">
+                {/* <a href="/dashboard/entrepots">
                     <li className="flex my-1 p-1">
                         <CubeIcon width={24} className="mr-2" />
                         <span className="text-white">
@@ -91,7 +91,7 @@ function DashboardSideBar() {
                         </span>
                     </li>
 
-                </a>
+                </a> */}
                 <a className="fixed bottom-5" onClick={() => logout()}>
                     <li className="flex my-4" >
                         <ArrowLeftEndOnRectangleIcon width={24} className="mr-2" />

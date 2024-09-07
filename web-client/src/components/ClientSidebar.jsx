@@ -17,9 +17,9 @@ function ClientSidebar() {
             <div className="bg-black text-white px-4 py-1 ml-0 h-screen">
                 <ul className="options">
                 <a className="" href="/tableau-de-bord/">
-                    <li className="flex my-5 bg-yellow-400 p-3 rounded-3xl text-black mt-10">
+                    <li className="flex my-5  mt-10">
                         <BanknotesIcon width={24} className="mr-2 " />
-                        <span className="text-black">
+                        <span className="text-white">
                             Tableau de bord
                         </span>
                     </li>

@@ -86,40 +86,7 @@ app.get('/csrf-token', (req, res) => {
   res.json({ csrfToken: req.csrfToken() });
 });
 
-/*
 
-const sessionConfig = {
-  secret: process.env.SESSION_SECRET,
-  resave: true,
-  saveUninitialized: false,
-  rolling: true,
-  cookie: {
-    expires: Date.now() + 1000 * 60 * 60 * 24 * 30,
-    maxAge: 1000 * 60 * 60 * 24 * 30,
-    httpOnly: true,
-    sameSite: "none",
-    secure: true,
-    path: "/",
-  },
-};
-
-// Use the express-session and cors middlewares
-//app.use(cors(corsOptions));
-
-var jsonParser = bodyParser.json();
-app.use(express.json());
-
-/* Si l'utilisateur est connecté version "Session" 
-
-const isAuthenticated = async (req, res, next) => {
-  const { user } = req.session
-  if(!user)
-    res.status(401).json({ message: "Unauthorized"})
-  else
-   next() 
-}
-
-*/
 // Si l'utilisateur se connecte avec JSON WEB TOKEN
 const isAuthenticated = async (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -181,6 +148,23 @@ app.post("/login-employee", loginLimiter, (req, res) => {
       res.sendStatus(403); 
     }
   });
+});
+// Payement stripe
+app.post('/create-payment-intent', async (req, res) => {
+  const { amount } = req.body;
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: 'eur',
+    });
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
 });
 
 

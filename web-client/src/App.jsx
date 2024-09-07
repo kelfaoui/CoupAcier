@@ -50,6 +50,8 @@ import ClientFavorites from './components/ClientFavorites'
 import MesFavoris from './pages/MesFavoris'
 import MyCart from './pages/Cart'
 import CommandeClient from './pages/Commande'
+import CheckOut from './pages/CheckOut'
+import Payer from './pages/Payer'
 
 function App() {
 
@@ -71,6 +73,7 @@ function App() {
           <Route path="/login-part" element={<LoginPart />}></Route>
           <Route path="/login-pro" element={<LoginPro />}></Route>
           <Route path="/cart" element={<MyCart />}></Route>
+          <Route path="/checkout" element={<Payer />}></Route>
         </Route>
         <Route path="/dashboard/" element={<DashboardLayout />}>
           <Route path="/dashboard/" element={<DashboardHome />}></Route>
@@ -106,6 +109,7 @@ function App() {
           <Route path="/tableau-de-bord/commande/" element={<CommandeClient />}></Route>
           
         </Route>
+      
         <Route path="/login" element={<Login />}></Route>
         <Route path="/dashboard/login" element={<LoginEmploye />}></Route>
        

@@ -245,7 +245,7 @@ export default function RegisterPart() {
               </div>
             </div>
             <div className="pt-10">
-              <a className="bg-white  px-3 py-2 rounded lg:w-1/3 block text-black font-bold text-center mx-auto button-to-front" onClick={validateForm}>
+              <a className="bg-white  px-3 py-2 rounded lg:w-1/3 block text-black font-bold text-center mx-auto button-to-front" onClick={() => Register()}>
               <span className="bg-blue-500  px-3 py-2 rounded lg:w-4/5 block text-black font-bold text-center mx-auto button-to-front" >S'inscrire
               </span>
               </a>

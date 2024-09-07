@@ -18,6 +18,7 @@ export default function RegisterPart() {
   const [adresse, setAdresse] = useState('');
   const [complementAdresse, setComplementAdresse] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState(''); // Add state for confirm password
 
   // Adresse ici :
   const [numeroVoie, setNumeroVoie] = useState('')
@@ -30,23 +31,27 @@ export default function RegisterPart() {
 
   const nomClientChange = (e) => {
     setNomClient(e.target.value);
+    validateForm({ nomClient: e.target.value }); // Validate on change
   };
 
   const prenomClientChange = (e) => {
     setPrenomClient(e.target.value);
+    validateForm({ prenomClient: e.target.value }); // Validate on change
   };
 
   const emailChange = (e) => {
     setEmail(e.target.value);
+    validateForm({ email: e.target.value }); // Validate on change
   };
 
-  
   const telephoneChange = (e) => {
     setTelephone(e.target.value);
+    validateForm({ telephone: e.target.value }); // Validate on change
   };
 
   const adresseChange = (e) => {
     setAdresse(e.target.value);
+    validateForm({ adresse: e.target.value }); // Validate on change
   };
 
   const complementAdresseChange = (e) => {
@@ -54,27 +59,35 @@ export default function RegisterPart() {
   };
 
   const numeroVoieChange = (e) => {
-    setNumeroVoie(e.target.value)
+    setNumeroVoie(e.target.value);
+    validateForm({ numeroVoie: e.target.value }); // Validate on change
   }
 
   const nomVoieChange = (e) => {
-    setNomVoie(e.target.value)
+    setNomVoie(e.target.value);
+    validateForm({ nomVoie: e.target.value }); // Validate on change
   }
 
   const codePostaleChange = (e) => {
-    setCodePostale(e.target.value)
+    setCodePostale(e.target.value);
+    validateForm({ codePostale: e.target.value }); // Validate on change
   }
 
   const villeChange = (e) => {
-    setVille(e.target.value)
+    setVille(e.target.value);
+    validateForm({ ville: e.target.value }); // Validate on change
   }
-
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
+    validateForm({ password: e.target.value }); // Validate on change
   };
 
- 
+  const confirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+    validateForm({ confirmPassword: e.target.value }); // Validate on change
+  };
+
   const validateEmail = (email) => {
     const regExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return String(email)
@@ -82,173 +95,204 @@ export default function RegisterPart() {
       .match(regExp);
   };
 
-  const validateForm = () => {
+  const validatePassword = (password) => {
+    const regExp = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12}$/;
+    return regExp.test(password);
+  };
 
-    const errors = {};
-    if (!nomClient.trim()) errors.nomClient = 'Le nom est obligatoire';
-    else if (nomClient.trim().length < 3) errors.nomClient = 'Le nom est trop court';
+  const validateForm = (fieldValues = {}) => {
+    const tempErrors = { ...errors };
 
-    if (!prenomClient.trim()) errors.prenomClient = 'Le prénom est obligatoire';
-    else if (prenomClient.trim().length < 3) errors.prenomClient = 'Le prénom est trop court';
+    if ('nomClient' in fieldValues)
+      if (!fieldValues.nomClient.trim()) tempErrors.nomClient = 'Le nom est obligatoire';
+      else if (fieldValues.nomClient.trim().length < 3) tempErrors.nomClient = 'Le nom est trop court';
+      else delete tempErrors.nomClient;
 
-    if (!email.trim()) errors.email = 'L\'email est obligatoire';
-    else if (!validateEmail(email.trim())) errors.email = 'L\'email est trop court';
+    if ('prenomClient' in fieldValues)
+      if (!fieldValues.prenomClient.trim()) tempErrors.prenomClient = 'Le prénom est obligatoire';
+      else if (fieldValues.prenomClient.trim().length < 3) tempErrors.prenomClient = 'Le prénom est trop court';
+      else delete tempErrors.prenomClient;
 
-    if (!password.trim()) errors.password = 'Le mot de passe est obligatoire';
-    else if (password.trim().length < 3) errors.password = 'Le mot de passe est trop court';
+    if ('email' in fieldValues)
+      if (!fieldValues.email.trim()) tempErrors.email = 'L\'email est obligatoire';
+      else if (!validateEmail(fieldValues.email.trim())) tempErrors.email = 'L\'email n\'est pas valide';
+      else delete tempErrors.email;
 
+    if ('password' in fieldValues)
+      if (!fieldValues.password.trim()) tempErrors.password = 'Le mot de passe est obligatoire';
+      else if (!validatePassword(fieldValues.password.trim())) tempErrors.password = 'Le mot de passe doit contenir 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial';
+      else delete tempErrors.password;
 
-    if (!telephone.trim()) errors.telephone = 'Le téléphone est obligatoire';
-    else if (telephone.trim().length < 3) errors.telephone = 'Le téléphone est trop court';
+    if ('confirmPassword' in fieldValues)
+      if (fieldValues.confirmPassword !== password) tempErrors.confirmPassword = 'Les mots de passe ne correspondent pas';
+      else delete tempErrors.confirmPassword;
 
-    setErrors(errors);
+    if ('telephone' in fieldValues)
+      if (!fieldValues.telephone.trim()) tempErrors.telephone = 'Le téléphone est obligatoire';
+      else if (fieldValues.telephone.trim().length < 3) tempErrors.telephone = 'Le téléphone est trop court';
+      else delete tempErrors.telephone;
 
+    setErrors(tempErrors);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    validateForm();
     if (Object.keys(errors).length === 0) Register();
-    else return;
-  } 
+  };
+
   const Register = () => {
     var today = new Date();
 
     axios.post(`http://localhost:5000/clients/`, {
-      nomClient: nomClient,
-      prenomClient: prenomClient,
-      email: email,
-      telephone: telephone,
+      nomClient,
+      prenomClient,
+      email,
+      telephone,
       motDePasse: password,
       siret: '',
       statutCompte: 1,
       profilClient: 1,
-      dateCreation: today.getFullYear()  + '-' + (today.getMonth() + 1) + '-' + today.getDate(),
-      numeroVoie: numeroVoie,
-      nomVoie: nomVoie,
-      codePostale: codePostale,
-      ville: ville
+      dateCreation: `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`,
+      numeroVoie,
+      nomVoie,
+      codePostale,
+      ville
     })
-      .then(() => {
-        window.location.href = '/';
-      })
-      .catch((error) => {
-        console.log(error);
-        if (error.response && error.response.status === 400) {
-          // Si le serveur renvoie une erreur 400, cela signifie que l'utilisateur existe déjà
-          setErrors({ email: "Un utilisateur avec le même mail existe déja." });
-        } else {
-          // Gestion d'autres erreurs
-          setErrors({ general: "Erreur inconnue." });
-        }
-      });
-
+    .then(() => {
+      window.location.href = '/';
+    })
+    .catch((error) => {
+      console.log(error);
+      if (error.response && error.response.status === 400) {
+        setErrors({ email: "Un utilisateur avec le même mail existe déjà." });
+      } else {
+        setErrors({ general: "Erreur inconnue." });
+      }
+    });
   };
+
   return (
     <>
       <main>
         <div className="bg-white">
           <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 text-center">
-          <h2 className="text-2xl font-bold tracking-tight text-black  main-h2 inline-block mx-auto"><span>Créer votre compte particulier</span></h2>
+            <h2 className="text-2xl font-bold tracking-tight text-black main-h2 inline-block mx-auto">
+              <span>Créer votre compte particulier</span>
+            </h2>
             <section className="mt-5 text-left">
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Nom :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomClient" value={nomClient} onChange={nomClientChange}></input>
-                      {errors.nomClient && <span className="error"> {errors.nomClient} </span>}
-                    </label>
+              <form onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Nom :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomClient" value={nomClient} onChange={nomClientChange} />
+                        {errors.nomClient && <span className="error">{errors.nomClient}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Prénom :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="prenomClient" value={prenomClient} onChange={prenomClientChange} />
+                        {errors.prenomClient && <span className="error">{errors.prenomClient}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">E-mail :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="email" name="email" value={email} onChange={emailChange} />
+                        {errors.email && <span className="error">{errors.email}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Téléphone :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="tel" name="telephone" value={telephone} onChange={telephoneChange} />
+                        {errors.telephone && <span className="error">{errors.telephone}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Adresse :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="adresse" value={adresse} onChange={adresseChange} />
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Complément d'adresse :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="complementAdresse" value={complementAdresse} onChange={complementAdresseChange} />
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Numéro de Voie :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="numeroVoie" value={numeroVoie} onChange={numeroVoieChange} />
+                        {errors.numeroVoie && <span className="error">{errors.numeroVoie}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Nom de Voie :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomVoie" value={nomVoie} onChange={nomVoieChange} />
+                        {errors.nomVoie && <span className="error">{errors.nomVoie}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Code Postale :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="codePostale" value={codePostale} onChange={codePostaleChange} />
+                        {errors.codePostale && <span className="error">{errors.codePostale}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Ville :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="ville" value={ville} onChange={villeChange} />
+                        {errors.ville && <span className="error">{errors.ville}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Mot de passe :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="password" name="password" value={password} onChange={passwordChange} />
+                        {errors.password && <span className="error">{errors.password}</span>}
+                      </label>
+                    </div>
+                  </div>
+                  <div className="group relative p-5 bg-white rounded-xl">
+                    <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
+                      <label className="w-full font-bold">Confirmation mot de passe :
+                        <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="password" name="confirmPassword" value={confirmPassword} onChange={confirmPasswordChange} />
+                        {errors.confirmPassword && <span className="error">{errors.confirmPassword}</span>}
+                      </label>
+                    </div>
                   </div>
                 </div>
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Prénom :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="prenomClient" value={prenomClient} onChange={prenomClientChange}></input>
-                      {errors.prenomClient && <span className="error"> {errors.prenomClient} </span>}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Numéro voie :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="numeroVoie" value={numeroVoie} onChange={numeroVoieChange}></input>
-                      {errors.numeroVoie && <span className="error"> {errors.numeroVoie} </span>}
-                    </label>
-                  </div>
-                </div>
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Nom voie :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="nomVoie" value={nomVoie} onChange={nomVoieChange}></input>
-                      {errors.nomVoie && <span className="error"> {errors.nomVoie} </span>}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Code postal :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="codePostale" value={codePostale} onChange={codePostaleChange}></input>
-                      {errors.codePostale && <span className="error"> {errors.codePostale} </span>}
-                    </label>
-                  </div>
-                </div>
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Ville :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" name="ville" value={ville} onChange={villeChange}></input>
-                      {errors.ville && <span className="error"> {errors.ville} </span>}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Email :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={email} onChange={emailChange}></input>
-                      {errors.email && <span className="error"> {errors.email} </span>}
-                    </label>
-                   
-                  </div>
-                </div>
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Numéro de Téléphone :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="text" value={telephone} onChange={telephoneChange} ></input>
-                      {errors.telephone && <span className="error"> {errors.telephone} </span>}
-                    </label>
-                  </div>
-                </div>
-              </div>
-              <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8 my-10">
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Mot de passe :
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="password" value={password} onChange={passwordChange} ></input>
-                      {errors.password && <span className="error"> {errors.password} </span>}
-                    </label>
-                  </div>
-                </div>
-                <div className="group relative p-5 bg-white rounded-xl">
-                  <div className="election:aspect-h-1 aspect-w-1 w-full overflow-hidden bg-white-200 lg:aspect-none group-hover:opacity-75 lg:h-50 items-left flex">
-                    <label className="w-full font-bold">Confirmer le mot de passe:
-                      <input className="bg-gray-300 p-2 w-full mt-2 rounded" type="password" ></input>
-                      {errors.password && <span className="error"> {errors.password} </span>}
-                    </label>
-                  
-                  </div>
-                </div>
-              </div>
-              <div className="pt-10">
-                <a href="" className="bg-white  px-3 py-2 rounded lg:w-1/3 block text-black font-bold text-center mx-auto button-to-front" onClick={validateForm}>
-                <span className="bg-blue-500  px-3 py-2 rounded lg:w-4/5 block text-black font-bold text-center mx-auto button-to-front" >S'inscrire
-                </span>
-                </a>
-                <hr className="line-behind-button"></hr>
-              </div>
+                <button
+                  type="submit"
+                  className="group relative flex w-full justify-center rounded-md bg-blue-600 py-2 px-3 text-sm font-semibold text-white hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                >
+                  <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                    <LockClosedIcon className="h-5 w-5 text-blue-500 group-hover:text-blue-400" aria-hidden="true" />
+                  </span>
+                  S'inscrire
+                </button>
+                {errors.general && <p className="text-red-500 text-sm mt-2">{errors.general}</p>}
+              </form>
             </section>
           </div>
         </div>
       </main>
     </>
-  )
+  );
 }

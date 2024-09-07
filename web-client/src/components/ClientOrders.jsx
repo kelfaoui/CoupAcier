@@ -46,6 +46,8 @@ function ClientOrders() {
               <td className="border py-2 px-4 border-b border-gray-200">{commande.statusCommande}</td>
               <td className="border py-2 px-4 border-b border-gray-200">{commande.total} €</td>
               <td className="border py-2 px-4 border-b border-gray-200 text-end">
+                 <a href={"/checkout/?total=" + commande.total} className="bg-yellow-400 float-end rounded-lg p-2 ms-2">
+                  Payer </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2">
                   <TrashIcon width={18}></TrashIcon> </a>
                 <a href={"/tableau-de-bord/commande?id=" + commande.idCommande} className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
@@ -53,6 +55,7 @@ function ClientOrders() {
                 </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <MagnifyingGlassIcon width={18}></MagnifyingGlassIcon> </a>
+                
               </td>
             </tr>
           ))}

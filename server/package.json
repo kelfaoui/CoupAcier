@@ -9,22 +9,24 @@
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "csurf": "^1.11.0",
+    "dompurify": "^3.1.6",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-rate-limit": "^7.4.0",
     "express-session": "^1.18.0",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^9.0.2",
+    "mocha": "^10.7.3",
     "mongoose": "^8.5.4",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.0",
     "path": "^0.12.7",
     "rate-limit": "^0.1.1",
     "serverless-http": "^3.2.0",
-    "sinon": "^18.0.0"
-  
+    "sinon": "^18.0.0",
+    "stripe": "^16.10.0"
   },
-"scripts":{
-  "test":"mocha"
-}  
+  "scripts": {
+    "test": "mocha"
+  }
 }
