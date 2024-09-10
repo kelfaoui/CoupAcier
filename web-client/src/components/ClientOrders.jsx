@@ -55,7 +55,7 @@ function ClientOrders() {
                 </a>
                 <a href="#" className="bg-yellow-400 float-end rounded-lg p-2 mr-2">
                   <MagnifyingGlassIcon width={18}></MagnifyingGlassIcon> </a>
-                
+  
               </td>
             </tr>
           ))}
